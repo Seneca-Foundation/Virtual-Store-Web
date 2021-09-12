@@ -8,7 +8,7 @@
 		<version>2.4.11-SNAPSHOT</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.virtualstore</groupId>
+	<groupId>com.senecafoundation</groupId>
 	<artifactId>virtualstore</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>virtualstore</name>
