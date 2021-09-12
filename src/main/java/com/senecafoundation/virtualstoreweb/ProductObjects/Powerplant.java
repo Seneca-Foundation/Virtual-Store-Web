@@ -18,11 +18,11 @@ public class Powerplant extends WeightItem
         this.textFormatter = userTextFormatter;
         DecimalFormat df = new DecimalFormat("#.##");
         df.setRoundingMode(RoundingMode.CEILING);
-        return "Product: " + name + ", Price: $" + df.format(this.textFormatter.getPrice()) + ", Weight:" + weight + ", Item Number: " + getID();
+        return "Product: " + this.getName() + ", Price: $" + df.format(this.textFormatter.getPrice()) + ", Weight:" + weight + ", Item Number: " + getID();
     }  
 
     public String WhatItPowers() {
-        String[] parts = name.split("k");
+        String[] parts = this.getName().split("k");
         String amount = parts[0];
         int amountInkWh = Integer.parseInt(amount);
         System.out.println("With this amount of energy, you can power: ");

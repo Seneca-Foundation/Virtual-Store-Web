@@ -4,9 +4,12 @@ import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.Random;
 
+import javax.persistence.MappedSuperclass;
+
 import com.senecafoundation.virtualstoreweb.ITextFormatter;
 import com.senecafoundation.virtualstoreweb.FundamentalObjects.WeightItem;
 
+@MappedSuperclass
 public class Book extends WeightItem 
 {
     protected String cover; 
@@ -38,7 +41,7 @@ public class Book extends WeightItem
         this.textFormatter = userTextFormatter;
         DecimalFormat df = new DecimalFormat("#.##");
         df.setRoundingMode(RoundingMode.CEILING);
-        return "Title: " + name +  ", Price: $" + df.format(this.textFormatter.getPrice()) + ", Author: " + author + ", Cover: " + cover + ", Description: " + description+", Weight: " + weight + ", Item Number: " + getID();
+        return "Title: " + this.getName() +  ", Price: $" + df.format(this.textFormatter.getPrice()) + ", Author: " + author + ", Cover: " + cover + ", Description: " + this.getDescription() + ", Weight: " + weight + ", Item Number: " + getID();
     }
 
     public String determineCondition(){

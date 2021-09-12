@@ -1,5 +1,8 @@
 package com.senecafoundation.virtualstoreweb.FundamentalObjects;
 
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public class WeightItem extends StoreItem
 {
     public double weight;

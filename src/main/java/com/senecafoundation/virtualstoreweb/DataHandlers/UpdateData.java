@@ -36,10 +36,10 @@ public class UpdateData implements IUpdateData{
                 description = fileScanner.next();
                 price = fileScanner.next();
                 ID = UUID.fromString(fileScanner.next());
-                UUID testID = item.ID;
+                UUID testID = item.getID();
                 if(ID.equals(testID))
                 {
-                    pw.println(item.name + "," + item.description + "," + item.price + "," + item.ID);
+                    pw.println(item.getName() + "," + item.getDescription() + "," + item.getPrice() + "," + item.getID());
                 }
                 else
                 {

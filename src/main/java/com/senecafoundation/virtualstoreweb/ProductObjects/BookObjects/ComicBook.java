@@ -1,5 +1,13 @@
 package com.senecafoundation.virtualstoreweb.ProductObjects.BookObjects;
 
+import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "comicbook")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class ComicBook extends Book 
 {
     protected String artist;
@@ -18,7 +26,7 @@ public class ComicBook extends Book
     }
 
     public String GetData() {
-        return "Title: " + name + ", Price: $" + this.textFormatter.getPrice() + ", Author: " + author + ", Cover: " + cover + ", Artist: " + artist+ ", Weight: " + weight + ", Item Number: " + getID();
+        return "Title: " + this.getName() + ", Price: $" + this.textFormatter.getPrice() + ", Author: " + author + ", Cover: " + cover + ", Artist: " + artist+ ", Weight: " + weight + ", Item Number: " + getID();
     }
 
     @Override 

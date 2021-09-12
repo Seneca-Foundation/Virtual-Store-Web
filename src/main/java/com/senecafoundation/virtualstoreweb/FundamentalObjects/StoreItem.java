@@ -3,22 +3,41 @@ package com.senecafoundation.virtualstoreweb.FundamentalObjects;
 import java.util.ArrayList;
 import java.util.UUID;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Transient;
+
 import com.senecafoundation.virtualstoreweb.ITextFormatter;
 import com.senecafoundation.virtualstoreweb.DataHandlers.ICreateData;
 import com.senecafoundation.virtualstoreweb.DataHandlers.IDeleteData;
 import com.senecafoundation.virtualstoreweb.DataHandlers.IReadData;
 import com.senecafoundation.virtualstoreweb.DataHandlers.IUpdateData;
 
+@MappedSuperclass
 public class StoreItem {
-    public double price;
-    public String name;
-    public String description;
-    public ArrayList<String> keywords = new ArrayList<String>();
-    public UUID ID = UUID.randomUUID();
+    
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID ID = UUID.randomUUID();
+    private double price;
+    private String name;
+    private String description;
+    
+    @Transient
+    private ArrayList<String> keywords = new ArrayList<String>();
+    @Transient
     protected ITextFormatter textFormatter;
+    @Transient
     public ICreateData createData;
+    @Transient
     public IDeleteData deleteData;
+    @Transient
     public IReadData readData;
+    @Transient
     public IUpdateData updateData;
 
     public double getPrice() {

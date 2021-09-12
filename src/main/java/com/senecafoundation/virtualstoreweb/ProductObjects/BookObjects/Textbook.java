@@ -3,8 +3,17 @@ package com.senecafoundation.virtualstoreweb.ProductObjects.BookObjects;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+@Entity
+@Table(name = "textbook")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Textbook extends Book 
 {
+    @Transient
     protected List<String> authors = new ArrayList<String>();
 
     public Textbook(String name, double price, String author, String cover, String description, List<String> authors, double weight) {
@@ -21,7 +30,7 @@ public class Textbook extends Book
     }
     public String GetData() {
 
-        return "Title: " + name + ", Price: $" + this.textFormatter.getPrice() + ", Authors: " + String.join(",", authors) + ", Cover: " + cover + ", Weight: " + weight + ", Item Number: " + getID();
+        return "Title: " + this.getName() + ", Price: $" + this.textFormatter.getPrice() + ", Authors: " + String.join(",", authors) + ", Cover: " + cover + ", Weight: " + weight + ", Item Number: " + getID();
         
     }
     @Override 

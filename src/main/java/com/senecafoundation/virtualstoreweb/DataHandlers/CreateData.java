@@ -19,7 +19,7 @@ public class CreateData implements ICreateData{
             pw.println(item.toString());
             pw.flush();
             pw.close();
-            return item.ID;
+            return item.getID();
         }
         catch(Exception e)
         {

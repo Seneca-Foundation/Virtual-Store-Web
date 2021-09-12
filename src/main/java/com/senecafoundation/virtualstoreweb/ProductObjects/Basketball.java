@@ -50,11 +50,11 @@ public class Basketball extends WeightItem
         this.textFormatter = userTextFormatter;
         DecimalFormat df = new DecimalFormat("#.##");
         df.setRoundingMode(RoundingMode.CEILING);
-        return "Match: " + name + ", Price: $" + df.format(this.textFormatter.getPrice()) + ", Date: " + date + ", Section: " + section + ", Seat: " + seat + ", Weight: " + weight + ", Item Number: " + getID();
+        return "Match: " + this.getName() + ", Price: $" + df.format(this.textFormatter.getPrice()) + ", Date: " + date + ", Section: " + section + ", Seat: " + seat + ", Weight: " + weight + ", Item Number: " + getID();
     }
 
     public String WinnerOfMatch(){
-        String[] parts = name.split("vs");
+        String[] parts = this.getName().split("vs");
         String team1 = parts[0];
         String team2 = parts[1];
         List<String> list = new ArrayList<>();

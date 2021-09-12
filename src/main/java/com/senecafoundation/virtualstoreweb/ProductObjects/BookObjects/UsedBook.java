@@ -1,5 +1,13 @@
 package com.senecafoundation.virtualstoreweb.ProductObjects.BookObjects;
 
+import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "usedbook")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class UsedBook extends Book 
 {
     protected String condition;
@@ -18,7 +26,7 @@ public class UsedBook extends Book
     }
     
     public String GetData() {
-        return "Title: " + name + ", Price: $" + price + ", Author: " + author + ", Cover: " + cover + ", Condition: " + condition + ", Weight: " + weight + ", Item Number: " + getID();
+        return "Title: " + this.getName() + ", Price: $" + this.getPrice() + ", Author: " + author + ", Cover: " + cover + ", Condition: " + condition + ", Weight: " + weight + ", Item Number: " + getID();
     }
 
     @Override 
