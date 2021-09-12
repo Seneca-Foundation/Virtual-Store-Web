@@ -88,6 +88,9 @@ public class StoreItem {
         this.keywords = new ArrayList<String>();
     }
     
+    public StoreItem() {
+    }
+
     public String GetData(ITextFormatter userTextFormatter)
     {
         this.textFormatter = userTextFormatter;

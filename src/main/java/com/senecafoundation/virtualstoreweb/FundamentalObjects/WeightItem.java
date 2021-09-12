@@ -11,6 +11,10 @@ public class WeightItem extends StoreItem
         this.weight = weight;
     }
 
+    public WeightItem() {
+        super();
+    }
+
     public double getWeight() {
         return weight;
     }

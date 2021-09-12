@@ -17,6 +17,11 @@ public class ComicBook extends Book
         super(name, price, author, cover, description, weight);
         this.artist = artist;
     }
+
+    public ComicBook() {
+        super();
+    }
+
     public String getArtist() {
         return artist;
     }

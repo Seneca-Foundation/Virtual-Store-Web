@@ -22,6 +22,10 @@ public class Book extends WeightItem
         this.cover = cover;
     }
 
+    public Book() {
+        super();
+    }
+
     public String getCover() {
         return cover;
     }
