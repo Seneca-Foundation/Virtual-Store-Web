@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Create a Comic Book</title>
+</head>
+    <body>
+        <h3>Welcome, Enter Comic Book</h3>
+        <form action="#" th:action="@{/comicbook/createform}" method="post" th:object="${comicbook}">
+             <table> 
+                <tr>
+                    <td><label>Name</label></td>
+                    <td><input type="text" th:field="*{name}" /></td>
+                </tr>
+                <tr>
+                    <td><label>price</label></td>
+                    <td><input type="text" th:field="*{price}" /></td>
+                </tr>
+                <tr>
+                    <td><label>author</label></td>
+                    <td><input type="text" th:field="*{author}" /></td>
+                </tr>
+                <tr>
+                    <td><label>cover</label></td>
+                    <td><input type="text" th:field="*{cover}" /></td>
+                </tr>
+                <tr>
+                    <td><label>description</label></td>
+                    <td><input type="text" th:field="*{description}" /></td>
+                </tr>
+                <tr>
+                    <td><label>artist</label></td>
+                    <td><input type="text" th:field="*{artist}" /></td>
+                </tr>
+                <tr>
+                    <td><label>weight</label></td>
+                    <td><input type="text" th:field="*{weight}" /></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Submit"/></td>
+                </tr>
+            </table>
+        </form:form>
+    </body>
+</html>
