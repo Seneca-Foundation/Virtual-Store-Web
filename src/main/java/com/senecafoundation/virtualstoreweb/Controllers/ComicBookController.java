@@ -1,4 +1,4 @@
-package com.senecafoundation.virtualstoreweb;
+package com.senecafoundation.virtualstoreweb.Controllers;
 
 import com.senecafoundation.virtualstoreweb.DataHandlers.RepoCreateData;
 import com.senecafoundation.virtualstoreweb.ProductObjects.BookObjects.ComicBook;

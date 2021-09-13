@@ -1,7 +1,7 @@
-package com.senecafoundation.virtualstoreweb;
+package com.senecafoundation.virtualstoreweb.Controllers;
 
 import com.senecafoundation.virtualstoreweb.DataHandlers.RepoCreateData;
-import com.senecafoundation.virtualstoreweb.ProductObjects.BookObjects.Book;
+import com.senecafoundation.virtualstoreweb.ProductObjects.Computer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,27 +13,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("comicbook")
-public class BookController {
+@RequestMapping("computer")
+public class ComputerController {
 
     @Autowired
     RepoCreateData dataHandler;
     
     @GetMapping("/createform")
     public String showForm(Model model) {
-        Book book = new Book();
-        model.addAttribute("book", book);
-        return "create_book";
+        Computer computer = new Computer();
+        model.addAttribute("computer", computer);
+        return "create_computer";
     }
 
     @RequestMapping(value = "/createform", method = RequestMethod.POST)
-    public String submit(@ModelAttribute("comicbook") Book book, BindingResult result, ModelMap model) {
+    public String submit(@ModelAttribute("computer") Computer computer, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return "error";
         }
-        dataHandler.Create(book);
+        dataHandler.Create(computer);
         //repo.save(shadowElf);
-        model.addAttribute("book", book);
-        return "book";
+        model.addAttribute("computer", computer);
+        return "computer";
     }
 }

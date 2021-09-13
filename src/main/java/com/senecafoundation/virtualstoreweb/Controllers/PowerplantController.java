@@ -1,7 +1,7 @@
-package com.senecafoundation.virtualstoreweb;
+package com.senecafoundation.virtualstoreweb.Controllers;
 
 import com.senecafoundation.virtualstoreweb.DataHandlers.RepoCreateData;
-import com.senecafoundation.virtualstoreweb.ProductObjects.Computer;
+import com.senecafoundation.virtualstoreweb.ProductObjects.Powerplant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,26 +14,26 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping("computer")
-public class ComputerController {
+public class PowerplantController {
 
     @Autowired
     RepoCreateData dataHandler;
     
     @GetMapping("/createform")
     public String showForm(Model model) {
-        Computer computer = new Computer();
-        model.addAttribute("computer", computer);
-        return "create_computer";
+        Powerplant powerPlant = new Powerplant();
+        model.addAttribute("energy", powerPlant);
+        return "create_energy";
     }
 
     @RequestMapping(value = "/createform", method = RequestMethod.POST)
-    public String submit(@ModelAttribute("computer") Computer computer, BindingResult result, ModelMap model) {
+    public String submit(@ModelAttribute("energy") Powerplant powerPlant, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return "error";
         }
-        dataHandler.Create(computer);
+        dataHandler.Create(powerPlant);
         //repo.save(shadowElf);
-        model.addAttribute("computer", computer);
-        return "computer";
+        model.addAttribute("energy", powerPlant);
+        return "energy";
     }
 }
