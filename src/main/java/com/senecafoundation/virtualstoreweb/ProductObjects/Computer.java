@@ -20,6 +20,10 @@ public class Computer extends WeightItem
         this.releaseDate = releaseDate;
         this.color = color;
     }
+
+    public Computer(){
+        super();
+    }
     
     public String getColor() {
         return color;
