@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title th:text="'This is a ' + ${computer.name} + ' computer!'"></title>
+<link th:href="@{/css/main.css}" rel="stylesheet" />
+</head>
+<body>
+    <div class="comicbook">
+        <h1 th:text="'A ' + ${computer.name} + ' is available!'"></h1>
+        <p th:text="'It costs ' + ${computer.price} + '.'"></p>
+        <p th:text="'It's color is ' + ${computer.color} + '.'"></p>
+        <p th:text="'It was created and released by ' + ${computer.computerBrand} + '.'"></p>
+        <p th:text="'Here is a description ' + ${computer.description} + '.'"></p>
+        <p th:text="'The release date is ' + ${computer.releaseDate} + '.'"></p>
+        <p th:text="'The item's weight in pounds is ' + ${computer.weight} + '.'"></p>
+    </div>
+</body>
+</html> 
