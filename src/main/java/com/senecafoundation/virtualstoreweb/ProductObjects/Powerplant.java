@@ -6,6 +6,14 @@ import java.text.DecimalFormat;
 import com.senecafoundation.virtualstoreweb.ITextFormatter;
 import com.senecafoundation.virtualstoreweb.FundamentalObjects.WeightItem;
 
+import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "energy")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Powerplant extends WeightItem
 
 {
