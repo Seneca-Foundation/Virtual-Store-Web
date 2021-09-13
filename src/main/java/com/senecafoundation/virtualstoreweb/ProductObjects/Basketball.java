@@ -21,6 +21,9 @@ public class Basketball extends WeightItem
         this.section = section;
         this.seat = seat;
     }
+    public Basketball() {
+        super();
+    }
 
     public int getSeat() {
         return seat;

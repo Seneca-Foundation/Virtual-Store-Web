@@ -13,6 +13,9 @@ public class Powerplant extends WeightItem
     {
         super(name,price,description, weight);
     }
+    public Powerplant() {
+        super();
+    }
 
     public String GetData(ITextFormatter userTextFormatter){
         this.textFormatter = userTextFormatter;
@@ -20,7 +23,6 @@ public class Powerplant extends WeightItem
         df.setRoundingMode(RoundingMode.CEILING);
         return "Product: " + this.getName() + ", Price: $" + df.format(this.textFormatter.getPrice()) + ", Weight:" + weight + ", Item Number: " + getID();
     }  
-
     public String WhatItPowers() {
         String[] parts = this.getName().split("k");
         String amount = parts[0];
