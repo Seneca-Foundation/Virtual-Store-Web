@@ -14,26 +14,26 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping("basketballtickets")
-public class BasketballticketsController {
+public class BasketballticketController {
 
     @Autowired
     RepoCreateData dataHandler;
     
     @GetMapping("/createform")
     public String showForm(Model model) {
-        BasketballTickets basketballTickets = new BasketballTickets();
-        model.addAttribute("basketballtickets", basketballTickets);
-        return "create_basketballtickets";
+        Basketball basketballTicket = new Basketball();
+        model.addAttribute("basketballticket", basketballTicket);
+        return "create_basketballticket";
     }
 
     @RequestMapping(value = "/createform", method = RequestMethod.POST)
-    public String submit(@ModelAttribute("basketballtickets") Basketball basketballTickets, BindingResult result, ModelMap model) {
+    public String submit(@ModelAttribute("basketballticket") Basketball basketballTicket, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return "error";
         }
-        dataHandler.Create(basketballTickets);
+        dataHandler.Create(basketballTicket);
         //repo.save(shadowElf);
-        model.addAttribute("basketballtickets", basketballTickets);
-        return "basketballtickets";
+        model.addAttribute("basketballticket", basketballTicket);
+        return "basketballticket";
     }
 }
