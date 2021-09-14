@@ -23,6 +23,7 @@ public class ReadData implements IReadData {
     private String filepath;
     private File file;
     private Scanner fileScanner;
+    private UUID id;
 
     public String getFilepath() {
         return filepath;
@@ -35,6 +36,7 @@ public class ReadData implements IReadData {
     @Override
     public StoreItem Read(UUID ID) {
         // open the file
+        this.id = ID;
         try {
             this.file = new File(filepath);
             this.fileScanner = new Scanner(this.file);
@@ -49,13 +51,13 @@ public class ReadData implements IReadData {
             // read the line with the id
             String line = this.fileScanner.nextLine();
             
-            if(line.contains(ID.toString())) { 
+            if(line.contains(id.toString())) { 
                 
                 // separate the line by commas into properties
                 String[] props = line.split(",");
 
                 // if the first property is a StoreItem
-                if (props[0].equals("StoreItem")) {
+                if (props[0].equals("Computer")) {
                     
                     // create a StoreItem object using the properties
                     StoreItem storeItemToReturn = new StoreItem(props[2], Double.parseDouble(props[3]), props[4]);
