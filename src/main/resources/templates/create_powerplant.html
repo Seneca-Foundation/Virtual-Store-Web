@@ -8,19 +8,19 @@
         <form action="#" th:action="@{/powerplant/createform}" method="post" th:object="${energy}">
              <table> 
                 <tr>
-                    <td><label>Name</label></td>
+                    <td><label>Amount In kWh</label></td>
                     <td><input type="text" th:field="*{name}" /></td>
                 </tr>
                 <tr>
-                    <td><label>price</label></td>
+                    <td><label>Price</label></td>
                     <td><input type="text" th:field="*{price}" /></td>
                 </tr>
                 <tr>
-                    <td><label>description</label></td>
+                    <td><label>Description</label></td>
                     <td><input type="text" th:field="*{description}" /></td>
                 </tr>
                 <tr>
-                    <td><label>weight</label></td>
+                    <td><label>Weight</label></td>
                     <td><input type="text" th:field="*{weight}" /></td>
                 </tr>
                 <tr>
