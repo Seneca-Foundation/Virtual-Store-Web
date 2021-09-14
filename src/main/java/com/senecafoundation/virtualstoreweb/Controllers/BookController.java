@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("comicbook")
+@RequestMapping("book")
 public class BookController {
 
     @Autowired
@@ -27,7 +27,7 @@ public class BookController {
     }
 
     @RequestMapping(value = "/createform", method = RequestMethod.POST)
-    public String submit(@ModelAttribute("comicbook") Book book, BindingResult result, ModelMap model) {
+    public String submit(@ModelAttribute("book") Book book, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return "error";
         }
