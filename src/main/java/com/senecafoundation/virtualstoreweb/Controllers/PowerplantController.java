@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("computer")
+@RequestMapping("powerplant")
 public class PowerplantController {
 
     @Autowired
@@ -23,7 +23,7 @@ public class PowerplantController {
     public String showForm(Model model) {
         Powerplant powerPlant = new Powerplant();
         model.addAttribute("energy", powerPlant);
-        return "create_energy";
+        return "create_powerplant";
     }
 
     @RequestMapping(value = "/createform", method = RequestMethod.POST)
@@ -34,6 +34,6 @@ public class PowerplantController {
         dataHandler.Create(powerPlant);
         //repo.save(shadowElf);
         model.addAttribute("energy", powerPlant);
-        return "energy";
+        return "powerplant";
     }
 }
