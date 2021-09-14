@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title th:text="'This is a ' + ${book.name} + ' book!'"></title>
+<link th:href="@{/css/main.css}" rel="stylesheet" />
+</head>
+<body>
+    <div class="book">
+        <h1 th:text="'A ' + ${book.name} + ' is available!'"></h1>
+        <p th:text="'It costs ' + ${book.price} + '.'"></p>
+        <p th:text="'It is written by' + ${book.author} + '.'"></p>
+        <p th:text="'The cover looks like ' + ${book.cover} + '.'"></p>
+        <p th:text="'Here is a description ' + ${book.description} + '.'"></p>
+    </div>
+</body>
+</html>
