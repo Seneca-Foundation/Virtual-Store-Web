@@ -27,7 +27,7 @@ public class BookController {
     }
 
     @RequestMapping(value = "/createform", method = RequestMethod.POST)
-    public String submit(@ModelAttribute("comicbook") Book book, BindingResult result, ModelMap model) {
+    public String submit(@ModelAttribute("book") Book book, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return "error";
         }
