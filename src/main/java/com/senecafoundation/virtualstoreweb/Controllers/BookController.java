@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("book")
@@ -35,5 +36,14 @@ public class BookController {
         //repo.save(shadowElf);
         model.addAttribute("book", book);
         return "book";
+    }
+
+    @RequestMapping(value ="/createform", method = RequestMethod.PUT)
+    public void UpdateBook(@ModelAttribute("book") Book book, BindingResult result, ModelMap model) {
+        
+    }
+    @RequestMapping(value="/createform", method = RequestMethod.DELETE)
+    public void DeleteBook(@ModelAttribute("/book")Book book, BindingResult result, ModelMap model) {
+
     }
 }

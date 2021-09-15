@@ -38,12 +38,12 @@ public class ComicBookController {
         model.addAttribute("comicbook", comicBook);
         return "comicbook";
         }
-    @RequestMapping(value="/createform", method=RequestMethod.PUT)
-    public String updateComicBook(@ModelAttribute("comicbook") ComicBook comicBook, BindingResult result, ModelMap model) {
-        if (result.hasErrors()) {
-            return "error";
-        }
-        return null;
+    @RequestMapping(value="/createform", method = RequestMethod.PUT)
+    public void updateComicBook(@ModelAttribute("comicbook") ComicBook comicBook, BindingResult result, ModelMap model) {
+        
     }
+    @RequestMapping(value="/createform", method = RequestMethod.DELETE)
+    public void DeleteComicBook(@ModelAttribute("/comicbook")ComicBook comicBook, BindingResult result, ModelMap model) {
     
+    }
 }

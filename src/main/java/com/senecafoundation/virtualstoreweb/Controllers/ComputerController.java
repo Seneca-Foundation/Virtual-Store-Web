@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("computer")
@@ -35,5 +36,13 @@ public class ComputerController {
         //repo.save(shadowElf);
         model.addAttribute("computer", computer);
         return "computer";
+    }
+    @RequestMapping(value ="/createform", method = RequestMethod.PUT)
+    public void UpdateComputer(@ModelAttribute("computer") Computer computer, BindingResult result, ModelMap model) {
+        
+    }
+    @RequestMapping(value="/createform", method = RequestMethod.DELETE)
+    public void DeleteComputer(@ModelAttribute("/computer")Computer computer, BindingResult result, ModelMap model) {
+
     }
 }
