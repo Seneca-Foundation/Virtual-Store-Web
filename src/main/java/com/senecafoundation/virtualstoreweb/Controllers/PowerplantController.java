@@ -1,6 +1,7 @@
 package com.senecafoundation.virtualstoreweb.Controllers;
 
 import com.senecafoundation.virtualstoreweb.DataHandlers.RepoCreateData;
+import com.senecafoundation.virtualstoreweb.DataHandlers.RepoUpdateData;
 import com.senecafoundation.virtualstoreweb.ProductObjects.Powerplant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,13 +14,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 //import org.springframework.web.bind.annotation.RequestParam;
 
-
 @Controller
 @RequestMapping("powerplant")
 public class PowerplantController {
 
     @Autowired
     RepoCreateData dataHandler;
+    @Autowired
+    RepoUpdateData dataHandlerUpdate;
     
     @GetMapping("/createform")
     public String showForm(Model model) {
@@ -39,11 +41,14 @@ public class PowerplantController {
         return "powerplant";
     }
     @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
-    public void UpdatePowerplant(@ModelAttribute("energy") Powerplant powerplant, BindingResult result, ModelMap model) {
-        
+    public String change(@ModelAttribute("energy") Powerplant powerPlant, BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            return "error";
+        }
+        dataHandlerUpdate.Update(powerPlant);
+        return "energy";    
     }
     @RequestMapping(value="/deleteform", method = RequestMethod.DELETE)
     public void DeleteEnergy(@ModelAttribute("/energy")Powerplant powerPlant, BindingResult result, ModelMap model) {
-
     }
 }
