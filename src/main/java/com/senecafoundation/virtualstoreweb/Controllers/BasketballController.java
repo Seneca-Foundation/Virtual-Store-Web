@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+//import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("basketball")
@@ -19,7 +19,7 @@ public class BasketballController {
 
     @Autowired
     RepoCreateData dataHandler;
-    private String value;
+    //private String value;
 
     @GetMapping("/createform")
     public String showForm(Model model) {
@@ -45,11 +45,11 @@ public class BasketballController {
             return "error"; 
         }
     }
-    @RequestMapping(value ="/createform", method = RequestMethod.PUT)
+    @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
     public void UpdateBasketball(@ModelAttribute("basketball") Basketball basketball, BindingResult result,
            ModelMap model) {
     }
-    @RequestMapping(value ="/createform", method = RequestMethod.DELETE)
+    @RequestMapping(value ="/deleteform", method = RequestMethod.DELETE)
     public void DeleteBasketball(@ModelAttribute("basketball") Basketball basketball, BindingResult result, ModelMap model) {
         
     }
