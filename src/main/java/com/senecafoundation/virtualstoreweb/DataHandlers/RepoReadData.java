@@ -14,6 +14,12 @@ public class RepoReadData implements IReadData {
     private StoreItemRepository storeItemRepository;
 
     @Override
+    public StoreItem Read(UUID ID) {
+        this.ID = ID;
+        return this.storeItemRepository.findFirst(ID).orElse(null);
+    }
+
+    @Override
     public List<StoreItem> ReadAll() {
         return this.storeItemRepository.findAll();
     }
