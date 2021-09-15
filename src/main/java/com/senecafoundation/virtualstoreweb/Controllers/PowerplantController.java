@@ -1,6 +1,9 @@
 package com.senecafoundation.virtualstoreweb.Controllers;
 
+import java.util.UUID;
+
 import com.senecafoundation.virtualstoreweb.DataHandlers.RepoCreateData;
+import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDeleteData;
 import com.senecafoundation.virtualstoreweb.DataHandlers.RepoUpdateData;
 import com.senecafoundation.virtualstoreweb.ProductObjects.Powerplant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +20,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("powerplant")
 public class PowerplantController {
-
+    UUID ID;
     @Autowired
     RepoCreateData dataHandler;
     @Autowired
     RepoUpdateData dataHandlerUpdate;
+    @Autowired
+    RepoDeleteData dataHandlerDelete;
     
     @GetMapping("/createform")
     public String showForm(Model model) {
@@ -46,9 +51,15 @@ public class PowerplantController {
             return "error";
         }
         dataHandlerUpdate.Update(powerPlant);
-        return "energy";    
+        return "powerplant";    
     }
     @RequestMapping(value="/deleteform", method = RequestMethod.DELETE)
-    public void DeleteEnergy(@ModelAttribute("/energy")Powerplant powerPlant, BindingResult result, ModelMap model) {
+    public String erase(@ModelAttribute("energy")Powerplant powerPlant, UUID ID, BindingResult result, ModelMap model) {
+        this.ID = ID;
+        if (result.hasErrors()) {
+            return "error";
+        }
+        dataHandlerDelete.Delete(ID);
+        return "powerplant";
     }
 }
