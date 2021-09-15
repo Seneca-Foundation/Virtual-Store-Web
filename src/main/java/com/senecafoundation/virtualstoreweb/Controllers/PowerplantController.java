@@ -38,11 +38,11 @@ public class PowerplantController {
         model.addAttribute("energy", powerPlant);
         return "powerplant";
     }
-    @RequestMapping(value ="/createform", method = RequestMethod.PUT)
+    @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
     public void UpdatePowerplant(@ModelAttribute("energy") Powerplant powerplant, BindingResult result, ModelMap model) {
         
     }
-    @RequestMapping(value="/createform", method = RequestMethod.DELETE)
+    @RequestMapping(value="/deleteform", method = RequestMethod.DELETE)
     public void DeleteEnergy(@ModelAttribute("/energy")Powerplant powerPlant, BindingResult result, ModelMap model) {
 
     }

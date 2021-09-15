@@ -37,11 +37,11 @@ public class ComputerController {
         model.addAttribute("computer", computer);
         return "computer";
     }
-    @RequestMapping(value ="/createform", method = RequestMethod.PUT)
+    @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
     public void UpdateComputer(@ModelAttribute("computer") Computer computer, BindingResult result, ModelMap model) {
         
     }
-    @RequestMapping(value="/createform", method = RequestMethod.DELETE)
+    @RequestMapping(value="/deleteform", method = RequestMethod.DELETE)
     public void DeleteComputer(@ModelAttribute("/computer")Computer computer, BindingResult result, ModelMap model) {
 
     }

@@ -38,11 +38,11 @@ public class BookController {
         return "book";
     }
 
-    @RequestMapping(value ="/createform", method = RequestMethod.PUT)
+    @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
     public void UpdateBook(@ModelAttribute("book") Book book, BindingResult result, ModelMap model) {
         
     }
-    @RequestMapping(value="/createform", method = RequestMethod.DELETE)
+    @RequestMapping(value="/deleteform", method = RequestMethod.DELETE)
     public void DeleteBook(@ModelAttribute("/book")Book book, BindingResult result, ModelMap model) {
 
     }
