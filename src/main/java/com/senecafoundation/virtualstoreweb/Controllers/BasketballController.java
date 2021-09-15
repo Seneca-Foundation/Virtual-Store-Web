@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 @RequestMapping("basketball")
@@ -36,4 +38,11 @@ public class BasketballController {
         model.addAttribute("basketball", basketball);
         return "basketball";
     }
-}
+    @RequestMapping(value = "/createform", method = RequestMethod.GET)
+   public String get(@ModelAttribute("basketball") Basketball basketball, BindingResult result, ModelMap model) {
+    if (result.hasErrors()) {
+        return "error";
+    }
+    
+
+}}
