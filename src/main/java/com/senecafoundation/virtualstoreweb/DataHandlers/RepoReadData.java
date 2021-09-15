@@ -1,5 +1,6 @@
 package com.senecafoundation.virtualstoreweb.DataHandlers;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import com.senecafoundation.virtualstoreweb.FundamentalObjects.StoreItem;
@@ -22,7 +23,9 @@ public class RepoReadData implements IReadData {
 
     @Override
     public List<StoreItem> ReadAll() {
-        return this.storeItemRepository.findAll();
+        List<StoreItem> items = new ArrayList<>();
+        this.storeItemRepository.findAll().forEach(items::add);
+        return items;
     }
     
 }
