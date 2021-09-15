@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 @RequestMapping("powerplant")
@@ -35,5 +37,13 @@ public class PowerplantController {
         //repo.save(shadowElf);
         model.addAttribute("energy", powerPlant);
         return "powerplant";
+    }
+    @RequestMapping(value ="/createform", method = RequestMethod.PUT)
+    public void UpdatePowerplant(@ModelAttribute("energy") Powerplant powerplant, BindingResult result, ModelMap model) {
+        
+    }
+    @RequestMapping(value="/createform", method = RequestMethod.DELETE)
+    public void DeleteEnergy(@ModelAttribute("/energy")Powerplant powerPlant, BindingResult result, ModelMap model) {
+
     }
 }
