@@ -16,6 +16,7 @@ public class RepoReadData implements IReadData {
     @Override
     public StoreItem Read(UUID ID) {
         this.ID = ID;
+        //findFirst().orElse(null) should give you the object or null if it's not present
         return this.storeItemRepository.findFirst(ID).orElse(null);
     }
 
