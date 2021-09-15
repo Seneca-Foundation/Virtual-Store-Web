@@ -19,6 +19,7 @@ public class BasketballController {
 
     @Autowired
     RepoCreateData dataHandler;
+    private String value;
 
     @GetMapping("/createform")
     public String showForm(Model model) {
@@ -43,13 +44,13 @@ public class BasketballController {
         if (result.hasErrors()) {
             return "error";
         }
-        RequestMapping(value ="/createform", method = RequestMethod.PUT)
-
-    public void UpdateBasketball(@ModelAttribute("basketball") Basketball basketball, BindingResult result,
-            ModelMap model) {
-
+        @RequestMapping(value ="/createform", method = RequestMethod.PUT)
     }
-    RequestMapping(value ="/createform", method = RequestMethod.DELETE)
+    
+    public void UpdateBasketball(@ModelAttribute("basketball") Basketball basketball, BindingResult result,
+           ModelMap model) {
+    }
+    @RequestMapping(value ="/createform", method = RequestMethod.DELETE)
     public void DeleteBasketball(@ModelAttribute("basketball") Basketball basketball, BindingResult result, ModelMap model) {
         
 }
