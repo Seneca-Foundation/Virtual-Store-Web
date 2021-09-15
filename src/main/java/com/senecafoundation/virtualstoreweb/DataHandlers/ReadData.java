@@ -60,7 +60,7 @@ public class ReadData implements IReadData {
                 if (props[0].equals("Computer")) {
                     
                     // create a StoreItem object using the properties
-                    StoreItem storeItemToReturn = new StoreItem(props[2], Double.parseDouble(props[3]), props[4]);
+                    Computer storeItemToReturn = new Computer(props[2], Double.parseDouble(props[3]), props[4], props[5], props[6], props[7], Double.parseDouble(props[8]));
                     storeItemToReturn.setID(UUID.fromString(props[1]));
                         
                     // return the object (Computer, Basketball, etc.) at the end
@@ -70,6 +70,7 @@ public class ReadData implements IReadData {
         }
         return null;
     }
+  
 
     @Override
     public List<StoreItem> ReadAll() {
