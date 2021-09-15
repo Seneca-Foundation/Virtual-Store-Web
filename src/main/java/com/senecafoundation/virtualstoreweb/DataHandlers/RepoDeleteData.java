@@ -8,11 +8,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class RepoDeleteData implements IDeleteData {
 
+    UUID IDToRemove;
     @Autowired
     private StoreItemRepository storeItemRepository;
 
     @Override
     public void Delete(UUID IDToRemove) {
+        this.IDToRemove = IDToRemove;
         this.storeItemRepository.deleteById(IDToRemove);
     }
     
