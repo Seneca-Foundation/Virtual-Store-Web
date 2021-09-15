@@ -1,6 +1,10 @@
 package com.senecafoundation.virtualstoreweb.Controllers;
 
+import java.util.UUID;
+
 import com.senecafoundation.virtualstoreweb.DataHandlers.RepoCreateData;
+import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDeleteData;
+import com.senecafoundation.virtualstoreweb.DataHandlers.RepoUpdateData;
 import com.senecafoundation.virtualstoreweb.ProductObjects.BookObjects.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,8 +21,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("book")
 public class BookController {
 
+    UUID ID;
     @Autowired
     RepoCreateData dataHandler;
+    @Autowired
+    RepoUpdateData dataHandlerUpdate;
+    @Autowired
+    RepoDeleteData dataHandlerDelete;
     
     @GetMapping("/createform")
     public String showForm(Model model) {
@@ -39,11 +48,20 @@ public class BookController {
     }
 
     @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
-    public void UpdateBook(@ModelAttribute("book") Book book, BindingResult result, ModelMap model) {
-        
+    public String change(@ModelAttribute("book") Book book, BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            return "error";
+        }
+        dataHandlerUpdate.Update(book);
+        return "book";  
     }
     @RequestMapping(value="/deleteform", method = RequestMethod.DELETE)
-    public void DeleteBook(@ModelAttribute("book")Book book, BindingResult result, ModelMap model) {
-
+    public String erase(@ModelAttribute("book")Book book, UUID ID, BindingResult result, ModelMap model) {
+        this.ID = ID;
+        if (result.hasErrors()) {
+            return "error";
+        }
+        dataHandlerDelete.Delete(ID);
+        return "book";
     }
 }
