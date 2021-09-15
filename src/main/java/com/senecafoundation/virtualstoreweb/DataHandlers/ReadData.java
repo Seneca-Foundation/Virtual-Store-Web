@@ -51,19 +51,56 @@ public class ReadData implements IReadData {
             // read the line with the id
             String line = this.fileScanner.nextLine();
             
-            if(line.contains(id.toString())) { 
-                
+            if(line.contains(id.toString())) 
+            { 
                 // separate the line by commas into properties
                 String[] props = line.split(",");
-
-                // if the first property is a StoreItem
-                if (props[0].equals("Computer")) {
-                    
-                    // create a StoreItem object using the properties
+                // if the first property is a Basketball
+                if (props[0].equals("Basketball")) {
+                    // create a Basketball object using the properties
+                    Basketball storeItemToReturn = new Basketball(props[2], Double.parseDouble(props[3]), Integer.parseInt(props[4]), Integer.parseInt(props[5]), props[6], props[7], Double.parseDouble(props[8]));
+                    storeItemToReturn.setID(UUID.fromString(props[1]));
+                    // return the object (Computer, Basketball, etc.) at the end
+                    return storeItemToReturn;
+                }
+                else if (props[0].equals("Book")) {
+                    Book storeItemToReturn = new Book(props[2], Double.parseDouble(props[3]), props[4], props[5], props[6], Double.parseDouble(props[7]));
+                    storeItemToReturn.setID(UUID.fromString(props[1]));
+                    return storeItemToReturn;
+                }
+                else if (props[0].equals("ComicBook")) {
+                    ComicBook storeItemToReturn = new ComicBook(props[2], Double.parseDouble(props[3]), props[4], props[5], props[6], props[7], Double.parseDouble(props[8]));
+                    storeItemToReturn.setID(UUID.fromString(props[1]));
+                    return storeItemToReturn;
+                }
+                else if (props[0].equals("Computer")) {
                     Computer storeItemToReturn = new Computer(props[2], Double.parseDouble(props[3]), props[4], props[5], props[6], props[7], Double.parseDouble(props[8]));
                     storeItemToReturn.setID(UUID.fromString(props[1]));
-                        
-                    // return the object (Computer, Basketball, etc.) at the end
+                    return storeItemToReturn;
+                }
+                else if (props[0].equals("Powerplant")){
+                    Powerplant storeItemToReturn = new Powerplant(props[2], Double.parseDouble(props[3]), props[4], Double.parseDouble(props[5]));
+                    storeItemToReturn.setID(UUID.fromString(props[1]));
+                    return storeItemToReturn;
+                }
+                else if (props[0].equals("Textbook")) 
+                {
+                    String[] splitLine = line.split(",");
+                    String[] props2 = Arrays.copyOfRange(splitLine, 0, 7);
+                    String[] secondPart = Arrays.copyOfRange(splitLine, 7, splitLine.length);
+                    
+                    String[] authorsToRead = Arrays.copyOfRange(secondPart,0, secondPart.length - 1);
+                    String weightToRead = secondPart[secondPart.length - 1];
+                    
+                    List<String> authorsList = new ArrayList<String>(Arrays.asList(authorsToRead));
+
+                    Textbook storeItemToReturn = new Textbook(props2[2], Double.parseDouble(props2[3]), props2[4],props2[5], props2[6], authorsList , Double.parseDouble(weightToRead));
+                    storeItemToReturn.setID(UUID.fromString(props[1])); 
+                    return storeItemToReturn;
+                }
+                else if (props[0].equals("UsedBook")) {
+                    UsedBook storeItemToReturn = new UsedBook(props[2], Double.parseDouble(props[3]), props[4], props[5], props[6], props[7], Double.parseDouble(props[8]));
+                    storeItemToReturn.setID(UUID.fromString(props[1]));
                     return storeItemToReturn;
                 }
             }
