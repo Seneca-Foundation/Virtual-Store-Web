@@ -49,4 +49,7 @@ public class BasketballController {
             ModelMap model) {
 
     }
+    RequestMapping(value ="/createform", method = RequestMethod.DELETE)
+    public void DeleteBasketball(@ModelAttribute("basketball") Basketball basketball, BindingResult result, ModelMap model) {
+        
 }
