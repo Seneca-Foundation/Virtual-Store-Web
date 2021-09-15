@@ -43,6 +43,10 @@ public class BasketballController {
         if (result.hasErrors()) {
             return "error";
         }
+        RequestMapping(value ="/createform", method = RequestMethod.PUT)
+
+    public void UpdateBasketball(@ModelAttribute("basketball") Basketball basketball, BindingResult result,
+            ModelMap model) {
 
     }
 }
