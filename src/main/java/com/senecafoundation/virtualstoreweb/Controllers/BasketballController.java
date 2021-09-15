@@ -40,10 +40,11 @@ public class BasketballController {
     }
 
     @RequestMapping(value = "/createform", method = RequestMethod.GET)
-    public String get(@ModelAttribute("basketball") Basketball basketball, BindingResult result, ModelMap model) {
+    public String GetBasketball(@ModelAttribute("basketball") Basketball basketball, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return "error"; 
         }
+        return "basketball";
     }
     @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
     public void UpdateBasketball(@ModelAttribute("basketball") Basketball basketball, BindingResult result,
