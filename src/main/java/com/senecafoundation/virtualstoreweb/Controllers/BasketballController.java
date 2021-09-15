@@ -36,4 +36,12 @@ public class BasketballController {
         model.addAttribute("basketball", basketball);
         return "basketball";
     }
+    @RequestMapping(value="/createform", method = RequestMethod.PUT)
+    public void updateComicBook(@ModelAttribute("/basketball")Basketball basketBall, BindingResult result, ModelMap model) {
+        
+    }
+    @RequestMapping(value="/createform", method = RequestMethod.DELETE)
+    public void DeleteComicBook(@ModelAttribute("/basketball")Basketball basketBall, BindingResult result, ModelMap model) {
+
+    }
 }
