@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("comicbook")
 public class ComicBookController {
-
+    //POST
     @Autowired
     RepoCreateData dataHandler;
     
@@ -38,6 +38,7 @@ public class ComicBookController {
         model.addAttribute("comicbook", comicBook);
         return "comicbook";
         }
+    //PUT
     @RequestMapping(value="/updateform", method = RequestMethod.PUT)
     public void updateComicBook(@ModelAttribute("comicbook") ComicBook comicBook, BindingResult result, ModelMap model) {
         
