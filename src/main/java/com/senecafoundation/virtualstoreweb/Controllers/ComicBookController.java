@@ -37,14 +37,14 @@ public class ComicBookController {
         //repo.save(shadowElf);
         model.addAttribute("comicbook", comicBook);
         return "comicbook";
-        }
+    }
     //PUT
     @RequestMapping(value="/updateform", method = RequestMethod.PUT)
     public void updateComicBook(@ModelAttribute("comicbook") ComicBook comicBook, BindingResult result, ModelMap model) {
         
     }
     @RequestMapping(value="/deleteform", method = RequestMethod.DELETE)
-    public void DeleteComicBook(@ModelAttribute("/comicbook")ComicBook comicBook, BindingResult result, ModelMap model) {
+    public void DeleteComicBook(@ModelAttribute("comicbook")ComicBook comicBook, BindingResult result, ModelMap model) {
     
     }
 }

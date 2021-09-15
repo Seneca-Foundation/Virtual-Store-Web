@@ -42,7 +42,7 @@ public class ComputerController {
         
     }
     @RequestMapping(value="/deleteform", method = RequestMethod.DELETE)
-    public void DeleteComputer(@ModelAttribute("/computer")Computer computer, BindingResult result, ModelMap model) {
+    public void DeleteComputer(@ModelAttribute("computer")Computer computer, BindingResult result, ModelMap model) {
 
     }
 }

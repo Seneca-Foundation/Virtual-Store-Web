@@ -43,7 +43,7 @@ public class BookController {
         
     }
     @RequestMapping(value="/deleteform", method = RequestMethod.DELETE)
-    public void DeleteBook(@ModelAttribute("/book")Book book, BindingResult result, ModelMap model) {
+    public void DeleteBook(@ModelAttribute("book")Book book, BindingResult result, ModelMap model) {
 
     }
 }
