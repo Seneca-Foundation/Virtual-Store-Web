@@ -8,5 +8,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface StoreItemRepository extends JpaRepository<StoreItem, UUID> {
+    
+}
 
-    Optional<StoreItem> findFirst(UUID iD);}
+    //Optional<StoreItem> findFirst(UUID iD);}

@@ -4,7 +4,7 @@ import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.Random;
 
-import javax.persistence.MappedSuperclass;
+//import javax.persistence.MappedSuperclass;
 
 import com.senecafoundation.virtualstoreweb.ITextFormatter;
 import com.senecafoundation.virtualstoreweb.FundamentalObjects.WeightItem;
@@ -17,7 +17,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "book")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-@MappedSuperclass
+//@MappedSuperclass
 public class Book extends WeightItem 
 {
     protected String cover; 

@@ -47,7 +47,7 @@ public class BasketballController {
         model.addAttribute("basketball", basketball);
         return "basketball";
     }
-
+/*
     @RequestMapping(value = "/createform", method = RequestMethod.GET)
     public String GetBasketball(@ModelAttribute("basketball") Basketball basketball, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
@@ -55,6 +55,7 @@ public class BasketballController {
         }
         return "basketball";
     }
+    */
     @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
     public String change(@ModelAttribute("basketball") Basketball basketball, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {

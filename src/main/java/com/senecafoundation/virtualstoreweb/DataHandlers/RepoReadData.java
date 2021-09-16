@@ -1,3 +1,4 @@
+/*
 package com.senecafoundation.virtualstoreweb.DataHandlers;
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class RepoReadData implements IReadData {
     public StoreItem Read(UUID ID) {
         this.ID = ID;
         //findFirst().orElse(null) should give you the object or null if it's not present
-        return this.storeItemRepository.findFirst(ID).orElse(null);
+       // return this.storeItemRepository.findFirst(ID).orElse(null);
     }
 
     @Override
@@ -29,3 +30,4 @@ public class RepoReadData implements IReadData {
     }
     
 }
+*/
