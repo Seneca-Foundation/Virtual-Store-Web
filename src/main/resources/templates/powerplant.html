@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title th:text="'This is ' + ${energy.name} + '!'"></title>
+<link th:href="@{/css/main.css}" rel="stylesheet" />
+</head>
+<body>
+    <div class="energy">
+        <h1 th:text="${energy.name} + ' of energy is available!'"></h1>
+        <p th:text="'It costs: $' + ${energy.price} + '.'"></p>
+        <p th:text="'Here is a description: ' + ${energy.description} + '.'"></p>
+    </div>
+</body>
+</html>

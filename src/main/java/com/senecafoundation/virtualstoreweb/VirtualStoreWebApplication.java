@@ -1,13 +1,13 @@
-package com.virtualstore.virtualstore;
+package com.senecafoundation.virtualstoreweb;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class VirtualstoreApplication {
+public class VirtualStoreWebApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(VirtualstoreApplication.class, args);
+		SpringApplication.run(VirtualStoreWebApplication.class, args);
 	}
 
 }
