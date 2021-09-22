@@ -1,4 +1,3 @@
-/*
 package com.senecafoundation.virtualstoreweb.DataHandlers;
 
 import java.util.ArrayList;
@@ -11,15 +10,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class RepoReadData implements IReadData {
 
-    UUID ID;
     @Autowired
     private StoreItemRepository storeItemRepository;
 
     @Override
     public StoreItem Read(UUID ID) {
-        this.ID = ID;
         //findFirst().orElse(null) should give you the object or null if it's not present
-       // return this.storeItemRepository.findFirst(ID).orElse(null);
+       return this.storeItemRepository.findById(ID).orElseThrow();
     }
 
     @Override
@@ -30,4 +27,4 @@ public class RepoReadData implements IReadData {
     }
     
 }
-*/
+
