@@ -66,16 +66,14 @@
                 </div>
                 </div>
                 <p class="small">or use your email for registration:</p>
-                <form id="sign-up-form" action="#" th:action="@{/comicbook/deleteform}" method="delete" th:object="${comicbook}">
-                    <input type="text" th:field="*{name}" placeholder="Title" />
-                    <input type="text" th:field="*{price}" placeholder="Price" />
-                    <input type="text" th:field="*{author}" placeholder="Author" />
-                    <input type="text" th:field="*{cover}" placeholder="Cover" />
-                    <input type="text" th:field="*{description}" placeholder="Description" />
-                    <input type="text" th:field="*{artist}" placeholder="Artist" />
-                    <input type="text" th:field="*{weight}" placeholder="Weight" />
-                    <button class="control-button up">Enter Information</button>
-                </form>
+                <table>
+                <tr th:each="item : ${itemsToDelete}">
+                    <td th:text="${item.id}"></td>
+                    <td th:text="${item.cover}"></td>
+                    <td th:text="${item.artist}"></td>
+                    <td th:text="${item.author}"></td>         
+                </tr>
+                </table>
             </div>
             </div>
         </div>

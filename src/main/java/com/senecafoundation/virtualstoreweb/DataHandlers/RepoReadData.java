@@ -21,8 +21,8 @@ public class RepoReadData implements IReadData {
 
     @Override
     public List<StoreItem> ReadAll() {
-        List<StoreItem> items = new ArrayList<>();
-        this.storeItemRepository.findAll().forEach(items::add);
+        List<StoreItem> items = new ArrayList<StoreItem>();
+        items = this.storeItemRepository.findAll();
         return items;
     }
     
