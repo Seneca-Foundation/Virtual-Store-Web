@@ -61,6 +61,12 @@ public class BasketballController {
         return "basketball";
     }
     */
+    @GetMapping("/updateform")
+    public String showUpdateForm(Model model) {
+        List<StoreItem> showItems = dataHandlerRead.ReadAll();
+        model.addAttribute("itemsToShow", showItems);
+        return "update_basketball";
+    }
     @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
     public String change(@ModelAttribute("basketball") Basketball basketball, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
