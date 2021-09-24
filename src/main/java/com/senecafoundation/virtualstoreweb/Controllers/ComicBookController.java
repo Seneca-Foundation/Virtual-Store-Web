@@ -53,6 +53,13 @@ public class ComicBookController {
         return "comicbook";
     }
     //PUT
+    @GetMapping("/updateform")
+    public String showUpdateForm(Model model) {
+        List<StoreItem> showItems = dataHandlerRead.ReadAll();
+        model.addAttribute("itemsToShow", showItems);
+        return "update_comicbook";
+    }
+
     @RequestMapping(value="/updateform", method = RequestMethod.PUT)
     public String change(@ModelAttribute("comicbook") ComicBook comicBook, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
