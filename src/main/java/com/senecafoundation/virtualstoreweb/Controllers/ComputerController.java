@@ -53,6 +53,14 @@ public class ComputerController {
         model.addAttribute("computer", computer);
         return "computer";
     }
+    
+    @GetMapping("/updateform")
+    public String showUpdateForm(Model model) {
+        List<StoreItem> showItems = dataHandlerRead.ReadAll();
+        model.addAttribute("itemsToShow", showItems);
+        return "update_computer";
+    }
+
     @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
     public String change(@ModelAttribute("computer") Computer computer, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
