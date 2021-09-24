@@ -51,6 +51,12 @@ public class PowerplantController {
         model.addAttribute("energy", powerPlant);
         return "powerplant";
     }
+    @GetMapping("/updateform")
+    public String showUpdateForm(Model model) {
+        List<StoreItem> showItems = dataHandlerRead.ReadAll();
+        model.addAttribute("itemsToShow", showItems);
+        return "update_powerplant";
+    }
     @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
     public String change(@ModelAttribute("energy") Powerplant powerPlant, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
