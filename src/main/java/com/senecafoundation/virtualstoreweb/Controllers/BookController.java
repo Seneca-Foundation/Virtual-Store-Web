@@ -3,10 +3,10 @@ package com.senecafoundation.virtualstoreweb.Controllers;
 import java.util.UUID;
 import java.util.List;
 
-import com.senecafoundation.virtualstoreweb.DataHandlers.RepoCreateData;
-import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDeleteData;
-import com.senecafoundation.virtualstoreweb.DataHandlers.RepoReadData;
-import com.senecafoundation.virtualstoreweb.DataHandlers.RepoUpdateData;
+import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoCreateData;
+import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoDeleteData;
+import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoReadData;
+import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoUpdateData;
 import com.senecafoundation.virtualstoreweb.FundamentalObjects.StoreItem;
 import com.senecafoundation.virtualstoreweb.ProductObjects.BookObjects.Book;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,13 +26,13 @@ public class BookController {
 
     UUID ID;
     @Autowired
-    RepoCreateData dataHandler;
+    RepoCreateData<Book> dataHandler;
     @Autowired
-    RepoUpdateData dataHandlerUpdate;
+    RepoUpdateData<Book> dataHandlerUpdate;
     @Autowired
-    RepoDeleteData dataHandlerDelete;
+    RepoDeleteData<Book> dataHandlerDelete;
     @Autowired
-    RepoReadData dataHandlerRead;
+    RepoReadData<Book> dataHandlerRead;
     
     @GetMapping("/createform")
     public String showForm(Model model) {

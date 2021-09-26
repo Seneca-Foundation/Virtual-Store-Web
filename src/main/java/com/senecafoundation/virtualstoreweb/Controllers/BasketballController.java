@@ -3,10 +3,10 @@ package com.senecafoundation.virtualstoreweb.Controllers;
 import java.util.UUID;
 import java.util.List;
 
-import com.senecafoundation.virtualstoreweb.DataHandlers.RepoCreateData;
-import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDeleteData;
-import com.senecafoundation.virtualstoreweb.DataHandlers.RepoReadData;
-import com.senecafoundation.virtualstoreweb.DataHandlers.RepoUpdateData;
+import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoCreateData;
+import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoDeleteData;
+import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoReadData;
+import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoUpdateData;
 import com.senecafoundation.virtualstoreweb.FundamentalObjects.StoreItem;
 import com.senecafoundation.virtualstoreweb.ProductObjects.Basketball;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,13 +26,13 @@ public class BasketballController {
 
     UUID ID;
     @Autowired
-    RepoCreateData dataHandler;
+    RepoCreateData<Basketball> dataHandler;
     @Autowired
-    RepoUpdateData dataHandlerUpdate;
+    RepoUpdateData<Basketball> dataHandlerUpdate;
     @Autowired
-    RepoDeleteData dataHandlerDelete;
+    RepoDeleteData<Basketball> dataHandlerDelete;
     @Autowired
-    RepoReadData dataHandlerRead;
+    RepoReadData<Basketball> dataHandlerRead;
     //private String value;
 
     @GetMapping("/createform")

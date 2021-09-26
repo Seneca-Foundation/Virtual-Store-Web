@@ -3,10 +3,10 @@ package com.senecafoundation.virtualstoreweb.Controllers;
 import java.util.UUID;
 import java.util.List;
 
-import com.senecafoundation.virtualstoreweb.DataHandlers.RepoCreateData;
-import com.senecafoundation.virtualstoreweb.DataHandlers.RepoReadData;
-import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDeleteData;
-import com.senecafoundation.virtualstoreweb.DataHandlers.RepoUpdateData;
+import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoCreateData;
+import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoDeleteData;
+import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoReadData;
+import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoUpdateData;
 import com.senecafoundation.virtualstoreweb.FundamentalObjects.StoreItem;
 import com.senecafoundation.virtualstoreweb.ProductObjects.Powerplant;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,13 +26,13 @@ public class PowerplantController {
     
     UUID ID;
     @Autowired
-    RepoCreateData dataHandler;
+    RepoCreateData<Powerplant> dataHandler;
     @Autowired
-    RepoUpdateData dataHandlerUpdate;
+    RepoUpdateData<Powerplant> dataHandlerUpdate;
     @Autowired
-    RepoDeleteData dataHandlerDelete;
+    RepoDeleteData<Powerplant> dataHandlerDelete;
     @Autowired
-    RepoReadData dataHandlerRead;
+    RepoReadData<Powerplant> dataHandlerRead;
     
     @GetMapping("/createform")
     public String showForm(Model model) {
