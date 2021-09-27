@@ -33,13 +33,12 @@ public class BasketballController {
     RepoDeleteData<Basketball> dataHandlerDelete;
     @Autowired
     RepoReadData<Basketball> dataHandlerRead;
-    //private String value;
 
     @GetMapping("/createform")
     public String showForm(Model model) {
         Basketball basketball = new Basketball();
         model.addAttribute("basketball", basketball);
-        return "create_basketball";
+        return "get_basketball";
     }
 
     @RequestMapping(value = "/createform", method = RequestMethod.POST)
@@ -48,24 +47,14 @@ public class BasketballController {
             return "error";
         }
         dataHandler.Create(basketball);
-        // repo.save(shadowElf);
         model.addAttribute("basketball", basketball);
-        return "basketball";
+        return "create_basketball";
     }
-/*
-    @RequestMapping(value = "/createform", method = RequestMethod.GET)
-    public String GetBasketball(@ModelAttribute("basketball") Basketball basketball, BindingResult result, ModelMap model) {
-        if (result.hasErrors()) {
-            return "error"; 
-        }
-        return "basketball";
-    }
-    */
     @GetMapping("/updateform")
     public String showUpdateForm(Model model) {
         List<StoreItem> showItems = dataHandlerRead.ReadAll();
         model.addAttribute("itemsToShow", showItems);
-        return "update_basketball";
+        return "basketball";
     }
     @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
     public String change(@ModelAttribute("basketball") Basketball basketball, BindingResult result, ModelMap model) {
@@ -73,13 +62,13 @@ public class BasketballController {
             return "error";
         }
         dataHandlerUpdate.Update(basketball);
-        return "basketball"; 
+        return "update_basketball"; 
     }
     @GetMapping("/deleteform")
     public String showDeleteForm(Model model) {
         List<StoreItem> showItems = dataHandlerRead.ReadAll();
         model.addAttribute("itemsToDelete", showItems);
-        return "delete_basketball";
+        return "basketball";
     }
     @RequestMapping(value ="/deleteform", method = RequestMethod.DELETE)
     public String erase(@ModelAttribute("basketball") Basketball basketball, UUID ID, BindingResult result, ModelMap model) {
@@ -88,7 +77,7 @@ public class BasketballController {
             return "error";
         }
         dataHandlerDelete.Delete(ID);
-        return "basketball";
+        return "delete_basketball";
     }
 
 }
