@@ -16,6 +16,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 //import org.springframework.web.bind.annotation.RequestParam;
@@ -50,12 +51,14 @@ public class BasketballController {
         model.addAttribute("basketball", basketball);
         return "create_basketball";
     }
+    
     @GetMapping("/updateform")
     public String showUpdateForm(Model model) {
         List<StoreItem> showItems = dataHandlerRead.ReadAll();
         model.addAttribute("itemsToShow", showItems);
         return "basketball";
     }
+
     @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
     public String change(@ModelAttribute("basketball") Basketball basketball, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
@@ -64,20 +67,23 @@ public class BasketballController {
         dataHandlerUpdate.Update(basketball);
         return "update_basketball"; 
     }
+
     @GetMapping("/deleteform")
     public String showDeleteForm(Model model) {
         List<StoreItem> showItems = dataHandlerRead.ReadAll();
         model.addAttribute("itemsToDelete", showItems);
         return "basketball";
     }
-    @RequestMapping(value ="/deleteform", method = RequestMethod.DELETE)
-    public String erase(@ModelAttribute("basketball") Basketball basketball, UUID ID, BindingResult result, ModelMap model) {
-        this.ID = ID;
-        if (result.hasErrors()) {
-            return "error";
+
+    @RequestMapping(value = "/deleteform/{id}", method = RequestMethod.DELETE)
+    public String delete(@PathVariable("id") String Id, ModelMap model) {
+        try {
+            dataHandlerDelete.Delete(UUID.fromString(Id));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        dataHandlerDelete.Delete(ID);
-        return "delete_basketball";
+        model.addAttribute("Id", Id);
+        return "itemdelete";
     }
 
 }
