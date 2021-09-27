@@ -1,9 +1,11 @@
-package com.senecafoundation.virtualstoreweb.DataHandlers;
+package com.senecafoundation.virtualstoreweb.DataHandlers.FileDataHandlers;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.UUID;
+
+import com.senecafoundation.virtualstoreweb.DataHandlers.ICreateData;
 import com.senecafoundation.virtualstoreweb.FundamentalObjects.StoreItem;
 
 public class CreateData implements ICreateData{

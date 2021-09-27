@@ -1,10 +1,13 @@
 package com.senecafoundation.virtualstoreweb.Controllers;
 
 import java.util.UUID;
+import java.util.List;
 
-import com.senecafoundation.virtualstoreweb.DataHandlers.RepoCreateData;
-import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDeleteData;
-import com.senecafoundation.virtualstoreweb.DataHandlers.RepoUpdateData;
+import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoCreateData;
+import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoDeleteData;
+import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoReadData;
+import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoUpdateData;
+import com.senecafoundation.virtualstoreweb.FundamentalObjects.StoreItem;
 import com.senecafoundation.virtualstoreweb.ProductObjects.Computer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,17 +20,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 //import org.springframework.web.bind.annotation.RequestParam;
 
+
+
 @Controller
 @RequestMapping("computer")
 public class ComputerController {
 
     UUID ID;
     @Autowired
-    RepoCreateData dataHandler;
+    RepoCreateData<Computer> dataHandler;
     @Autowired
-    RepoUpdateData dataHandlerUpdate;
+    RepoUpdateData<Computer> dataHandlerUpdate;
     @Autowired
-    RepoDeleteData dataHandlerDelete;
+    RepoDeleteData<Computer> dataHandlerDelete;
+    @Autowired
+    RepoReadData<Computer> dataHandlerRead;
     
     @GetMapping("/createform")
     public String showForm(Model model) {
@@ -46,6 +53,14 @@ public class ComputerController {
         model.addAttribute("computer", computer);
         return "computer";
     }
+    
+    @GetMapping("/updateform")
+    public String showUpdateForm(Model model) {
+        List<StoreItem> showItems = dataHandlerRead.ReadAll();
+        model.addAttribute("itemsToShow", showItems);
+        return "update_computer";
+    }
+
     @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
     public String change(@ModelAttribute("computer") Computer computer, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
@@ -54,6 +69,14 @@ public class ComputerController {
         dataHandlerUpdate.Update(computer);
         return "computer";   
     }
+
+    @GetMapping("/deleteform")
+    public String showDeleteForm(Model model) {
+        List<StoreItem> showItems = dataHandlerRead.ReadAll();
+        model.addAttribute("itemsToDelete", showItems);
+        return "delete_computer";
+    }
+    
     @RequestMapping(value="/deleteform", method = RequestMethod.DELETE)
     public String erase(@ModelAttribute("computer")Computer computer,UUID ID, BindingResult result, ModelMap model) {
         this.ID = ID;

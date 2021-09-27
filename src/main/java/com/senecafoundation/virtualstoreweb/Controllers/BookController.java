@@ -1,10 +1,13 @@
 package com.senecafoundation.virtualstoreweb.Controllers;
 
 import java.util.UUID;
+import java.util.List;
 
-import com.senecafoundation.virtualstoreweb.DataHandlers.RepoCreateData;
-import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDeleteData;
-import com.senecafoundation.virtualstoreweb.DataHandlers.RepoUpdateData;
+import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoCreateData;
+import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoDeleteData;
+import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoReadData;
+import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoUpdateData;
+import com.senecafoundation.virtualstoreweb.FundamentalObjects.StoreItem;
 import com.senecafoundation.virtualstoreweb.ProductObjects.BookObjects.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,11 +26,13 @@ public class BookController {
 
     UUID ID;
     @Autowired
-    RepoCreateData dataHandler;
+    RepoCreateData<Book> dataHandler;
     @Autowired
-    RepoUpdateData dataHandlerUpdate;
+    RepoUpdateData<Book> dataHandlerUpdate;
     @Autowired
-    RepoDeleteData dataHandlerDelete;
+    RepoDeleteData<Book> dataHandlerDelete;
+    @Autowired
+    RepoReadData<Book> dataHandlerRead;
     
     @GetMapping("/createform")
     public String showForm(Model model) {
@@ -47,6 +52,13 @@ public class BookController {
         return "book";
     }
 
+    @GetMapping("/updateform")
+    public String showUpdateForm(Model model) {
+        List<StoreItem> showItems = dataHandlerRead.ReadAll();
+        model.addAttribute("itemsToShow", showItems);
+        return "update_book";
+    }
+
     @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
     public String change(@ModelAttribute("book") Book book, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
@@ -54,6 +66,12 @@ public class BookController {
         }
         dataHandlerUpdate.Update(book);
         return "book";  
+    }
+    @GetMapping("/deleteform")
+    public String showDeleteForm(Model model) {
+        List<StoreItem> showItems = dataHandlerRead.ReadAll();
+        model.addAttribute("itemsToDelete", showItems);
+        return "delete_book";
     }
     @RequestMapping(value="/deleteform", method = RequestMethod.DELETE)
     public String erase(@ModelAttribute("book")Book book, UUID ID, BindingResult result, ModelMap model) {

@@ -1,10 +1,13 @@
 package com.senecafoundation.virtualstoreweb.Controllers;
 
 import java.util.UUID;
+import java.util.List;
 
-import com.senecafoundation.virtualstoreweb.DataHandlers.RepoCreateData;
-import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDeleteData;
-import com.senecafoundation.virtualstoreweb.DataHandlers.RepoUpdateData;
+import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoCreateData;
+import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoDeleteData;
+import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoReadData;
+import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoUpdateData;
+import com.senecafoundation.virtualstoreweb.FundamentalObjects.StoreItem;
 import com.senecafoundation.virtualstoreweb.ProductObjects.Powerplant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,11 +26,13 @@ public class PowerplantController {
     
     UUID ID;
     @Autowired
-    RepoCreateData dataHandler;
+    RepoCreateData<Powerplant> dataHandler;
     @Autowired
-    RepoUpdateData dataHandlerUpdate;
+    RepoUpdateData<Powerplant> dataHandlerUpdate;
     @Autowired
-    RepoDeleteData dataHandlerDelete;
+    RepoDeleteData<Powerplant> dataHandlerDelete;
+    @Autowired
+    RepoReadData<Powerplant> dataHandlerRead;
     
     @GetMapping("/createform")
     public String showForm(Model model) {
@@ -46,6 +51,12 @@ public class PowerplantController {
         model.addAttribute("energy", powerPlant);
         return "powerplant";
     }
+    @GetMapping("/updateform")
+    public String showUpdateForm(Model model) {
+        List<StoreItem> showItems = dataHandlerRead.ReadAll();
+        model.addAttribute("itemsToShow", showItems);
+        return "update_powerplant";
+    }
     @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
     public String change(@ModelAttribute("energy") Powerplant powerPlant, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
@@ -53,6 +64,12 @@ public class PowerplantController {
         }
         dataHandlerUpdate.Update(powerPlant);
         return "powerplant";    
+    }
+    @GetMapping("/deleteform")
+    public String showDeleteForm(Model model) {
+        List<StoreItem> showItems = dataHandlerRead.ReadAll();
+        model.addAttribute("itemsToDelete", showItems);
+        return "delete_powerplant";
     }
     @RequestMapping(value="/deleteform", method = RequestMethod.DELETE)
     public String erase(@ModelAttribute("energy")Powerplant powerPlant, UUID ID, BindingResult result, ModelMap model) {

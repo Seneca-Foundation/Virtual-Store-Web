@@ -1,10 +1,13 @@
 package com.senecafoundation.virtualstoreweb.Controllers;
 
 import java.util.UUID;
+import java.util.List;
 
-import com.senecafoundation.virtualstoreweb.DataHandlers.RepoCreateData;
-import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDeleteData;
-import com.senecafoundation.virtualstoreweb.DataHandlers.RepoUpdateData;
+import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoCreateData;
+import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoDeleteData;
+import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoReadData;
+import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoUpdateData;
+import com.senecafoundation.virtualstoreweb.FundamentalObjects.StoreItem;
 import com.senecafoundation.virtualstoreweb.ProductObjects.Basketball;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,11 +26,13 @@ public class BasketballController {
 
     UUID ID;
     @Autowired
-    RepoCreateData dataHandler;
+    RepoCreateData<Basketball> dataHandler;
     @Autowired
-    RepoUpdateData dataHandlerUpdate;
+    RepoUpdateData<Basketball> dataHandlerUpdate;
     @Autowired
-    RepoDeleteData dataHandlerDelete;
+    RepoDeleteData<Basketball> dataHandlerDelete;
+    @Autowired
+    RepoReadData<Basketball> dataHandlerRead;
     //private String value;
 
     @GetMapping("/createform")
@@ -56,6 +61,12 @@ public class BasketballController {
         return "basketball";
     }
     */
+    @GetMapping("/updateform")
+    public String showUpdateForm(Model model) {
+        List<StoreItem> showItems = dataHandlerRead.ReadAll();
+        model.addAttribute("itemsToShow", showItems);
+        return "update_basketball";
+    }
     @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
     public String change(@ModelAttribute("basketball") Basketball basketball, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
@@ -63,6 +74,12 @@ public class BasketballController {
         }
         dataHandlerUpdate.Update(basketball);
         return "basketball"; 
+    }
+    @GetMapping("/deleteform")
+    public String showDeleteForm(Model model) {
+        List<StoreItem> showItems = dataHandlerRead.ReadAll();
+        model.addAttribute("itemsToDelete", showItems);
+        return "delete_basketball";
     }
     @RequestMapping(value ="/deleteform", method = RequestMethod.DELETE)
     public String erase(@ModelAttribute("basketball") Basketball basketball, UUID ID, BindingResult result, ModelMap model) {
