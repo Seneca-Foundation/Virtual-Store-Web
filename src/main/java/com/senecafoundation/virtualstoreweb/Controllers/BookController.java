@@ -68,12 +68,14 @@ public class BookController {
         dataHandlerUpdate.Update(book);
         return "book";  
     }
+    
     @GetMapping("/deleteform")
     public String showDeleteForm(Model model) {
         List<StoreItem> showItems = dataHandlerRead.ReadAll();
         model.addAttribute("itemsToDelete", showItems);
         return "delete_book";
     }
+
     @RequestMapping(value = "/deleteform/{id}", method = RequestMethod.DELETE)
     public String delete(@PathVariable("id") String Id, ModelMap model) {
         try {

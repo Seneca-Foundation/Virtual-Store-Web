@@ -16,11 +16,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 //import org.springframework.web.bind.annotation.RequestParam;
-
-
 
 @Controller
 @RequestMapping("computer")
@@ -77,13 +76,14 @@ public class ComputerController {
         return "delete_computer";
     }
     
-    @RequestMapping(value="/deleteform", method = RequestMethod.DELETE)
-    public String erase(@ModelAttribute("computer")Computer computer,UUID ID, BindingResult result, ModelMap model) {
-        this.ID = ID;
-        if (result.hasErrors()) {
-            return "error";
+    @RequestMapping(value = "/deleteform/{id}", method = RequestMethod.DELETE)
+    public String delete(@PathVariable("id") String Id, ModelMap model) {
+        try {
+            dataHandlerDelete.Delete(UUID.fromString(Id));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        dataHandlerDelete.Delete(ID);
-        return "computer";
+        model.addAttribute("Id", Id);
+        return "itemdelete";
     }
 }
