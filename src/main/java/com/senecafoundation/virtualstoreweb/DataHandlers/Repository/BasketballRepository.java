@@ -1,7 +1,5 @@
 package com.senecafoundation.virtualstoreweb.DataHandlers.Repository;
 
-package com.senecafoundation.virtualstoreweb.DataHandlers.Repository;
-
 import com.senecafoundation.virtualstoreweb.ProductObjects.Basketball;
 
 import org.springframework.stereotype.Repository;
