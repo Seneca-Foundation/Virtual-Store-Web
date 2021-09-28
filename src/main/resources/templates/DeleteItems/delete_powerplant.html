@@ -36,7 +36,7 @@
                             console.log(xhr.status);
                             console.log(xhr.responseText);
                             // inject the response text into the html tag with id "loadstuffhere"
-                            document.getElementById("loadstuffhere").innerText = xhr.responseText;
+                            document.getElementById("loadstuffhere").innerHTML = xhr.responseText;
                         }
                     };
 
