@@ -39,7 +39,7 @@ public class BasketballController {
     public String showForm(Model model) {
         Basketball basketball = new Basketball();
         model.addAttribute("basketball", basketball);
-        return "get_basketball";
+        return "create_basketball";
     }
 
     @RequestMapping(value = "/createform", method = RequestMethod.POST)
