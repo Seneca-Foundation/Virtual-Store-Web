@@ -49,14 +49,14 @@ public class BasketballController {
         }
         dataHandler.Create(basketball);
         model.addAttribute("basketball", basketball);
-        return "create_basketball";
+        return "basketball";
     }
     
     @GetMapping("/updateform")
     public String showUpdateForm(Model model) {
         List<StoreItem> showItems = dataHandlerRead.ReadAll();
         model.addAttribute("itemsToShow", showItems);
-        return "basketball";
+        return "update_basketball";
     }
 
     @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
@@ -65,14 +65,14 @@ public class BasketballController {
             return "error";
         }
         dataHandlerUpdate.Update(basketball);
-        return "update_basketball"; 
+        return "basketball"; 
     }
 
     @GetMapping("/deleteform")
     public String showDeleteForm(Model model) {
         List<StoreItem> showItems = dataHandlerRead.ReadAll();
         model.addAttribute("itemsToDelete", showItems);
-        return "basketball";
+        return "delete_basketball";
     }
 
     @RequestMapping(value = "/deleteform/{id}", method = RequestMethod.DELETE)

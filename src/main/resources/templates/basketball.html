@@ -27,13 +27,13 @@
       <div class="basket-product">
         <div class="item">
           <div class="product-image">
-            <img src="https://loremflickr.com/120/166/comicbook" alt="Placholder Image 2" class="product-frame">
+            <img src="https://loremflickr.com/120/166/basketball" alt="Placholder Image 2" class="product-frame">
           </div>
           <div class="product-details">
-            <h1><strong th:text="${basketball.name}"><span class="item-quantity">4</span> x Eliza J</strong><span th:text="' ' + ${baskbetball.date}"></span> </h1>
-            <p><strong th:text="'Section ' + ${basketball.section}"></strong></p>
-            <p><strong th:text="'Seat ' + ${baskbetball.seat}"></strong></p>
-            <p th:text="'Description: ' + ${comicbook.description}"></p>
+            <h1><strong th:text="${basketball.name}"><span class="item-quantity">4</span> x Eliza J</strong><span th:text="' ' + ${basketball.date}"></span> </h1>
+            <p><strong th:text="'Section: ' + ${basketball.section}"></strong></p>
+            <p><strong th:text="'Seat: ' + ${basketball.seat}"></strong></p>
+            <p th:text="'Description: ' + ${basketball.description}"></p>
           </div>
         </div>
         <div class="price"><span th:text="${basketball.price}"></span></div>
