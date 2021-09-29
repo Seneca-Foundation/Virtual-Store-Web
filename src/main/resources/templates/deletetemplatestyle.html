@@ -3,7 +3,7 @@
 <section class="pb-5 header text-center">
     <div class="container py-5 text-white">
         <header class="py-5">
-            <p class="font-italic mb-1">Use bootstrap button variants to create call to action buttons inside a table, that's just for design, I'm sure you can make them work.</p>
+            <h3 class="font-italic mb-1">Welcome To Delete Item</h3>
         </header>
         <div class="row">
             <div class="col-lg-7 mx-auto">
@@ -18,7 +18,7 @@
                                         <th scope="col">Title</th>
                                         <th scope="col">Price</th>
                                         <th scope="col">Author</th>
-                                        <th scope="col">Cover Type</th>
+                                        <th scope="col">Cover</th>
                                         <th scope="col">Description</th>
                                         <th scope="col">Artist</th>
                                         <th scope="col">Weight</th>
@@ -34,8 +34,12 @@
                                         <td th:text="${item.description}"></td>
                                         <td th:text="${item.artist}"></td>
                                         <td th:text="${item.weight}"></td>
-                                        <td><button class="delete-button" th:data-id="${item.ID}">Delete</button></td>
-                                            <!-- Call to action buttons -->
+                                        <td>
+                                            <ul class="list-inline m-0">
+                                                <li class="list-inline-item">
+                                                    <button class= "delete-button" th:data-id="${item.ID}" type="button" data-toggle="tooltip" data-placement="top" title="Delete">Delete</button>
+                                                </li>
+                                            </ul>
                                         </td>
                                     </tr>
                                     <div id="loadstuffhere"></div>
