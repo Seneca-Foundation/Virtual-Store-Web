@@ -33,5 +33,17 @@ public class TemplateResolverConfiguration {
 
         return templateResolver;
     }
+    @Bean
+    public SpringResourceTemplateResolver thirdTemplateResolver() {
+        SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
+        templateResolver.setPrefix("classpath:/templates/UpdateItems/");
+        templateResolver.setSuffix(".html");
+        templateResolver.setTemplateMode(TemplateMode.HTML);
+        templateResolver.setCharacterEncoding("UTF-8");
+        templateResolver.setOrder(2);
+        templateResolver.setCheckExistence(true);
+
+        return templateResolver;
+    }
 }
 
