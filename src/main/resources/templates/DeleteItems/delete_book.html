@@ -34,11 +34,12 @@
                     xhr.onreadystatechange = function () {
                         // state == 4
                         if (xhr.readyState === 4) {
+                            xhr.buttonholder.parentElement.parentElement.remove();
                             // Log out the status and response to the console
                             console.log(xhr.status);
                             console.log(xhr.responseText);
                             // inject the response text into the html tag with id "loadstuffhere"
-                            document.getElementById("loadstuffhere").innerText = xhr.responseText;
+                            document.getElementById("loadstuffhere").innerHTML = xhr.responseText;
                         }
                     };
 
