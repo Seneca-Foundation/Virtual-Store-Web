@@ -53,20 +53,20 @@ public class ComputerController {
         return "computer";
     }
     
-    @GetMapping("/updateform")
-    public String showUpdateForm(Model model) {
-        List<StoreItem> showItems = dataHandlerRead.ReadAll();
-        model.addAttribute("itemsToShow", showItems);
-        return "update_computer";
+    @RequestMapping(value = "/updateform/{id}", method = RequestMethod.GET)
+    public String showUpdateForm(@PathVariable("id") String Id, Model model) {
+        Computer computer = (Computer) dataHandlerRead.Read(UUID.fromString(Id));
+        model.addAttribute("computer", computer);
+        return "create_computer";
     }
 
-    @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
-    public String change(@ModelAttribute("computer") Computer computer, BindingResult result, ModelMap model) {
+    @RequestMapping(value="/updateform", method = RequestMethod.PUT)
+    public String change(@ModelAttribute("comicbook") Computer computer, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return "error";
         }
         dataHandlerUpdate.Update(computer);
-        return "update_computer";   
+        return "computer";   
     }
 
     @GetMapping("/deleteform")
