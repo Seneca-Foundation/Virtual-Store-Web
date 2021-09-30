@@ -1,0 +1,14 @@
+/*
+*
+* ==========================================
+* FOR DEMO PURPOSES
+* ==========================================
+*
+*/
+body {
+    background: #5edd69;
+    background: -webkit-linear-gradient(to left, #c5f3bc, #0b7c28);
+    background: linear-gradient(to left, #5edd84, #ddf797);
+    min-height: 100vh;
+  }
+  

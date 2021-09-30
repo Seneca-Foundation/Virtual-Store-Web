@@ -66,7 +66,7 @@ public class PowerplantController {
             return "error";
         }
         dataHandlerUpdate.Update(powerPlant);
-        return "powerplant";    
+        return "update_powerplant";    
     }
 
     @GetMapping("/deleteform")

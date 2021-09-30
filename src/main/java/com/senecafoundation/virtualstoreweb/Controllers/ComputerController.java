@@ -66,7 +66,7 @@ public class ComputerController {
             return "error";
         }
         dataHandlerUpdate.Update(computer);
-        return "computer";   
+        return "update_computer";   
     }
 
     @GetMapping("/deleteform")
