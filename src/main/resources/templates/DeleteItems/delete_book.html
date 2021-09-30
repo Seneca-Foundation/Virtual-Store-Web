@@ -23,7 +23,7 @@
                 listOfDeleteButtons[buttonIndex].onclick = function() {
                     // Creates an object to send request to web server
                     var xhr = new XMLHttpRequest();
-
+                        xhr.buttonholder = this;
                     // Define the request method and url
                     xhr.open("DELETE", "http://localhost/book/deleteform/" + this.dataset.id);
 
