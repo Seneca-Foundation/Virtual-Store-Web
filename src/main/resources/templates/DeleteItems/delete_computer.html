@@ -35,7 +35,7 @@
                     xhr.onreadystatechange = function () {
                         // state == 4
                         if (xhr.readyState === 4) {
-                            xhr.buttonholder.parentElement.parent.Element.remove();
+                            xhr.buttonholder.parentElement.parentElement.remove();
                             // Log out the status and response to the console
                             console.log(xhr.status);
                             console.log(xhr.responseText);
