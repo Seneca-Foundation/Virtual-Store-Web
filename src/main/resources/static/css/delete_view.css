@@ -7,6 +7,9 @@
       background: linear-gradient(to left, #5edd84, #ddf797);
       min-height: 100vh;
     }
+    .delete-button{
+        background-color: rgb(250, 62, 62);
+    }
   *{
       box-sizing: border-box;
       -webkit-box-sizing: border-box;
