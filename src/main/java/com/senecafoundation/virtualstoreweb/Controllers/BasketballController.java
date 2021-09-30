@@ -52,20 +52,20 @@ public class BasketballController {
         return "basketball";
     }
     
-    @GetMapping("/updateform")
-    public String showUpdateForm(Model model) {
-        List<StoreItem> showItems = dataHandlerRead.ReadAll();
-        model.addAttribute("itemsToShow", showItems);
-        return "update_basketball";
+    @RequestMapping(value = "/updateform/{id}", method = RequestMethod.GET)
+    public String showUpdateForm(@PathVariable("id") String Id, Model model) {
+        Basketball basketball = (Basketball) dataHandlerRead.Read(UUID.fromString(Id));
+        model.addAttribute("basketball", basketball);
+        return "create_basketball";
     }
 
-    @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
-    public String change(@ModelAttribute("basketball") Basketball basketball, BindingResult result, ModelMap model) {
+    @RequestMapping(value="/updateform", method = RequestMethod.PUT)
+    public String change(@ModelAttribute("comicbook") Basketball basketball, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return "error";
         }
         dataHandlerUpdate.Update(basketball);
-        return "basketball"; 
+        return "basketball";   
     }
 
     @GetMapping("/deleteform")
