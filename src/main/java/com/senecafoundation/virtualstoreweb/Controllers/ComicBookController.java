@@ -54,11 +54,11 @@ public class ComicBookController {
         return "comicbook";
     }
     //PUT
-    @GetMapping("/updateform")
-    public String showUpdateForm(Model model) {
-        List<StoreItem> showItems = dataHandlerRead.ReadAll();
-        model.addAttribute("itemsToShow", showItems);
-        return "update_comicbook";
+    @RequestMapping(value = "/updateform/{id}", method = RequestMethod.GET)
+    public String showUpdateForm(@PathVariable("id") String Id, Model model) {
+        ComicBook comicBook = (ComicBook) dataHandlerRead.Read(UUID.fromString(Id));
+        model.addAttribute("comicbook", comicBook);
+        return "create_comicbook";
     }
 
     @RequestMapping(value="/updateform", method = RequestMethod.PUT)
