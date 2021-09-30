@@ -9,7 +9,7 @@
         <table class="fl-table">
             <thead>
             <tr>
-                <th>Title</th>
+                <th>Amount in kWh</th>
                 <th>Price $</th>
                 <th>Description</th>
                 <th>Weight lbs</th>
@@ -23,7 +23,8 @@
                     <td th:text="${item.weight}"></td>
                     <td><button class="delete-button" th:data-id="${item.ID}">Delete</button></td>
                 </tr>
-            <div id="loadstuffhere"></div>
+                <div id="loadstuffhere"></div>
+            <tbody>
         </table>
         <script type="text/javascript">
             // Gets all the buttons in the DOM
@@ -34,8 +35,7 @@
                 listOfDeleteButtons[buttonIndex].onclick = function() {
                     // Creates an object to send request to web server
                     var xhr = new XMLHttpRequest();
-                    xhr.buttonholder = this;
-
+                        xhr.buttonholder = this;
                     // Define the request method and url
                     xhr.open("DELETE", "http://localhost/powerplant/deleteform/" + this.dataset.id);
 
@@ -60,6 +60,5 @@
                 }
             }
         </script>
-    </body> 
-
+    </div>
 </html>
