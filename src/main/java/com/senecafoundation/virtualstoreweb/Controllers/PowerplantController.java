@@ -53,20 +53,20 @@ public class PowerplantController {
         return "powerplant";
     }
 
-    @GetMapping("/updateform")
-    public String showUpdateForm(Model model) {
-        List<StoreItem> showItems = dataHandlerRead.ReadAll();
-        model.addAttribute("itemsToShow", showItems);
-        return "update_powerplant";
+    @RequestMapping(value = "/updateform/{id}", method = RequestMethod.GET)
+    public String showUpdateForm(@PathVariable("id") String Id, Model model) {
+        Powerplant powerplant = (Powerplant) dataHandlerRead.Read(UUID.fromString(Id));
+        model.addAttribute("powerplant", powerplant);
+        return "create_powerplant";
     }
 
-    @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
-    public String change(@ModelAttribute("energy") Powerplant powerPlant, BindingResult result, ModelMap model) {
+    @RequestMapping(value="/updateform", method = RequestMethod.PUT)
+    public String change(@ModelAttribute("comicbook") Powerplant powerplant, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return "error";
         }
-        dataHandlerUpdate.Update(powerPlant);
-        return "update_powerplant";    
+        dataHandlerUpdate.Update(powerplant);
+        return "powerplant";   
     }
 
     @GetMapping("/deleteform")
