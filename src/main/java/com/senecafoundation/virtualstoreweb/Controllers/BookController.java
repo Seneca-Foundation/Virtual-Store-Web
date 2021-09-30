@@ -53,21 +53,22 @@ public class BookController {
         return "book";
     }
 
-    @GetMapping("/updateform")
-    public String showUpdateForm(Model model) {
-        List<StoreItem> showItems = dataHandlerRead.ReadAll();
-        model.addAttribute("itemsToShow", showItems);
-        return "update_book";
+    @RequestMapping(value = "/updateform/{id}", method = RequestMethod.GET)
+    public String showUpdateForm(@PathVariable("id") String Id, Model model) {
+        Book book = (Book) dataHandlerRead.Read(UUID.fromString(Id));
+        model.addAttribute("book", book);
+        return "create_book";
     }
 
-    @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
+    @RequestMapping(value="/updateform", method = RequestMethod.PUT)
     public String change(@ModelAttribute("book") Book book, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return "error";
         }
         dataHandlerUpdate.Update(book);
-        return "book";  
+        return "book";   
     }
+
     
     @GetMapping("/deleteform")
     public String showDeleteForm(Model model) {
