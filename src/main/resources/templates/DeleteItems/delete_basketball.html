@@ -1,19 +1,36 @@
 <!DOCTYPE html>
-<html>
-    <head></head>
-    <body>
-        <table>
-            <tr th:each="item : ${itemsToDelete}">
-                <td th:text="${item.name}"></td>
-                <td th:text="${item.price}"></td>
-                <td th:text="${item.date}"></td>
-                <td th:text="${item.section}"></td> 
-                <td th:text="${item.seat}"></td>
-                <td th:text="${item.description}"></td>
-                <td th:text="${item.weight}"></td>
-                <td><button class="delete-button" th:data-id="${item.ID}">Delete</button></td>
+<html lang="en">
+<head>
+    <title>Delete Basketball</title>
+    <link rel="stylesheet" th:href="@{/css/delete_view.css}" />
+</head>
+    <h2>Delete Basketball Ticket Item</h2>
+    <div class="table-wrapper">
+        <table class="fl-table">
+            <thead>
+            <tr>
+                <th>Basketball Game</th>
+                <th>Price $</th>
+                <th>Date</th>
+                <th>Ticket Section</th>
+                <th>Ticket Seat</th>
+                <th>Description</th>
+                <th>Weight lbs</th>
             </tr>
-            <div id="loadstuffhere"></div>
+            </thead>
+            <tbody>
+                <tr th:each="item : ${itemsToDelete}">
+                    <td th:text="${item.name}"></td>
+                    <td th:text="${item.price}"></td>
+                    <td th:text="${item.date}"></td>
+                    <td th:text="${item.section}"></td> 
+                    <td th:text="${item.seat}"></td>
+                    <td th:text="${item.description}"></td>
+                    <td th:text="${item.weight}"></td>
+                    <td><button class="delete-button" th:data-id="${item.ID}">Delete</button></td>
+                </tr>
+                <div id="loadstuffhere"></div>
+            <tbody>
         </table>
         <script type="text/javascript">
             // Gets all the buttons in the DOM
@@ -24,8 +41,7 @@
                 listOfDeleteButtons[buttonIndex].onclick = function() {
                     // Creates an object to send request to web server
                     var xhr = new XMLHttpRequest();
-                    xhr.buttonholder = this; 
-
+                        xhr.buttonholder = this;
                     // Define the request method and url
                     xhr.open("DELETE", "http://localhost/basketball/deleteform/" + this.dataset.id);
 
@@ -50,6 +66,5 @@
                 }
             }
         </script>
-    </body> 
-
+    </div>
 </html>
