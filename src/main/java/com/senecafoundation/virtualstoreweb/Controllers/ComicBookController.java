@@ -53,7 +53,18 @@ public class ComicBookController {
         model.addAttribute("comicbook", comicBook);
         return "comicbook";
     }
-    //PUT
+
+    @RequestMapping(value = "/readform/{id}", method = RequestMethod.GET)
+    public String read(@PathVariable("id") String Id, ModelMap model) {
+        try {
+            dataHandlerRead.Read(UUID.fromString(Id));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        model.addAttribute("Id", Id);
+        return "itemread_comicbook";
+    }
+    
     @RequestMapping(value = "/updateform/{id}", method = RequestMethod.GET)
     public String showUpdateForm(@PathVariable("id") String Id, Model model) {
         ComicBook comicBook = (ComicBook) dataHandlerRead.Read(UUID.fromString(Id));
