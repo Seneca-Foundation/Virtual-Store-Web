@@ -53,6 +53,17 @@ public class BookController {
         return "book";
     }
 
+    @RequestMapping(value = "/readform/{id}", method = RequestMethod.GET)
+    public String read(@PathVariable("id") String Id, ModelMap model) {
+        try {
+            dataHandlerRead.Read(UUID.fromString(Id));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        model.addAttribute("Id", Id);
+        return "itemread_book";
+    }
+
     @RequestMapping(value = "/updateform/{id}", method = RequestMethod.GET)
     public String showUpdateForm(@PathVariable("id") String Id, Model model) {
         Book book = (Book) dataHandlerRead.Read(UUID.fromString(Id));
