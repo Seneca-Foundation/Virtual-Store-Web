@@ -55,13 +55,9 @@ public class ComputerController {
 
     @RequestMapping(value = "/readform/{id}", method = RequestMethod.GET)
     public String read(@PathVariable("id") String Id, ModelMap model) {
-        try {
-            dataHandlerRead.Read(UUID.fromString(Id));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        model.addAttribute("Id", Id);
-        return "itemread_computer";
+        Computer computer = (Computer) dataHandlerRead.Read(UUID.fromString(Id));
+        model.addAttribute("computer", computer);
+        return "computer";
     }
     
     @RequestMapping(value = "/updateform/{id}", method = RequestMethod.GET)
