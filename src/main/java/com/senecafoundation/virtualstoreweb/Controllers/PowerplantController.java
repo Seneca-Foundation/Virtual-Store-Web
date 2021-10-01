@@ -53,6 +53,17 @@ public class PowerplantController {
         return "powerplant";
     }
 
+    @RequestMapping(value = "/readform/{id}", method = RequestMethod.GET)
+    public String read(@PathVariable("id") String Id, ModelMap model) {
+        try {
+            dataHandlerRead.Read(UUID.fromString(Id));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        model.addAttribute("Id", Id);
+        return "itemread_powerplant";
+    }
+
     @RequestMapping(value = "/updateform/{id}", method = RequestMethod.GET)
     public String showUpdateForm(@PathVariable("id") String Id, Model model) {
         Powerplant powerplant = (Powerplant) dataHandlerRead.Read(UUID.fromString(Id));
