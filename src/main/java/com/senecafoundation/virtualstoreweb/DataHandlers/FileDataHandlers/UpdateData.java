@@ -38,6 +38,7 @@ public class UpdateData implements IUpdateData{
                 description = fileScanner.next();
                 price = fileScanner.next();
                 ID = UUID.fromString(fileScanner.next());
+                //possible problem in code. Creating new UUID here?
                 UUID testID = item.getID();
                 if(ID.equals(testID))
                 {
