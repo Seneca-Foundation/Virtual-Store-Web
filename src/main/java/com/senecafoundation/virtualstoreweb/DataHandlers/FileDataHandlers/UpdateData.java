@@ -42,6 +42,7 @@ public class UpdateData implements IUpdateData{
                 UUID testID = item.getID();
                 if(ID.equals(testID))
                 {
+                    item.setID(testID);
                     pw.println(item.getName() + "," + item.getDescription() + "," + item.getPrice() + "," + item.getID());
                 }
                 else
