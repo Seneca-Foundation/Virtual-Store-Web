@@ -69,7 +69,7 @@ public class ComicBookController {
     }
 
     @RequestMapping(value="/updateform", method = RequestMethod.PUT)
-    public String change(@ModelAttribute("comicbook") ComicBook comicBook, BindingResult result, ModelMap model) {
+    public String change(ComicBook comicBook, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return "error";
         }
