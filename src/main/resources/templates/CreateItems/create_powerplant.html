@@ -67,6 +67,7 @@
                 </div>
                 <p class="small">or use your email for registration:</p>
                 <form id="sign-up-form" action="#" th:action="@{/powerplant/createform}" method="post" th:object="${energy}">
+                    <input type="hidden" th:field="*{ID}" />
                     <input type="text" th:field="*{name}" placeholder="Amount of kWh" />
                     <input type="text" th:field="*{price}" placeholder="Price" />
                     <input type="text" th:field="*{description}" placeholder="Description" />
