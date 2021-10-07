@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Delete a Computer</title>
+    <title>Create Energy</title>
     <link rel="stylesheet" th:href="@{/css/home.css}" />
 </head>
     <body>
         <div class="container">
             <div class="overlay" id="overlay">
             <div class="sign-in" id="sign-in">
-                <h1>Welcome to Delete a Computer!</h1>
-                <p>This is the administrative form for Deleting a Computer.</p>
+                <h1>Welcome to Create Energy!</h1>
+                <p>This is the administrative form for creating  Energy.</p>
                 <!-- <button class="switch-button" id="slide-right-button">Sign In</button> -->
             </div>
             <div class="sign-up" id="sign-up">
@@ -47,7 +47,7 @@
                 </form>
             </div>
             <div class="sign-up" id="sign-up-info">
-                <h1>Delete a Computer</h1>
+                <h1>Create Energy</h1>
                 <div class="social-media-buttons">
                 <div class="icon">
                     <svg viewBox="0 0 24 24">
@@ -66,21 +66,55 @@
                 </div>
                 </div>
                 <p class="small">or use your email for registration:</p>
-                <table>
-                <tr th:each="item : ${itemsToDelete}">
-                    <td th:text="${item.id}"></td>
-                    <td th:text="${item.model}"></td>
-                    <td th:text="${item.price}"></td>
-                    <td th:text="${item.color}"></td>
-                    <td th:text="${item.computerbrand}"></td>
-                    <td th:text="${item.description}"></td>
-                    <td th:text="${item.releasedate}"></td>
-                    <td th:text="${item.weight}"></td>
-                </tr>
-                </table>
+                <form id="sign-up-form" action="#" th:action="@{/powerplant/createform}" method="post" th:object="${powerplant}">
+                    <input type="hidden" th:field="*{ID}" />
+                    <input type="text" th:field="*{name}" placeholder="Amount of kWh" />
+                    <input type="text" th:field="*{price}" placeholder="Price" />
+                    <input type="text" th:field="*{description}" placeholder="Description" />
+                    <input type="text" th:field="*{weight}" placeholder="Weight" />
+                    <button class="control-button up">Enter Information</button>
+                </form>
             </div>
             </div>
         </div>
         <script th:src="@{/js/home.js}"></script>
     </body>
 </html>
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Create Energy</title>
+</head>
+    <body>
+        <h3>Welcome, Enter Energy</h3>
+        <form action="#" th:action="@{/powerplant/createform}" method="post" th:object="${energy}">
+             <table> 
+                <tr>
+                    <td><label>Amount In kWh</label></td>
+                    <td><input type="text" th:field="*{name}" /></td>
+                </tr>
+                <tr>
+                    <td><label>Price</label></td>
+                    <td><input type="text" th:field="*{price}" /></td>
+                </tr>
+                <tr>
+                    <td><label>Description</label></td>
+                    <td><input type="text" th:field="*{description}" /></td>
+                </tr>
+                <tr>
+                    <td><label>Weight</label></td>
+                    <td><input type="text" th:field="*{weight}" /></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Submit"/></td>
+                </tr>
+            </table>
+        </form:form>
+    </body>
+</html> -->

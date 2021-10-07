@@ -16,6 +16,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 //import org.springframework.web.bind.annotation.RequestParam;
@@ -37,47 +38,59 @@ public class PowerplantController {
     @GetMapping("/createform")
     public String showForm(Model model) {
         Powerplant powerPlant = new Powerplant();
-        model.addAttribute("energy", powerPlant);
+        model.addAttribute("powerplant", powerPlant);
         return "create_powerplant";
     }
 
     @RequestMapping(value = "/createform", method = RequestMethod.POST)
-    public String submit(@ModelAttribute("energy") Powerplant powerPlant, BindingResult result, ModelMap model) {
+    public String submit(@ModelAttribute("powerplant") Powerplant powerPlant, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return "error";
         }
         dataHandler.Create(powerPlant);
         //repo.save(shadowElf);
-        model.addAttribute("energy", powerPlant);
+        model.addAttribute("powerplant", powerPlant);
         return "powerplant";
     }
-    @GetMapping("/updateform")
-    public String showUpdateForm(Model model) {
-        List<StoreItem> showItems = dataHandlerRead.ReadAll();
-        model.addAttribute("itemsToShow", showItems);
-        return "update_powerplant";
+
+    @RequestMapping(value = "/readform/{id}", method = RequestMethod.GET)
+    public String read(@PathVariable("id") String Id, ModelMap model) {
+        Powerplant powerplant = (Powerplant) dataHandlerRead.Read(UUID.fromString(Id));
+        model.addAttribute("powerplant", powerplant);
+        return "powerplant";
     }
-    @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
-    public String change(@ModelAttribute("energy") Powerplant powerPlant, BindingResult result, ModelMap model) {
+
+    @RequestMapping(value = "/updateform/{id}", method = RequestMethod.GET)
+    public String showUpdateForm(@PathVariable("id") String Id, Model model) {
+        Powerplant powerplant = (Powerplant) dataHandlerRead.Read(UUID.fromString(Id));
+        model.addAttribute("powerplant", powerplant);
+        return "create_powerplant";
+    }
+
+    @RequestMapping(value="/updateform", method = RequestMethod.PUT)
+    public String change(@ModelAttribute("powerplant") Powerplant powerplant, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return "error";
         }
-        dataHandlerUpdate.Update(powerPlant);
-        return "powerplant";    
+        dataHandlerUpdate.Update(powerplant);
+        return "powerplant";   
     }
+
     @GetMapping("/deleteform")
     public String showDeleteForm(Model model) {
         List<StoreItem> showItems = dataHandlerRead.ReadAll();
         model.addAttribute("itemsToDelete", showItems);
         return "delete_powerplant";
     }
-    @RequestMapping(value="/deleteform", method = RequestMethod.DELETE)
-    public String erase(@ModelAttribute("energy")Powerplant powerPlant, UUID ID, BindingResult result, ModelMap model) {
-        this.ID = ID;
-        if (result.hasErrors()) {
-            return "error";
+
+    @RequestMapping(value = "/deleteform/{id}", method = RequestMethod.DELETE)
+    public String delete(@PathVariable("id") String Id, ModelMap model) {
+        try {
+            dataHandlerDelete.Delete(UUID.fromString(Id));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        dataHandlerDelete.Delete(ID);
-        return "powerplant";
+        model.addAttribute("Id", Id);
+        return "itemdelete";
     }
 }

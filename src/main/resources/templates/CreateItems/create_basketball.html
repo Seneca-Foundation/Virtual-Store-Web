@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Create a Book</title>
+    <title>Create a Basketball Ticket</title>
     <link rel="stylesheet" th:href="@{/css/home.css}" />
 </head>
     <body>
         <div class="container">
             <div class="overlay" id="overlay">
             <div class="sign-in" id="sign-in">
-                <h1>Welcome to Create a Book!</h1>
-                <p>This is the administrative form for creating a Book.</p>
+                <h1>Welcome to Create a Basketball Ticket!</h1>
+                <p>This is the administrative form for creating a Basketball Ticket.</p>
                 <!-- <button class="switch-button" id="slide-right-button">Sign In</button> -->
             </div>
             <div class="sign-up" id="sign-up">
@@ -47,7 +47,7 @@
                 </form>
             </div>
             <div class="sign-up" id="sign-up-info">
-                <h1>Create Book</h1>
+                <h1>Create a Basketball Ticket</h1>
                 <div class="social-media-buttons">
                 <div class="icon">
                     <svg viewBox="0 0 24 24">
@@ -66,12 +66,14 @@
                 </div>
                 </div>
                 <p class="small">or use your email for registration:</p>
-                <form id="sign-up-form" action="#" th:action="@{/book/createform}" method="post" th:object="${book}">
-                    <input type="text" th:field="*{name}" placeholder="Title" />
+                <form id="sign-up-form" action="#" th:action="@{/basketball/createform}" method="post" th:object="${basketball}">
+                    <input type="hidden" th:field="*{ID}" />
+                    <input type="text" th:field="*{name}" placeholder="Game" />
                     <input type="text" th:field="*{price}" placeholder="Price" />
-                    <input type="text" th:field="*{author}" placeholder="Author" />
-                    <input type="text" th:field="*{cover}" placeholder="Cover" />
+                    <input type="text" th:field="*{section}" placeholder="Section" />
+                    <input type="text" th:field="*{seat}" placeholder="Seat" />
                     <input type="text" th:field="*{description}" placeholder="Description" />
+                    <input type="text" th:field="*{date}" placeholder="Date" />
                     <input type="text" th:field="*{weight}" placeholder="Weight" />
                     <button class="control-button up">Enter Information</button>
                 </form>
@@ -91,14 +93,14 @@
 <!-- <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Create a Book</title>
+    <title>Create a Basketball Ticket</title>
 </head>
     <body>
-        <h3>Welcome, Enter Book</h3>
-        <form action="#" th:action="@{/book/createform}" method="post" th:object="${book}">
+        <h3>Welcome, Enter Basketball Ticket</h3>
+        <form action="#" th:action="@{/basketball/createform}" method="post" th:object="${basketball}">
              <table> 
                 <tr>
-                    <td><label>Title</label></td>
+                    <td><label>Game</label></td>
                     <td><input type="text" th:field="*{name}" /></td>
                 </tr>
                 <tr>
@@ -106,16 +108,20 @@
                     <td><input type="text" th:field="*{price}" /></td>
                 </tr>
                 <tr>
-                    <td><label>Author</label></td>
-                    <td><input type="text" th:field="*{author}" /></td>
+                    <td><label>Section</label></td>
+                    <td><input type="text" th:field="*{section}" /></td>
                 </tr>
                 <tr>
-                    <td><label>Cover</label></td>
-                    <td><input type="text" th:field="*{cover}" /></td>
+                    <td><label>Seat</label></td>
+                    <td><input type="text" th:field="*{seat}" /></td>
                 </tr>
                 <tr>
                     <td><label>Description</label></td>
                     <td><input type="text" th:field="*{description}" /></td>
+                </tr>
+                <tr>
+                    <td><label>Date</label></td>
+                    <td><input type="text" th:field="*{date}" /></td>
                 </tr>
                 <tr>
                     <td><label>Weight</label></td>

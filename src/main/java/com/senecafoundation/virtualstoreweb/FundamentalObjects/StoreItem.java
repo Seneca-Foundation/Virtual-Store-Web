@@ -22,7 +22,7 @@ public class StoreItem {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID ID = UUID.randomUUID();
+    private UUID ID;
     private double price;
     private String name;
     private String description;

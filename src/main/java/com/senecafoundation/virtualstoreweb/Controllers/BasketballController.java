@@ -16,6 +16,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 //import org.springframework.web.bind.annotation.RequestParam;
@@ -33,7 +34,6 @@ public class BasketballController {
     RepoDeleteData<Basketball> dataHandlerDelete;
     @Autowired
     RepoReadData<Basketball> dataHandlerRead;
-    //private String value;
 
     @GetMapping("/createform")
     public String showForm(Model model) {
@@ -48,47 +48,49 @@ public class BasketballController {
             return "error";
         }
         dataHandler.Create(basketball);
-        // repo.save(shadowElf);
         model.addAttribute("basketball", basketball);
         return "basketball";
     }
-/*
-    @RequestMapping(value = "/createform", method = RequestMethod.GET)
-    public String GetBasketball(@ModelAttribute("basketball") Basketball basketball, BindingResult result, ModelMap model) {
-        if (result.hasErrors()) {
-            return "error"; 
-        }
+
+    @RequestMapping(value = "/readform/{id}", method = RequestMethod.GET)
+    public String read(@PathVariable("id") String Id, ModelMap model) {
+        Basketball basketball = (Basketball) dataHandlerRead.Read(UUID.fromString(Id));
+        model.addAttribute("basketball", basketball);
         return "basketball";
     }
-    */
-    @GetMapping("/updateform")
-    public String showUpdateForm(Model model) {
-        List<StoreItem> showItems = dataHandlerRead.ReadAll();
-        model.addAttribute("itemsToShow", showItems);
-        return "update_basketball";
+    
+    @RequestMapping(value = "/updateform/{id}", method = RequestMethod.GET)
+    public String showUpdateForm(@PathVariable("id") String Id, Model model) {
+        Basketball basketball = (Basketball) dataHandlerRead.Read(UUID.fromString(Id));
+        model.addAttribute("basketball", basketball);
+        return "create_basketball";
     }
-    @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
+
+    @RequestMapping(value="/updateform", method = RequestMethod.PUT)
     public String change(@ModelAttribute("basketball") Basketball basketball, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return "error";
         }
         dataHandlerUpdate.Update(basketball);
-        return "basketball"; 
+        return "basketball";   
     }
+
     @GetMapping("/deleteform")
     public String showDeleteForm(Model model) {
         List<StoreItem> showItems = dataHandlerRead.ReadAll();
         model.addAttribute("itemsToDelete", showItems);
         return "delete_basketball";
     }
-    @RequestMapping(value ="/deleteform", method = RequestMethod.DELETE)
-    public String erase(@ModelAttribute("basketball") Basketball basketball, UUID ID, BindingResult result, ModelMap model) {
-        this.ID = ID;
-        if (result.hasErrors()) {
-            return "error";
+
+    @RequestMapping(value = "/deleteform/{id}", method = RequestMethod.DELETE)
+    public String delete(@PathVariable("id") String Id, ModelMap model) {
+        try {
+            dataHandlerDelete.Delete(UUID.fromString(Id));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        dataHandlerDelete.Delete(ID);
-        return "basketball";
+        model.addAttribute("Id", Id);
+        return "itemdelete";
     }
 
 }

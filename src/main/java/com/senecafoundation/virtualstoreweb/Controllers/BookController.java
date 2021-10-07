@@ -16,6 +16,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 //import org.springframework.web.bind.annotation.RequestParam;
@@ -52,34 +53,45 @@ public class BookController {
         return "book";
     }
 
-    @GetMapping("/updateform")
-    public String showUpdateForm(Model model) {
-        List<StoreItem> showItems = dataHandlerRead.ReadAll();
-        model.addAttribute("itemsToShow", showItems);
-        return "update_book";
+    @RequestMapping(value = "/readform/{id}", method = RequestMethod.GET)
+    public String read(@PathVariable("id") String Id, ModelMap model) {
+        Book book = (Book) dataHandlerRead.Read(UUID.fromString(Id));
+        model.addAttribute("book", book);
+        return "book";
     }
 
-    @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
+    @RequestMapping(value = "/updateform/{id}", method = RequestMethod.GET)
+    public String showUpdateForm(@PathVariable("id") String Id, Model model) {
+        Book book = (Book) dataHandlerRead.Read(UUID.fromString(Id));
+        model.addAttribute("book", book);
+        return "create_book";
+    }
+
+    @RequestMapping(value="/updateform", method = RequestMethod.PUT)
     public String change(@ModelAttribute("book") Book book, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return "error";
         }
         dataHandlerUpdate.Update(book);
-        return "book";  
+        return "book";   
     }
+
+    
     @GetMapping("/deleteform")
     public String showDeleteForm(Model model) {
         List<StoreItem> showItems = dataHandlerRead.ReadAll();
         model.addAttribute("itemsToDelete", showItems);
         return "delete_book";
     }
-    @RequestMapping(value="/deleteform", method = RequestMethod.DELETE)
-    public String erase(@ModelAttribute("book")Book book, UUID ID, BindingResult result, ModelMap model) {
-        this.ID = ID;
-        if (result.hasErrors()) {
-            return "error";
+
+    @RequestMapping(value = "/deleteform/{id}", method = RequestMethod.DELETE)
+    public String delete(@PathVariable("id") String Id, ModelMap model) {
+        try {
+            dataHandlerDelete.Delete(UUID.fromString(Id));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        dataHandlerDelete.Delete(ID);
-        return "book";
+        model.addAttribute("Id", Id);
+        return "itemdelete";
     }
 }

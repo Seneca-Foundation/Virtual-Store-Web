@@ -16,11 +16,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 //import org.springframework.web.bind.annotation.RequestParam;
-
-
 
 @Controller
 @RequestMapping("computer")
@@ -53,15 +52,22 @@ public class ComputerController {
         model.addAttribute("computer", computer);
         return "computer";
     }
+
+    @RequestMapping(value = "/readform/{id}", method = RequestMethod.GET)
+    public String read(@PathVariable("id") String Id, ModelMap model) {
+        Computer computer = (Computer) dataHandlerRead.Read(UUID.fromString(Id));
+        model.addAttribute("computer", computer);
+        return "computer";
+    }
     
-    @GetMapping("/updateform")
-    public String showUpdateForm(Model model) {
-        List<StoreItem> showItems = dataHandlerRead.ReadAll();
-        model.addAttribute("itemsToShow", showItems);
-        return "update_computer";
+    @RequestMapping(value = "/updateform/{id}", method = RequestMethod.GET)
+    public String showUpdateForm(@PathVariable("id") String Id, Model model) {
+        Computer computer = (Computer) dataHandlerRead.Read(UUID.fromString(Id));
+        model.addAttribute("computer", computer);
+        return "create_computer";
     }
 
-    @RequestMapping(value ="/updateform", method = RequestMethod.PUT)
+    @RequestMapping(value="/updateform", method = RequestMethod.PUT)
     public String change(@ModelAttribute("computer") Computer computer, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return "error";
@@ -77,13 +83,14 @@ public class ComputerController {
         return "delete_computer";
     }
     
-    @RequestMapping(value="/deleteform", method = RequestMethod.DELETE)
-    public String erase(@ModelAttribute("computer")Computer computer,UUID ID, BindingResult result, ModelMap model) {
-        this.ID = ID;
-        if (result.hasErrors()) {
-            return "error";
+    @RequestMapping(value = "/deleteform/{id}", method = RequestMethod.DELETE)
+    public String delete(@PathVariable("id") String Id, ModelMap model) {
+        try {
+            dataHandlerDelete.Delete(UUID.fromString(Id));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        dataHandlerDelete.Delete(ID);
-        return "computer";
+        model.addAttribute("Id", Id);
+        return "itemdelete";
     }
 }
