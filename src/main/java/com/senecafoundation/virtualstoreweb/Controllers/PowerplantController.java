@@ -38,18 +38,18 @@ public class PowerplantController {
     @GetMapping("/createform")
     public String showForm(Model model) {
         Powerplant powerPlant = new Powerplant();
-        model.addAttribute("energy", powerPlant);
+        model.addAttribute("powerplant", powerPlant);
         return "create_powerplant";
     }
 
     @RequestMapping(value = "/createform", method = RequestMethod.POST)
-    public String submit(@ModelAttribute("energy") Powerplant powerPlant, BindingResult result, ModelMap model) {
+    public String submit(@ModelAttribute("powerplant") Powerplant powerPlant, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return "error";
         }
         dataHandler.Create(powerPlant);
         //repo.save(shadowElf);
-        model.addAttribute("energy", powerPlant);
+        model.addAttribute("powerplant", powerPlant);
         return "powerplant";
     }
 
@@ -68,7 +68,7 @@ public class PowerplantController {
     }
 
     @RequestMapping(value="/updateform", method = RequestMethod.PUT)
-    public String change(@ModelAttribute("comicbook") Powerplant powerplant, BindingResult result, ModelMap model) {
+    public String change(@ModelAttribute("powerplant") Powerplant powerplant, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return "error";
         }

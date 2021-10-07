@@ -68,7 +68,7 @@ public class ComputerController {
     }
 
     @RequestMapping(value="/updateform", method = RequestMethod.PUT)
-    public String change(@ModelAttribute("comicbook") Computer computer, BindingResult result, ModelMap model) {
+    public String change(@ModelAttribute("computer") Computer computer, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return "error";
         }

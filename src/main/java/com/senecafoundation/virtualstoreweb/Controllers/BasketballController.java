@@ -67,7 +67,7 @@ public class BasketballController {
     }
 
     @RequestMapping(value="/updateform", method = RequestMethod.PUT)
-    public String change(@ModelAttribute("comicbook") Basketball basketball, BindingResult result, ModelMap model) {
+    public String change(@ModelAttribute("basketball") Basketball basketball, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return "error";
         }
