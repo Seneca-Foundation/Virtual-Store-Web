@@ -26,8 +26,13 @@ class BasketballRestController {
     RepoReadData<Basketball> dataHandlerRead;
 
     @PostMapping("/basketballs")
-        Basketball newBasketball(@RequestBody Basketball newBasketball) {
+    Basketball newBasketball(@RequestBody Basketball newBasketball) {
         UUID newId = dataHandler.Create(newBasketball);
         return newBasketball;
+    }
+    @PostMapping("/basketballdelete")
+    (@RequestBody UUID ID)
+    {
+        dataHandlerDelete.Delete(ID);
     }
 }
