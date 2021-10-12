@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -40,6 +41,15 @@ public class BookRestController {
         UUID newId = dataHandler.Create(newBook);
         return newBook;
     }
+    @PutMapping("/books/{id}")
+    Book replaceBook(@RequestBody Book newBook, @PathVariable String id) {
+        Book book = (Book) dataHandlerRead.Read(UUID.fromString(id));
+        
+        dataHandlerUpdate.Update(newBook);
+        return newBook(newBook);
+    }
+
+
 
     @DeleteMapping("/books/{id}")
     void deleteBook(@PathVariable String id)
