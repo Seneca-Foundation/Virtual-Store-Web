@@ -41,9 +41,10 @@ class PowerplantRestController {
         UUID newId = dataHandler.Create(newPowerplant);
         return newPowerplant;
     }
+    
     @PutMapping("/powerplants/{id}")
-    Powerplant replacePowerplant(@RequestBody Powerplant newPowerplant, @PathVariable Long id) {
-
+    Powerplant replacePowerplant(@RequestBody Powerplant newPowerplant, @PathVariable String id) {
+        Powerplant powerplant = (Powerplant) dataHandlerRead.Read(UUID.fromString(id));
         dataHandlerUpdate.Update(newPowerplant);
         return newPowerplant;
     }
