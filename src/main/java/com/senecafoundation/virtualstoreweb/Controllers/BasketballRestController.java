@@ -41,14 +41,13 @@ class BasketballRestController {
         UUID newId = dataHandler.Create(newBasketball);
         return newBasketball;
     }
+    
     @PutMapping("/basketballs/{id}")
     Basketball replaceBasketball(@RequestBody Basketball newBasketball, @PathVariable String id) {
         Basketball basketball = (Basketball) dataHandlerRead.Read(UUID.fromString(id));
-        
         dataHandlerUpdate.Update(newBasketball);
         return newBasketball;
     }
-
 
     @DeleteMapping("/basketballs/{id}")
     void deleteBasketball(@PathVariable String id)

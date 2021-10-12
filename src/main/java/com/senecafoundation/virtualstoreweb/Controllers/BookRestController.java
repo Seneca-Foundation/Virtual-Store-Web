@@ -49,8 +49,6 @@ public class BookRestController {
         return newBook(newBook);
     }
 
-
-
     @DeleteMapping("/books/{id}")
     void deleteBook(@PathVariable String id)
     {

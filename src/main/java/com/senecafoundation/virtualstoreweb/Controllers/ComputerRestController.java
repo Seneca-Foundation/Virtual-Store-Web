@@ -44,11 +44,9 @@ class ComputerRestController {
     @PutMapping("/computers/{id}")
     Computer replaceComputer(@RequestBody Computer newComputer, @PathVariable String id) {
         Computer computer = (Computer) dataHandlerRead.Read(UUID.fromString(id));
-        
         dataHandlerUpdate.Update(newComputer);
         return newComputer;
     }
-
 
     @DeleteMapping("/computers/{id}")
     void deleteComputer(@PathVariable String id)

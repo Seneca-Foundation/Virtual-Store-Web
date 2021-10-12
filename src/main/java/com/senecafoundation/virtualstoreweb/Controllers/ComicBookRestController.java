@@ -44,7 +44,6 @@ class ComicBookRestController {
     @PutMapping("/comicbooks/{id}")
     ComicBook replaceComicBook(@RequestBody ComicBook newComicBook, @PathVariable String id) {
         ComicBook comicbook = (ComicBook) dataHandlerRead.Read(UUID.fromString(id));
-        
         dataHandlerUpdate.Update(newComicBook);
         return newComicBook;
     }
