@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -38,6 +39,13 @@ class ComicBookRestController {
     @PostMapping("/comicbooks")
     ComicBook newComicBook(@RequestBody ComicBook newComicBook) {
         UUID newId = dataHandler.Create(newComicBook);
+        return newComicBook;
+    }
+    @PutMapping("/comicbooks/{id}")
+    ComicBook replaceComicBook(@RequestBody ComicBook newComicBook, @PathVariable String id) {
+        ComicBook comicbook = (ComicBook) dataHandlerRead.Read(UUID.fromString(id));
+        
+        dataHandlerUpdate.Update(newComicBook);
         return newComicBook;
     }
     
