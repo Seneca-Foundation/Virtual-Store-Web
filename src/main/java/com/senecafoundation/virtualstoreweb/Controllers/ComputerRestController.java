@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -40,6 +41,15 @@ class ComputerRestController {
         UUID newId = dataHandler.Create(newComputer);
         return newComputer;
     }
+    @PutMapping("/computers/{id}")
+    Computer replaceComputer(@RequestBody Computer newComputer, @PathVariable String id) {
+        Computer computer = (Computer) dataHandlerRead.Read(UUID.fromString(id));
+        
+        dataHandlerUpdate.Update(newComputer);
+        return newComputer;
+    }
+
+
     @DeleteMapping("/computers/{id}")
     void deleteComputer(@PathVariable String id)
     {
