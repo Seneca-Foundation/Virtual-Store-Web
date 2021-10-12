@@ -1,0 +1,67 @@
+{
+	"info": {
+		"_postman_id": "6685f754-99e8-4fad-b853-e2449ee00531",
+		"name": "Computer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create new computer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost/computers",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"computers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update computer",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost/computers/id",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"computers",
+						"id"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete computer",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost/computers",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"computers"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
