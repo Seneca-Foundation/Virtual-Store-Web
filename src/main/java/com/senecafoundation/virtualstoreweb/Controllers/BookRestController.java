@@ -41,6 +41,7 @@ public class BookRestController {
         UUID newId = dataHandler.Create(newBook);
         return newBook;
     }
+    
     @PutMapping("/books/{id}")
     Book replaceBook(@RequestBody Book newBook, @PathVariable String id) {
         Book book = (Book) dataHandlerRead.Read(UUID.fromString(id));
