@@ -36,7 +36,7 @@ class ComputerRestController {
     }
 
     @PostMapping("/computers")
-        Computer newComputer(@RequestBody Computer newComputer) {
+    Computer newComputer(@RequestBody Computer newComputer) {
         UUID newId = dataHandler.Create(newComputer);
         return newComputer;
     }

@@ -36,7 +36,7 @@ class ComicBookRestController {
     }
 
     @PostMapping("/comicbooks")
-        ComicBook newComicBook(@RequestBody ComicBook newComicBook) {
+    ComicBook newComicBook(@RequestBody ComicBook newComicBook) {
         UUID newId = dataHandler.Create(newComicBook);
         return newComicBook;
     }

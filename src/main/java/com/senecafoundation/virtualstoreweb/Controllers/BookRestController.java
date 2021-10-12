@@ -36,7 +36,7 @@ public class BookRestController {
     }
 
     @PostMapping("/books")
-        Book newBook(@RequestBody Book newBook) {
+    Book newBook(@RequestBody Book newBook) {
         UUID newId = dataHandler.Create(newBook);
         return newBook;
     }

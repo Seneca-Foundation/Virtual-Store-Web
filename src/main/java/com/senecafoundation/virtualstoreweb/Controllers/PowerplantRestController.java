@@ -37,7 +37,7 @@ class PowerplantRestController {
     }
 
     @PostMapping("/powerplants")
-        Powerplant newPowerplant(@RequestBody Powerplant newPowerplant) {
+    Powerplant newPowerplant(@RequestBody Powerplant newPowerplant) {
         UUID newId = dataHandler.Create(newPowerplant);
         return newPowerplant;
     }
