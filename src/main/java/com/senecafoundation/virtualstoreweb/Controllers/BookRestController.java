@@ -43,11 +43,17 @@ public class BookRestController {
     }
     
     @PutMapping("/books/{id}")
-    Book replaceBook(@RequestBody Book newBook, @PathVariable String id) {
+    Book replaceBook(@RequestBody Book newBook, @PathVariable String id) throws Exception {
         Book book = (Book) dataHandlerRead.Read(UUID.fromString(id));
+        if (book != null) {
+            newBook.setID(book.getID());
+            dataHandlerUpdate.Update(newBook);
+            return newBook(newBook);
+        }
+        else {
+            throw new Exception("No book found with id: " + id);
+        }
         
-        dataHandlerUpdate.Update(newBook);
-        return newBook(newBook);
     }
 
     @DeleteMapping("/books/{id}")
