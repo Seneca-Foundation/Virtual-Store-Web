@@ -43,10 +43,16 @@ class ComputerRestController {
     }
     
     @PutMapping("/computers/{id}")
-    Computer replaceComputer(@RequestBody Computer newComputer, @PathVariable String id) {
+    Computer replaceComputer(@RequestBody Computer newComputer, @PathVariable String id) throws Exception {
         Computer computer = (Computer) dataHandlerRead.Read(UUID.fromString(id));
-        dataHandlerUpdate.Update(newComputer);
-        return newComputer;
+        if (computer != null) {
+            newComputer.setID(computer.getID());
+            dataHandlerUpdate.Update(newComputer);
+            return newComputer;
+        }
+        else {
+            throw new Exception("No computer found with id: " + id);
+        }
     }
 
     @DeleteMapping("/computers/{id}")
