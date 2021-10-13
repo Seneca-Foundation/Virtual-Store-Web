@@ -43,10 +43,16 @@ class ComicBookRestController {
     }
     
     @PutMapping("/comicbooks/{id}")
-    ComicBook replaceComicBook(@RequestBody ComicBook newComicBook, @PathVariable String id) {
+    ComicBook replaceComicBook(@RequestBody ComicBook newComicBook, @PathVariable String id) throws Exception {
         ComicBook comicbook = (ComicBook) dataHandlerRead.Read(UUID.fromString(id));
-        dataHandlerUpdate.Update(newComicBook);
-        return newComicBook;
+        if (comicbook != null) {
+            newComicBook.setID(comicbook.getID());
+            dataHandlerUpdate.Update(newComicBook);
+            return newComicBook;
+        }
+        else {
+            throw new Exception("No comicbook found with id: " + id);
+        }
     }
     
     @DeleteMapping("/comicbooks/{id}")
