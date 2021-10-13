@@ -43,10 +43,16 @@ class PowerplantRestController {
     }
     
     @PutMapping("/powerplants/{id}")
-    Powerplant replacePowerplant(@RequestBody Powerplant newPowerplant, @PathVariable String id) {
+    Powerplant replacePowerplant(@RequestBody Powerplant newPowerplant, @PathVariable String id) throws Exception {
         Powerplant powerplant = (Powerplant) dataHandlerRead.Read(UUID.fromString(id));
-        dataHandlerUpdate.Update(newPowerplant);
-        return newPowerplant;
+        if (powerplant != null) {
+            newPowerplant.setID(powerplant.getID());
+            dataHandlerUpdate.Update(newPowerplant);
+            return newPowerplant;
+        }
+        else {
+            throw new Exception("No energy found with id: " + id);
+        }
     }
 
     @DeleteMapping("/powerplants/{id}")
