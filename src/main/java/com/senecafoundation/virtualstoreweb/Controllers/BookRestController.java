@@ -36,6 +36,12 @@ public class BookRestController {
         return dataHandlerRead.ReadAll();
     }
 
+    @GetMapping("/books/{id}")
+    Book getBook(@PathVariable String id) {
+        Book book = (Book) dataHandlerRead.Read(UUID.fromString(id));
+        return book;
+    }
+
     @PostMapping("/books")
     Book newBook(@RequestBody Book newBook) {
         UUID newId = dataHandler.Create(newBook);
@@ -52,13 +58,11 @@ public class BookRestController {
         }
         else {
             throw new Exception("No book found with id: " + id);
-        }
-        
+        }  
     }
 
     @DeleteMapping("/books/{id}")
-    void deleteBook(@PathVariable String id)
-    {
+    void deleteBook(@PathVariable String id) {
         dataHandlerDelete.Delete(UUID.fromString(id));
     }
 }
