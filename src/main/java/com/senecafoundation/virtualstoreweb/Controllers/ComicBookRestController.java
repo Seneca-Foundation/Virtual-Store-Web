@@ -31,6 +31,12 @@ class ComicBookRestController {
     @Autowired
     RepoReadData<ComicBook> dataHandlerRead;
 
+    @PostMapping("/comicbooks")
+    ComicBook newComicBook(@RequestBody ComicBook newComicBook) {
+        UUID newId = dataHandler.Create(newComicBook);
+        return newComicBook;
+    }
+    
     @GetMapping("/comicbooks")
     List<StoreItem> allComicbooks() {
         return dataHandlerRead.ReadAll();
@@ -40,12 +46,6 @@ class ComicBookRestController {
     ComicBook getComicbook(@PathVariable String id) {
         ComicBook comicbook = (ComicBook) dataHandlerRead.Read(UUID.fromString(id));
         return comicbook;
-    }
-
-    @PostMapping("/comicbooks")
-    ComicBook newComicBook(@RequestBody ComicBook newComicBook) {
-        UUID newId = dataHandler.Create(newComicBook);
-        return newComicBook;
     }
     
     @PutMapping("/comicbooks/{id}")

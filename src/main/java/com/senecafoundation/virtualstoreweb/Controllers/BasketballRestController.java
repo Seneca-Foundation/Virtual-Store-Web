@@ -31,15 +31,21 @@ class BasketballRestController {
     @Autowired
     RepoReadData<Basketball> dataHandlerRead;
 
-    @GetMapping("/basketballs")
-    List<StoreItem> allBasketballs() {
-        return dataHandlerRead.ReadAll();
-    }
-
     @PostMapping("/basketballs")
     Basketball newBasketball(@RequestBody Basketball newBasketball) {
         UUID newId = dataHandler.Create(newBasketball);
         return newBasketball;
+    }
+    
+    @GetMapping("/basketballs")
+    List<StoreItem> allBasketballs() {
+        return dataHandlerRead.ReadAll();
+    }
+    
+    @GetMapping("/basketballs/{id}")
+    Basketball read(@PathVariable("id") String Id) {
+        Basketball basketball = (Basketball) dataHandlerRead.Read(UUID.fromString(Id));
+        return basketball;
     }
     
     @PutMapping("/basketballs/{id}")
@@ -59,11 +65,5 @@ class BasketballRestController {
     void deleteBasketball(@PathVariable String id)
     {
         dataHandlerDelete.Delete(UUID.fromString(id));
-    }
-
-    @GetMapping("/basketballs/{id}")
-    public Basketball read(@PathVariable("id") String Id) {
-        Basketball basketball = (Basketball) dataHandlerRead.Read(UUID.fromString(Id));
-        return basketball;
     }
 }

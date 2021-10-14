@@ -31,6 +31,12 @@ class PowerplantRestController {
     @Autowired
     RepoReadData<Powerplant> dataHandlerRead;
 
+    @PostMapping("/powerplants")
+    Powerplant newPowerplant(@RequestBody Powerplant newPowerplant) {
+        UUID newId = dataHandler.Create(newPowerplant);
+        return newPowerplant;
+    }
+    
     @GetMapping("/powerplants")
     List<StoreItem> allPowerplants() {
         return dataHandlerRead.ReadAll();
@@ -40,12 +46,6 @@ class PowerplantRestController {
     Powerplant getPowerplant(@PathVariable String id) {
         Powerplant powerplant = (Powerplant) dataHandlerRead.Read(UUID.fromString(id));
         return powerplant;
-    }
-
-    @PostMapping("/powerplants")
-    Powerplant newPowerplant(@RequestBody Powerplant newPowerplant) {
-        UUID newId = dataHandler.Create(newPowerplant);
-        return newPowerplant;
     }
     
     @PutMapping("/powerplants/{id}")

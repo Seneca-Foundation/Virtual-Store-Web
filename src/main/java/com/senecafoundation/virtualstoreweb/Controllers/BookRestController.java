@@ -31,6 +31,12 @@ public class BookRestController {
     @Autowired
     RepoReadData<Book> dataHandlerRead;
 
+    @PostMapping("/books")
+    Book newBook(@RequestBody Book newBook) {
+        UUID newId = dataHandler.Create(newBook);
+        return newBook;
+    }
+    
     @GetMapping("/books")
     List<StoreItem> allBooks() {
         return dataHandlerRead.ReadAll();
@@ -42,12 +48,6 @@ public class BookRestController {
         return book;
     }
 
-    @PostMapping("/books")
-    Book newBook(@RequestBody Book newBook) {
-        UUID newId = dataHandler.Create(newBook);
-        return newBook;
-    }
-    
     @PutMapping("/books/{id}")
     Book replaceBook(@RequestBody Book newBook, @PathVariable String id) throws Exception {
         Book book = (Book) dataHandlerRead.Read(UUID.fromString(id));

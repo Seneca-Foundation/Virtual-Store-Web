@@ -31,6 +31,12 @@ class ComputerRestController {
     @Autowired
     RepoReadData<Computer> dataHandlerRead;
 
+    @PostMapping("/computers")
+    Computer newComputer(@RequestBody Computer newComputer) {
+        UUID newId = dataHandler.Create(newComputer);
+        return newComputer;
+    }
+    
     @GetMapping("/computers")
     List<StoreItem> allComputers() {
         return dataHandlerRead.ReadAll();
@@ -40,12 +46,6 @@ class ComputerRestController {
     Computer getBasketball(@PathVariable String id) {
         Computer computer = (Computer) dataHandlerRead.Read(UUID.fromString(id));
         return computer;
-    }
-
-    @PostMapping("/computers")
-    Computer newComputer(@RequestBody Computer newComputer) {
-        UUID newId = dataHandler.Create(newComputer);
-        return newComputer;
     }
     
     @PutMapping("/computers/{id}")
