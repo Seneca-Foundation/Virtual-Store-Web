@@ -36,6 +36,12 @@ class PowerplantRestController {
         return dataHandlerRead.ReadAll();
     }
 
+    @GetMapping("/powerplants/{id}")
+    Powerplant getPowerplant(@PathVariable String id) {
+        Powerplant powerplant = (Powerplant) dataHandlerRead.Read(UUID.fromString(id));
+        return powerplant;
+    }
+
     @PostMapping("/powerplants")
     Powerplant newPowerplant(@RequestBody Powerplant newPowerplant) {
         UUID newId = dataHandler.Create(newPowerplant);
@@ -56,8 +62,7 @@ class PowerplantRestController {
     }
 
     @DeleteMapping("/powerplants/{id}")
-    void deletePowerplant(@PathVariable String id)
-    {
+    void deletePowerplant(@PathVariable String id) {
         dataHandlerDelete.Delete(UUID.fromString(id));
     }
 }
