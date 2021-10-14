@@ -60,4 +60,10 @@ class BasketballRestController {
     {
         dataHandlerDelete.Delete(UUID.fromString(id));
     }
+
+    @GetMapping("/basketballs/{id}")
+    public Basketball read(@PathVariable("id") String Id) {
+        Basketball basketball = (Basketball) dataHandlerRead.Read(UUID.fromString(Id));
+        return basketball;
+    }
 }
