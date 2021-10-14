@@ -65,5 +65,10 @@ public class BookRestController {
     void deleteBook(@PathVariable String id) {
         dataHandlerDelete.Delete(UUID.fromString(id));
     }
-}
 
+@GetMapping("/books/{id}")
+    public Book read(@PathVariable("id") String Id) {
+        Book book = (Book) dataHandlerRead.Read(UUID.fromString(Id));
+        return book;
+    }
+}
