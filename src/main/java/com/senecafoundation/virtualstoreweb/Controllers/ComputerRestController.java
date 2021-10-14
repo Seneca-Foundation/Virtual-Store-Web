@@ -36,6 +36,12 @@ class ComputerRestController {
         return dataHandlerRead.ReadAll();
     }
 
+    @GetMapping("/computers/{id}")
+    Computer getBasketball(@PathVariable String id) {
+        Computer computer = (Computer) dataHandlerRead.Read(UUID.fromString(id));
+        return computer;
+    }
+
     @PostMapping("/computers")
     Computer newComputer(@RequestBody Computer newComputer) {
         UUID newId = dataHandler.Create(newComputer);
@@ -56,8 +62,7 @@ class ComputerRestController {
     }
 
     @DeleteMapping("/computers/{id}")
-    void deleteComputer(@PathVariable String id)
-    {
+    void deleteComputer(@PathVariable String id) {
         dataHandlerDelete.Delete(UUID.fromString(id));
     }
 }
