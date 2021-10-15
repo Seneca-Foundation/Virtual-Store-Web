@@ -1,0 +1,112 @@
+{
+	"info": {
+		"_postman_id": "9b8109b2-881e-45a8-ba4c-afceff3a0793",
+		"name": "Book",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create new book",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"Hunger Games\",\n    \"price\":15,\n    \"author\":\"Suzanne Collins\",\n    \"cover\":\"paperback\",\n    \"description\":\"teens fight until one is left standing\",\n    \"weight\":0.5\n}"
+				},
+				"url": {
+					"raw": "localhost/books",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Read book",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost/books/id",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"books",
+						"id"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update book",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"Hunger Games\",\n    \"price\":25,\n    \"author\":\"Suzanne Collins\",\n    \"cover\":\"paperback\",\n    \"description\":\"teens fight until one is left standing\",\n    \"weight\":0.5\n}"
+				},
+				"url": {
+					"raw": "localhost/books/id",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"books",
+						"id"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete book",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost/books/id",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"books",
+						"id"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
