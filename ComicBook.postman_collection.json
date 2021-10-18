@@ -1,0 +1,112 @@
+{
+	"info": {
+		"_postman_id": "1a200595-ee4b-4a8d-9af9-c7947f5baeba",
+		"name": "ComicBook",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create new comicbook",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"Archie Comics #1\",\n    \"price\":11.50,\n    \"author\":\"Vic Bloom\",\n    \"cover\":\"paperback\",\n    \"description\":\"problems arise due to love triangles in a small town\",\n    \"artist\": \"Bob Montana\",\n    \"weight\":0.5\n}"
+				},
+				"url": {
+					"raw": "localhost/comicbooks",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"comicbooks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Read comicbook",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost/comicbooks/id",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"comicbooks",
+						"id"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update comicbook",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"Archie Comics #1\",\n    \"price\":11.50,\n    \"author\":\"Vic Bloom\",\n    \"cover\":\"paperback\",\n    \"description\":\"problems arise due to love triangles in a small town\",\n    \"artist\": \"Bob Montana\",\n    \"weight\":0.3\n}"
+				},
+				"url": {
+					"raw": "localhost/comicbooks/id",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"comicbooks",
+						"id"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete comicbook",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost/comicbooks/id",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"comicbooks",
+						"id"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
