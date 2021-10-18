@@ -31,27 +31,38 @@ class ComicBookRestController {
     @Autowired
     RepoReadData<ComicBook> dataHandlerRead;
 
-    @GetMapping("/comicbooks")
-    List<StoreItem> allComicbooks() {
-        return dataHandlerRead.ReadAll();
-    }
-
     @PostMapping("/comicbooks")
     ComicBook newComicBook(@RequestBody ComicBook newComicBook) {
         UUID newId = dataHandler.Create(newComicBook);
         return newComicBook;
     }
     
-    @PutMapping("/comicbooks/{id}")
-    ComicBook replaceComicBook(@RequestBody ComicBook newComicBook, @PathVariable String id) {
+    @GetMapping("/comicbooks")
+    List<StoreItem> allComicbooks() {
+        return dataHandlerRead.ReadAll();
+    }
+
+    @GetMapping("/comicbooks/{id}")
+    ComicBook getComicbook(@PathVariable String id) {
         ComicBook comicbook = (ComicBook) dataHandlerRead.Read(UUID.fromString(id));
-        dataHandlerUpdate.Update(newComicBook);
-        return newComicBook;
+        return comicbook;
+    }
+    
+    @PutMapping("/comicbooks/{id}")
+    ComicBook replaceComicBook(@RequestBody ComicBook newComicBook, @PathVariable String id) throws Exception {
+        ComicBook comicbook = (ComicBook) dataHandlerRead.Read(UUID.fromString(id));
+        if (comicbook != null) {
+            newComicBook.setID(comicbook.getID());
+            dataHandlerUpdate.Update(newComicBook);
+            return newComicBook;
+        }
+        else {
+            throw new Exception("No comicbook found with id: " + id);
+        }
     }
     
     @DeleteMapping("/comicbooks/{id}")
-    void deleteComicBook(@PathVariable String id)
-    {
+    void deleteComicBook(@PathVariable String id) {
         dataHandlerDelete.Delete(UUID.fromString(id));
     }
 }

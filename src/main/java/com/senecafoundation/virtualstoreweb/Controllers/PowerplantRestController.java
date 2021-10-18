@@ -31,27 +31,38 @@ class PowerplantRestController {
     @Autowired
     RepoReadData<Powerplant> dataHandlerRead;
 
-    @GetMapping("/powerplants")
-    List<StoreItem> allPowerplants() {
-        return dataHandlerRead.ReadAll();
-    }
-
     @PostMapping("/powerplants")
     Powerplant newPowerplant(@RequestBody Powerplant newPowerplant) {
         UUID newId = dataHandler.Create(newPowerplant);
         return newPowerplant;
     }
     
-    @PutMapping("/powerplants/{id}")
-    Powerplant replacePowerplant(@RequestBody Powerplant newPowerplant, @PathVariable String id) {
+    @GetMapping("/powerplants")
+    List<StoreItem> allPowerplants() {
+        return dataHandlerRead.ReadAll();
+    }
+
+    @GetMapping("/powerplants/{id}")
+    Powerplant getPowerplant(@PathVariable String id) {
         Powerplant powerplant = (Powerplant) dataHandlerRead.Read(UUID.fromString(id));
-        dataHandlerUpdate.Update(newPowerplant);
-        return newPowerplant;
+        return powerplant;
+    }
+    
+    @PutMapping("/powerplants/{id}")
+    Powerplant replacePowerplant(@RequestBody Powerplant newPowerplant, @PathVariable String id) throws Exception {
+        Powerplant powerplant = (Powerplant) dataHandlerRead.Read(UUID.fromString(id));
+        if (powerplant != null) {
+            newPowerplant.setID(powerplant.getID());
+            dataHandlerUpdate.Update(newPowerplant);
+            return newPowerplant;
+        }
+        else {
+            throw new Exception("No energy found with id: " + id);
+        }
     }
 
     @DeleteMapping("/powerplants/{id}")
-    void deletePowerplant(@PathVariable String id)
-    {
+    void deletePowerplant(@PathVariable String id) {
         dataHandlerDelete.Delete(UUID.fromString(id));
     }
 }

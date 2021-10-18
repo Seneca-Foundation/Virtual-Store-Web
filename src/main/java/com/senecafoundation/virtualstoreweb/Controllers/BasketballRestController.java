@@ -31,22 +31,34 @@ class BasketballRestController {
     @Autowired
     RepoReadData<Basketball> dataHandlerRead;
 
-    @GetMapping("/basketballs")
-    List<StoreItem> allBasketballs() {
-        return dataHandlerRead.ReadAll();
-    }
-
     @PostMapping("/basketballs")
     Basketball newBasketball(@RequestBody Basketball newBasketball) {
         UUID newId = dataHandler.Create(newBasketball);
         return newBasketball;
     }
     
+    @GetMapping("/basketballs")
+    List<StoreItem> allBasketballs() {
+        return dataHandlerRead.ReadAll();
+    }
+    
+    @GetMapping("/basketballs/{id}")
+    Basketball read(@PathVariable("id") String Id) {
+        Basketball basketball = (Basketball) dataHandlerRead.Read(UUID.fromString(Id));
+        return basketball;
+    }
+    
     @PutMapping("/basketballs/{id}")
-    Basketball replaceBasketball(@RequestBody Basketball newBasketball, @PathVariable String id) {
+    Basketball replaceBasketball(@RequestBody Basketball newBasketball, @PathVariable String id) throws Exception {
         Basketball basketball = (Basketball) dataHandlerRead.Read(UUID.fromString(id));
-        dataHandlerUpdate.Update(newBasketball);
-        return newBasketball;
+        if (basketball != null) {
+            newBasketball.setID(basketball.getID());
+            dataHandlerUpdate.Update(newBasketball);
+            return newBasketball;
+        }
+        else {
+            throw new Exception("No basketball found with id: " + id);
+        }
     }
 
     @DeleteMapping("/basketballs/{id}")

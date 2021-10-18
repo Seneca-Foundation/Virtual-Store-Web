@@ -31,27 +31,38 @@ class ComputerRestController {
     @Autowired
     RepoReadData<Computer> dataHandlerRead;
 
-    @GetMapping("/computers")
-    List<StoreItem> allComputers() {
-        return dataHandlerRead.ReadAll();
-    }
-
     @PostMapping("/computers")
     Computer newComputer(@RequestBody Computer newComputer) {
         UUID newId = dataHandler.Create(newComputer);
         return newComputer;
     }
     
-    @PutMapping("/computers/{id}")
-    Computer replaceComputer(@RequestBody Computer newComputer, @PathVariable String id) {
+    @GetMapping("/computers")
+    List<StoreItem> allComputers() {
+        return dataHandlerRead.ReadAll();
+    }
+
+    @GetMapping("/computers/{id}")
+    Computer getBasketball(@PathVariable String id) {
         Computer computer = (Computer) dataHandlerRead.Read(UUID.fromString(id));
-        dataHandlerUpdate.Update(newComputer);
-        return newComputer;
+        return computer;
+    }
+    
+    @PutMapping("/computers/{id}")
+    Computer replaceComputer(@RequestBody Computer newComputer, @PathVariable String id) throws Exception {
+        Computer computer = (Computer) dataHandlerRead.Read(UUID.fromString(id));
+        if (computer != null) {
+            newComputer.setID(computer.getID());
+            dataHandlerUpdate.Update(newComputer);
+            return newComputer;
+        }
+        else {
+            throw new Exception("No computer found with id: " + id);
+        }
     }
 
     @DeleteMapping("/computers/{id}")
-    void deleteComputer(@PathVariable String id)
-    {
+    void deleteComputer(@PathVariable String id) {
         dataHandlerDelete.Delete(UUID.fromString(id));
     }
 }

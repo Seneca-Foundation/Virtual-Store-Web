@@ -31,29 +31,38 @@ public class BookRestController {
     @Autowired
     RepoReadData<Book> dataHandlerRead;
 
-    @GetMapping("/books")
-    List<StoreItem> allBooks() {
-        return dataHandlerRead.ReadAll();
-    }
-
     @PostMapping("/books")
     Book newBook(@RequestBody Book newBook) {
         UUID newId = dataHandler.Create(newBook);
         return newBook;
     }
     
-    @PutMapping("/books/{id}")
-    Book replaceBook(@RequestBody Book newBook, @PathVariable String id) {
+    @GetMapping("/books")
+    List<StoreItem> allBooks() {
+        return dataHandlerRead.ReadAll();
+    }
+
+    @GetMapping("/books/{id}")
+    Book getBook(@PathVariable String id) {
         Book book = (Book) dataHandlerRead.Read(UUID.fromString(id));
-        
-        dataHandlerUpdate.Update(newBook);
-        return newBook(newBook);
+        return book;
+    }
+
+    @PutMapping("/books/{id}")
+    Book replaceBook(@RequestBody Book newBook, @PathVariable String id) throws Exception {
+        Book book = (Book) dataHandlerRead.Read(UUID.fromString(id));
+        if (book != null) {
+            newBook.setID(book.getID());
+            dataHandlerUpdate.Update(newBook);
+            return newBook(newBook);
+        }
+        else {
+            throw new Exception("No book found with id: " + id);
+        }  
     }
 
     @DeleteMapping("/books/{id}")
-    void deleteBook(@PathVariable String id)
-    {
+    void deleteBook(@PathVariable String id) {
         dataHandlerDelete.Delete(UUID.fromString(id));
     }
 }
-
