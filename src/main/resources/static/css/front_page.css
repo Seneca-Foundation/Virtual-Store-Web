@@ -63,17 +63,17 @@ section.contact nav {
     float: left;
 }
 
-section.contact nav.info-left {
+section.contact nav.contact-left {
     margin: 0;
     position: relative;
     left: 5%;
     width: 40%;   
 }
 
-section.contact nav.info-middle {
+section.contact nav.contact-middle {
     width: 35%;
 }
 
-section.contact nav.info-right {
+section.contact nav.contact-right {
     width: 25%;
 }
