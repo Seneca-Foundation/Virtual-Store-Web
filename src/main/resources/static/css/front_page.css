@@ -88,6 +88,16 @@ main ul li button {
     text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.3);
 }
 
+.column {
+    float: left;
+    width: 50%;
+}
+  
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
 .component{
     font-family: "Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;
     width: 750px;
@@ -103,6 +113,7 @@ main ul li button {
     color: #484748;
     margin: 1rem auto 2rem;
 }
+
 .component blockquote.EN {
     background:
     linear-gradient(to right, #039be5 4px, transparent 4px) 0 100%,
