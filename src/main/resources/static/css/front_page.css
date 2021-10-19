@@ -34,6 +34,7 @@ main ul li button {
     width: 100%;
     margin-bottom: 14pt;
     height: 50pt;
+    border-radius: 8px;
 }
 
 .searchButtons {
