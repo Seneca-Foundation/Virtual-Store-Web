@@ -59,18 +59,21 @@ footer {
     background-color: rgb(186, 248, 248);
 }
 
-section.contact nav {
+section.info nav {
     float: left;
 }
 
-section.contact nav.contact-left {
-    width: 30%;   
+section.info nav.info-left {
+    margin: 0;
+    position: relative;
+    left: 5%;
+    width: 40%;   
 }
 
-section.contact nav.contact-right {
+section.info nav.info-middle {
+    width: 35%;
+}
+
+section.info nav.info-right {
     width: 25%;
-}
-
-section.contact nav.contact-middle {
-    width: 45%;
 }
