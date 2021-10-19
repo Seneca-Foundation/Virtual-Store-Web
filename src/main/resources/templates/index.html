@@ -7,30 +7,30 @@
     <body>
         <header>
             <div class="searchContainer">
-                <button>Sign In</button>
-                <button>Cart</button>
-                <input type="text"></input>
-                <button>Search</button>
+                <button class="searchButtons">Sign In</button>
+                <button class="searchButtons">Cart</button>
+                <input class="searchBar" type="text"></input>
+                <button class="search">Search</button>
             </div>
             <img class= "img-seneca-Logo" img src="https://github.com/Seneca-Foundation/Virtual-Store-Web/blob/9553711c5398b063f3a319384e679c7cdbe5db35/sencaLogo.jpg?raw=true" alt="Logo for the Seneca Foudation Store"></img>
         </header>
         <main>
             <ul class="stores"> 
                 <li>
-                    <button>T-Shirts by Kareona</button>
-                    <img></img>
+                    <button class="searchButtons">T-Shirts by Kareona</button>
+                    <img src="https://loremflickr.com/150/200/tshirt" alt="t-shirts"></img>
                 </li>
                 <li>
-                    <button>Drawings by Phoenix</button>
-                    <img></img>
+                    <button class="searchButtons">Drawings by Phoenix</button>
+                    <img src="https://loremflickr.com/cache/resized/4869_46234070472_1b6c0b2479_400_200_nofilter.jpg" alt="drawings"></img>
                 </li>
                 <li>
-                    <button>Stickers by Joshua</button>
-                    <img></img>
+                    <button class="searchButtons">Stickers by Joshua</button>
+                    <img src="https://loremflickr.com/150/200/stickers" alt="stickers"></img>
                 </li>
                 <li>
-                    <button>Bracelets by Sarai</button>
-                    <img></img>
+                    <button class="searchButtons">Bracelets by Sarai</button>
+                    <img src="https://loremflickr.com/150/200/bracelets" alt="bracelets"></img>
                 </li>
             </ul>
             </div>
@@ -40,9 +40,10 @@
                 <blockquote></blockquote>
             </section>
         </main>
+        <hr class="rounded">
         <footer>
-            <section>
-                <nav>
+            <section class="contact">
+                <nav class="contact-left">
                     <h5>Company</h5>
                     <ul>
                         <li><a>About Us</a></li>
@@ -50,7 +51,7 @@
                         <li><a>Delivery Policy</a></li>
                     </ul>
                 </nav>
-                <nav>
+                <nav class="contact-middle">
                     <h5>Account</h5>
                     <ul>
                         <li><a>Manage Account</a></li>
@@ -58,7 +59,7 @@
                         <li><a>Track Your Order</a></li>
                     </ul>
                 </nav>
-                <nav>
+                <nav class="contact-right">
                     <h5>Help</h5>
                     <ul>
                         <li><a>Fequenly Asked Questions</a></li>
@@ -67,35 +68,35 @@
                     </ul>
                 </nav>
             </section>
-            <section>
-                <nav>
+            <section class="contact">
+                <nav class="contact-left">
                     <h6>Subscribe for email offers</h6>
                     <input type="email"></input>
                     <button></button>
                 </nav>
-                <nav>
+                <nav class="contact-middle">
                     <h6>Contact Us</h6>
-                    <li>
-                        <ul>jnava@senecafoundation.org</ul>
-                        <ul>(312)363-9496</ul>
-                    </li>
+                    <ul>
+                        <li>jnava@senecafoundation.org</li>
+                        <li>(312)363-9496</li>
+                    </ul>
                 </nav>
-                <nav>
+                <nav class="contact-right">
                     <h6>Follow Us</h6>
-                    <li>
-                        <ul>
+                    <ul>
+                        <li>
                             <img></img>
                             webstoreofficial
-                        </ul>
-                        <ul>
+                        </li>
+                        <li>
                             <img></img>
                             webstoreofficial
-                        </ul>
-                        <ul>
+                        </li>
+                        <li>
                             <img></img>
                             webstoreofficial
-                        </ul>
-                    </li>
+                        </li>
+                    </ul>
                 </nav>
             </section>
         </footer>

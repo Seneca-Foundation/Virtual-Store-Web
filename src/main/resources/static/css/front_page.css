@@ -1,3 +1,7 @@
+body {
+    margin: 0pt;
+}
+
 header {
     height: 200pt;
     background-color: rebeccapurple;
@@ -8,8 +12,64 @@ header img {
     margin-right: auto;
     display: block;
     padding-top: 30pt;
+    height: 150pt;
 }
 
 .searchContainer {
     float: right;
+}
+
+main ul {
+    text-align: center;
+}
+
+main ul li {
+    display: inline-block;
+    justify-content: center;
+    margin: 0pt 35pt;
+}
+
+main ul li button {
+    display: block;
+    width: 100%;
+    margin-bottom: 14pt;
+    height: 50pt;
+}
+
+.searchButtons {
+    background-color: rgb(186, 248, 248);
+    color: black;
+}
+
+.search {
+    background-color: white;
+    color: black;
+}
+.searchBar {
+    background-color: white;
+}
+
+hr.rounded {
+    border-top: 8px solid rgba(31, 29, 114, 0.349);
+    border-radius: 4px;
+}
+
+footer {
+    background-color: rgb(186, 248, 248);
+}
+
+section.contact nav {
+    float: left;
+}
+
+section.contact nav.contact-left {
+    width: 30%;   
+}
+
+section.contact nav.contact-right {
+    width: 25%;
+}
+
+section.contact nav.contact-middle {
+    width: 45%;
 }
