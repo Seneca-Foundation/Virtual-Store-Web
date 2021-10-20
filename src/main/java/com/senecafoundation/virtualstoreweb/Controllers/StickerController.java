@@ -1,7 +1,7 @@
 package com.senecafoundation.virtualstoreweb.Controllers;
 
 import java.util.UUID;
-// import java.util.List;
+import java.util.List;
 
 import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoCreateData;
 import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoDeleteData;
@@ -17,7 +17,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-//import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 //import org.springframework.web.bind.annotation.RequestParam;
@@ -59,44 +59,43 @@ public class StickerController {
         return "sticker";
     }
 
-    // @RequestMapping(value = "/readform/{id}", method = RequestMethod.GET)
-    // public String read(@PathVariable("id") String Id, ModelMap model) {
-    //     Computer computer = (Computer) dataHandlerRead.Read(UUID.fromString(Id));
-    //     model.addAttribute("computer", computer);
-    //     return "computer";
-    // }
+     @RequestMapping(value = "/readform/{id}", method = RequestMethod.GET)
+     public String read(@PathVariable("id") String Id, ModelMap model) {
+         Sticker sticker = (Sticker) dataHandlerRead.Read(UUID.fromString(Id));
+         model.addAttribute("sticker", sticker);
+        return "sticker";
+     }
     
-    // @RequestMapping(value = "/updateform/{id}", method = RequestMethod.GET)
-    // public String showUpdateForm(@PathVariable("id") String Id, Model model) {
-    //     Computer computer = (Computer) dataHandlerRead.Read(UUID.fromString(Id));
-    //     model.addAttribute("computer", computer);
-    //     return "create_computer";
-    // }
+    @RequestMapping(value = "/updateform/{id}", method = RequestMethod.GET)
+     public String showUpdateForm(@PathVariable("id") String Id, Model model) {
+        Sticker sticker = (Sticker) dataHandlerRead.Read(UUID.fromString(Id));
+         model.addAttribute("sticker", sticker);
+         return "create_sticker"; }
 
-    // @RequestMapping(value="/updateform", method = RequestMethod.PUT)
-    // public String change(@ModelAttribute("computer") Computer computer, BindingResult result, ModelMap model) {
-    //     if (result.hasErrors()) {
-    //         return "error";
-    //     }
-    //     dataHandlerUpdate.Update(computer);
-    //     return "computer";   
-    // }
+     @RequestMapping(value="/updateform", method = RequestMethod.PUT)
+     public String change(@ModelAttribute("sticker") Sticker sticker, BindingResult result, ModelMap model) {
+         if (result.hasErrors()) {
+             return "error";
+         }
+         dataHandlerUpdate.Update(sticker);
+         return "sticker";   
+     }
 
-    // @GetMapping("/deleteform")
-    // public String showDeleteForm(Model model) {
-    //     List<StoreItem> showItems = dataHandlerRead.ReadAll();
-    //     model.addAttribute("itemsToDelete", showItems);
-    //     return "delete_computer";
-    // }
+     @GetMapping("/deleteform")
+     public String showDeleteForm(Model model) {
+         List<StoreItem> showItems = dataHandlerRead.ReadAll();
+         model.addAttribute("itemsToDelete", showItems);
+         return "delete_sticker";
+     }
     
-    // @RequestMapping(value = "/deleteform/{id}", method = RequestMethod.DELETE)
-    // public String delete(@PathVariable("id") String Id, ModelMap model) {
-    //     try {
-    //         dataHandlerDelete.Delete(UUID.fromString(Id));
-    //     } catch (Exception e) {
-    //         e.printStackTrace();
-    //     }
-    //     model.addAttribute("Id", Id);
-    //     return "itemdelete";
-    // }
+     @RequestMapping(value = "/deleteform/{id}", method = RequestMethod.DELETE)
+     public String delete(@PathVariable("id") String Id, ModelMap model) {
+         try {
+             dataHandlerDelete.Delete(UUID.fromString(Id));
+         } catch (Exception e) {
+             e.printStackTrace();
+         }
+         model.addAttribute("Id", Id);
+         return "itemdelete";
+     }
 }
