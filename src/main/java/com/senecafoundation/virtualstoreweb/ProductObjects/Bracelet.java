@@ -2,7 +2,6 @@ package com.senecafoundation.virtualstoreweb.ProductObjects; //this is the packa
 
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
-import java.util.Random;
 
 import com.senecafoundation.virtualstoreweb.ITextFormatter;
 import com.senecafoundation.virtualstoreweb.FundamentalObjects.WeightItem;
