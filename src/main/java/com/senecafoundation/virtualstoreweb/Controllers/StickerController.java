@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 //import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("stickers")
+@RequestMapping("sticker")
 public class StickerController {
 
     UUID ID;
