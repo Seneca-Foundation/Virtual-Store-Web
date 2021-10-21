@@ -1,14 +1,13 @@
 package com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers;
 
 import com.senecafoundation.virtualstoreweb.DataHandlers.Repository.StoreItemRepository;
-import com.senecafoundation.virtualstoreweb.ProductObjects.Sticker;
-
+import com.senecafoundation.virtualstoreweb.ProductObjects.BookObjects.ComicBook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class StickerDeleteData extends RepoDeleteData<Sticker> {
-        
+public class StickerDeleteData extends RepoDeleteData<ComicBook> {
+
     @Autowired
-    public StoreItemRepository<Sticker> storeItemRepository;
+    public StoreItemRepository<ComicBook> storeItemRepository;
 }
