@@ -1,6 +1,7 @@
 package com.senecafoundation.virtualstoreweb.Controllers;
 
 import java.util.UUID;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoCreateData;
@@ -48,6 +49,14 @@ public class StickerController {
         model.addAttribute("sticker", sticker);
         return "create_sticker";
     }
+
+    @GetMapping("/categoryview")
+    public String showCategoryView(Model model) {
+        List<StoreItem> stickers = dataHandlerRead.ReadAll();
+        model.addAttribute("stickers", stickers);
+        return "category_stickers";
+    }
+
 
     @RequestMapping(value = "/createform", method = RequestMethod.POST)
     public String submit(@ModelAttribute("sticker") Sticker sticker, BindingResult result, ModelMap model) {
