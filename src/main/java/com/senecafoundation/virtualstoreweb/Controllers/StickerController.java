@@ -1,7 +1,6 @@
 package com.senecafoundation.virtualstoreweb.Controllers;
 
 import java.util.UUID;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoCreateData;
@@ -56,7 +55,6 @@ public class StickerController {
         model.addAttribute("stickers", stickers);
         return "category_stickers";
     }
-
 
     @RequestMapping(value = "/createform", method = RequestMethod.POST)
     public String submit(@ModelAttribute("sticker") Sticker sticker, BindingResult result, ModelMap model) {

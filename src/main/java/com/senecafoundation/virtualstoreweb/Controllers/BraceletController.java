@@ -35,12 +35,25 @@ public class BraceletController {
     RepoDeleteData<Bracelet> dataHandlerDelete;
     @Autowired
     RepoReadData<Bracelet> dataHandlerRead;
-    
+
+    @RequestMapping(value = "/", method=RequestMethod.GET)
+    public String index()
+    {
+      return "bracelet_index";
+    }
+
     @GetMapping("/createform")
     public String showForm(Model model) {
         Bracelet bracelet = new Bracelet();
         model.addAttribute("bracelet", bracelet);
         return "create_bracelet";
+    }
+
+    @GetMapping("/categoryview")
+    public String showCategoryView(Model model) {
+        List<StoreItem> bracelets = dataHandlerRead.ReadAll();
+        model.addAttribute("bracelets", bracelets);
+        return "category_bracelets";
     }
 
     @RequestMapping(value = "/createform", method = RequestMethod.POST)
