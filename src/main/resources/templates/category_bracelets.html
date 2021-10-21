@@ -16,11 +16,11 @@
         </header>
         <main>
             <ul class="stores"> 
-                <li th:each="sticker : ${stickers}">
+                <li th:each="bracelet : ${bracelets}">
                     <img src="https://loremflickr.com/150/200/tshirt" alt="t-shirts"></img>
-                    <div th:text="${sticker.name}"></div>
+                    <div th:text="${bracelet.name}"></div>
                     <div class="storeItemPriceImg">
-                        <span th:text="'$' + ${sticker.price}"></span>
+                        <span th:text="'$' + ${bracelet.price}"></span>
                         <span>&#9825;</span>
                     </div>
                 </li>
