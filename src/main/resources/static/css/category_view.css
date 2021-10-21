@@ -1,0 +1,7 @@
+.storeItemPriceImg span:first-child {
+    float: left;
+}
+
+.storeItemPriceImg span:last-child {
+    float: right;
+}
