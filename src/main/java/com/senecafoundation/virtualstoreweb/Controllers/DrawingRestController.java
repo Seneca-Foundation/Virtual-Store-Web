@@ -8,7 +8,7 @@ import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoDe
 import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoReadData;
 import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoUpdateData;
 import com.senecafoundation.virtualstoreweb.FundamentalObjects.StoreItem;
-import com.senecafoundation.virtualstoreweb.ProductObjects.Sticker;
+import com.senecafoundation.virtualstoreweb.ProductObjects.Drawing;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,50 +20,48 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-class StickerRestController {
+class DrawingRestController {
     
     @Autowired
-    RepoCreateData<Sticker> dataHandler;
+    RepoCreateData<Drawing> dataHandler;
     @Autowired
-    RepoUpdateData<Sticker> dataHandlerUpdate;
+    RepoUpdateData<Drawing> dataHandlerUpdate;
     @Autowired
-    RepoDeleteData<Sticker> dataHandlerDelete;
+    RepoDeleteData<Drawing> dataHandlerDelete;
     @Autowired
-    RepoReadData<Sticker> dataHandlerRead;
+    RepoReadData<Drawing> dataHandlerRead;
 
-    @PostMapping("/stickers")
-    Sticker newSticker(@RequestBody Sticker newSticker) {
-        UUID newId = dataHandler.Create(newSticker);
-        return newSticker;
+    @PostMapping("/drawings")
+    Drawing newDrawing(@RequestBody Drawing newDrawing) {
+        UUID newId = dataHandler.Create(newDrawing);
+        return newDrawing;
     }
-    
-    @GetMapping("/stickers")
-    List<StoreItem> allStickers() {
+    @GetMapping("/drawings")
+    List<StoreItem> allDrawings() {
         return dataHandlerRead.ReadAll();
     }
 
-    @GetMapping("/stickers/{id}")
-    Sticker getSticker(@PathVariable String id) {
-        Sticker sticker = (Sticker) dataHandlerRead.Read(UUID.fromString(id));
-        return sticker;
+    @GetMapping("/drawings/{id}")
+    Drawing getDrawing(@PathVariable String id) {
+        Drawing drawing = (Drawing) dataHandlerRead.Read(UUID.fromString(id));
+        return drawing;
     }
     
-    @PutMapping("/stickers/{id}")
-    Sticker replaceSticker(@RequestBody Sticker newSticker, @PathVariable String id) throws Exception {
-        Sticker sticker = (Sticker) dataHandlerRead.Read(UUID.fromString(id));
-        if (sticker != null) {
-            newSticker.setID(sticker.getID());
-            dataHandlerUpdate.Update(newSticker);
-            return newSticker;
+    @PutMapping("/drawings/{id}")
+    Drawing replaceDrawing(@RequestBody Drawing newDrawing, @PathVariable String id) throws Exception {
+        Drawing drawing = (Drawing) dataHandlerRead.Read(UUID.fromString(id));
+        if (drawing != null) {
+            newDrawing.setID(drawing.getID());
+            dataHandlerUpdate.Update(newDrawing);
+            return newDrawing;
         }
         else {
-            throw new Exception("No Sticker found with id: " + id);
+            throw new Exception("No Drawing found with id: " + id);
         }
     }
     
-    @DeleteMapping("/stickers/{id}")
-    void deleteSticker(@PathVariable String id) {
+    @DeleteMapping("/drawings/{id}")
+    void deleteDrawings(@PathVariable String id) {
         dataHandlerDelete.Delete(UUID.fromString(id));
     }
-}  
-
+}

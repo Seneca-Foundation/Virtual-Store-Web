@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Create a Sticker</title>
+    <title>Comission a Tshirt!</title>
     <link rel="stylesheet" th:href="@{/css/home.css}" />
 </head>
     <body>
         <div class="container">
             <div class="overlay" id="overlay">
             <div class="sign-in" id="sign-in">
-                <h1>Welcome to Create a Sticker!</h1>
-                <p>This is the administrative form for creating a sticker.</p>
+                <h1>Welcome to Create a tshirt!</h1>
+                <p>This is the administrative form for comissioning a tshirt.</p>
                 <!-- <button class="switch-button" id="slide-right-button">Sign In</button> -->
             </div>
             <div class="sign-up" id="sign-up">
@@ -47,7 +47,7 @@
                 </form>
             </div>
             <div class="sign-up" id="sign-up-info">
-                <h1>Create sticker</h1>
+                <h1>Create Tshirt</h1>
                 <div class="social-media-buttons">
                 <div class="icon">
                     <svg viewBox="0 0 24 24">
@@ -66,16 +66,16 @@
                 </div>
                 </div>
                 <p class="small">or use your email for registration:</p>
-                <form id="sign-up-form" action="#" th:action="@{/sticker/createform}" method="post" th:object="${sticker}">
+                <form id="sign-up-form" action="#" th:action="@{/tshirt/createform}" method="post" th:object="${tshirt}">
                     <input type="hidden" th:field="*{ID}" />
                     <input type="text" th:field="*{name}" placeholder="Name" />
                     <input type="text" th:field="*{price}" placeholder="Price" />
                     <input type="text" th:field="*{color}" placeholder="Color" />
                     <input type="text" th:field="*{description}" placeholder="Description" />
                     <input type="text" th:field="*{weight}" placeholder="Weight" />
-                    <input type="text" th:field="*{width}" placeholder="Width" />
-                    <input type="text" th:field="*{height}" placeholder="Height" />
-                    <input type="text" th:field="*{paper}" placeholder="Paper" />                    <button class="control-button up">Enter Information</button>
+                    <input type="text" th:field="*{width}" placeholder="Color" />
+                    <input type="text" th:field="*{length}" placeholder="Length" />
+                    <input type="text" th:field="*{size}" placeholder="Size" />                    <button class="control-button up">Enter Information</button>
                 </form>
             </div>
             </div>
@@ -83,54 +83,3 @@
         <script th:src="@{/js/home.js}"></script>
     </body>
 </html>
-
-
-
-
-
-
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Create a Computer</title>
-</head>
-    <body>
-        <h3>Welcome, Enter Computer</h3>
-        <form action="#" th:action="@{/computer/createform}" method="post" th:object="${computer}">
-             <table> 
-                <tr>
-                    <td><label>Model</label></td>
-                    <td><input type="text" th:field="*{name}" /></td>
-                </tr>
-                <tr>
-                    <td><label>Price</label></td>
-                    <td><input type="text" th:field="*{price}" /></td>
-                </tr>
-                <tr>
-                    <td><label>Color</label></td>
-                    <td><input type="text" th:field="*{color}" /></td>
-                </tr>
-                <tr>
-                    <td><label>Computer Brand</label></td>
-                    <td><input type="text" th:field="*{computerBrand}" /></td>
-                </tr>
-                <tr>
-                    <td><label>Description</label></td>
-                    <td><input type="text" th:field="*{description}" /></td>
-                </tr>
-                <tr>
-                    <td><label>Release Date</label></td>
-                    <td><input type="text" th:field="*{releaseDate}" /></td>
-                </tr>
-                <tr>
-                    <td><label>Weight</label></td>
-                    <td><input type="text" th:field="*{weight}" /></td>
-                </tr>
-                <tr>
-                    <td><input type="submit" value="Submit"/></td>
-                </tr>
-            </table>
-        </form:form>
-    </body>
-</html> -->
