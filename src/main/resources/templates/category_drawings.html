@@ -17,7 +17,7 @@
         <main>
             <ul class="stores"> 
                 <li th:each="drawing : ${drawings}">
-                    <img src="https://loremflickr.com/150/200/drawing" alt="drawing"></img>
+                    <img th:data-id="${drawing.ID}" src="https://loremflickr.com/150/200/drawing" alt="drawing"></img>
                     <div th:text="${drawing.name}"></div>
                     <div class="storeItemPriceImg">
                         <span th:text="'$' + ${drawing.price}"></span>
@@ -87,3 +87,34 @@
             </section>
         </footer>
         <script type="text/javascript">
+
+            var linksToItems = document.querySelectorAll(".stores li");
+
+            linksToItems.forEach(linkToItem => {
+                linkToItem.addEventListener("click", getItemFromServer);
+            });
+
+            function getItemFromServer() { 
+                var itemId = this.querySelector("img").dataset.id;
+                var xhr = new XMLHttpRequest();
+                xhr.withCredentials = true;
+
+                xhr.addEventListener("readystatechange", afterGettingPokemonViaGetIsFinished);
+
+                xhr.open("GET", "/drawing/readform/" + itemId + "/");
+                xhr.setRequestHeader("Content-Type", "application/json");
+
+                xhr.send();
+            }
+
+            function afterGettingPokemonViaGetIsFinished() {
+                if(this.readyState === 4) {
+                    //console.log(this.responseText);
+                    var htmlPlaceToPutLoadedItem = document.querySelector("main");
+                    htmlPlaceToPutLoadedItem.innerHTML = this.responseText;
+                    // htmlPlaceToPutPokemon.innerText = pokemonsAsAnObject[0].region;
+                }
+            }
+        </script>
+    </body>
+</html>
