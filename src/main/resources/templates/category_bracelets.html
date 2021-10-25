@@ -87,26 +87,34 @@
             </section>
         </footer>
         <script type="text/javascript">
-            // var data = "";
+            
+            var linksToItems = document.querySelectorAll(".stores li");
 
-            // var xhr = new XMLHttpRequest();
-            // xhr.withCredentials = true;
+            linksToItems.forEach(linkToItem => {
+                linkToItem.addEventListener("click", getItemFromServer);
+            });
 
-            // xhr.addEventListener("readystatechange", afterGettingPokemonViaGetIsFinished);
+            function getItemFromServer() { 
+                var itemId = this.querySelector("img").dataset.id;
+                var xhr = new XMLHttpRequest();
+                xhr.withCredentials = true;
 
-            // xhr.open("GET", "/pokemonSeconds/");
-            // xhr.setRequestHeader("Content-Type", "application/json");
+                xhr.addEventListener("readystatechange", afterGettingBraceletViaGetIsFinished);
 
-            // xhr.send(data);
+                xhr.open("GET", "/bracelet/readform/" + itemId + "/");
+                xhr.setRequestHeader("Content-Type", "application/json");
 
-            // function afterGettingPokemonViaGetIsFinished() {
-            //     if(this.readyState === 4) {
-            //         console.log(this.responseText);
-            //         var pokemonsAsAnObject = JSON.parse(this.responseText);
-            //         var htmlPlaceToPutPokemon = document.getElementById("pokemon");
-            //         htmlPlaceToPutPokemon.innerText = pokemonsAsAnObject[0].region;
-            //     }
-            // }
+                xhr.send();
+            }
+
+            function afterGettingBraceletViaGetIsFinished() {
+                if(this.readyState === 4) {
+                    //console.log(this.responseText);
+                    var htmlPlaceToPutLoadedItem = document.querySelector("main");
+                    htmlPlaceToPutLoadedItem.innerHTML = this.responseText;
+                    // htmlPlaceToPutBracelet.innerText = braceletAsAnObject[0].region;
+                }
+            }
         </script>
     </body>
 </html>
