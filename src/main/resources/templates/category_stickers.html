@@ -87,26 +87,33 @@
             </section>
         </footer>
         <script type="text/javascript">
-            function getItemFromServer(id) {
-                var xhr = new XMLHttpRequest();
-                xhr.withCredentials = true;
+           var linksToItems = document.querySelectorAll(".stores li");
 
-                xhr.addEventListener("readystatechange", afterGettingPokemonViaGetIsFinished);
+linksToItems.forEach(linkToItem => {
+    linkToItem.addEventListener("click", getItemFromServer);
+});
 
-                xhr.open("GET", "/drawing/readform/1e449e74-c9d2-4744-aa28-4cc0587e2e0c/");
-                xhr.setRequestHeader("Content-Type", "application/json");
+function getItemFromServer() { 
+    var itemId = this.querySelector("img").dataset.id;
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
 
-                xhr.send();
-            }
+    xhr.addEventListener("readystatechange", afterGettingStickerViaGetIsFinished);
 
-            function afterGettingPokemonViaGetIsFinished() {
-                if(this.readyState === 4) {
-                    console.log(this.responseText);
-                    var pokemonsAsAnObject = JSON.parse(this.responseText);
-                    var htmlPlaceToPutPokemon = document.getElementById("pokemon");
-                    htmlPlaceToPutPokemon.innerText = pokemonsAsAnObject[0].region;
-                }
-            }
+    xhr.open("GET", "/sticker/readform/" + itemId + "/");
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    xhr.send();
+}
+
+function afterGettingStickerViaGetIsFinished() {
+    if(this.readyState === 4) {
+        //console.log(this.responseText);
+        var htmlPlaceToPutLoadedItem = document.querySelector("main");
+        htmlPlaceToPutLoadedItem.innerHTML = this.responseText;
+        // htmlPlaceToPutBracelet.innerText = braceletAsAnObject[0].region;
+    }
+}
         </script>
     </body>
 </html>
