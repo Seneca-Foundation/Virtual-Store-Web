@@ -52,7 +52,7 @@ public class DrawingController {
     @GetMapping("/categoryview")
     public String showCategoryView(Model model) {
         List<StoreItem> drawings = dataHandlerRead.ReadAll();
-        model.addAttribute("drawing", drawings);
+        model.addAttribute("drawings", drawings);
         return "category_drawings";
     }
 

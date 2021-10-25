@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <title>Welcome to the Virtual Store Web</title>
@@ -16,8 +16,8 @@
         </header>
         <main>
             <ul class="stores"> 
-                <li th:each=" drawing : ${drawings}">
-                    <img src="https://loremflickr.com/150/200/drawing" alt="drawings"></img>
+                <li th:each="drawing : ${drawings}">
+                    <img src="https://loremflickr.com/150/200/drawing" alt="drawing"></img>
                     <div th:text="${drawing.name}"></div>
                     <div class="storeItemPriceImg">
                         <span th:text="'$' + ${drawing.price}"></span>

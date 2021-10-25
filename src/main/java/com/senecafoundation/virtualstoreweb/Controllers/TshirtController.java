@@ -51,9 +51,9 @@ public class TshirtController {
 
     @GetMapping("/categoryview")
     public String showCategoryView(Model model) {
-        List<StoreItem> tshirt = dataHandlerRead.ReadAll();
-        model.addAttribute("tshirt", tshirt);
-        return "category_tshirt";
+        List<StoreItem> tshirts = dataHandlerRead.ReadAll();
+        model.addAttribute("tshirts", tshirts);
+        return "category_tshirts";
     }
 
     @RequestMapping(value = "/createform", method = RequestMethod.POST)
