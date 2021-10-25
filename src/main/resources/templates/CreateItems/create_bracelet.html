@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Create a Comic Book</title>
+    <title>Create a Bracelet</title>
     <link rel="stylesheet" th:href="@{/css/home.css}" />
 </head>
     <body>
         <div class="container">
             <div class="overlay" id="overlay">
             <div class="sign-in" id="sign-in">
-                <h1>Welcome to Create a Comicbook!</h1>
-                <p>This is the administrative form for creating a comicbook.</p>
+                <h1>Welcome to Create a Bracelet!</h1>
+                <p>This is the administrative form for creating a bracelet.</p>
                 <!-- <button class="switch-button" id="slide-right-button">Sign In</button> -->
             </div>
             <div class="sign-up" id="sign-up">
@@ -47,7 +47,7 @@
                 </form>
             </div>
             <div class="sign-up" id="sign-up-info">
-                <h1>Create Comicbook</h1>
+                <h1>Create Bracelet</h1>
                 <div class="social-media-buttons">
                 <div class="icon">
                     <svg viewBox="0 0 24 24">
@@ -66,7 +66,7 @@
                 </div>
                 </div>
                 <p class="small">or use your email for registration:</p>
-                <form id="sign-up-form" action="#" th:action="@{/comicbook/createform}" method="post" th:object="${comicbook}">
+                <form id="sign-up-form" action="#" th:action="@{/bracelet/createform}" method="post" th:object="${bracelet}">
                     <input type="hidden" th:field="*{ID}" />
                     <input type="text" th:field="*{name}" placeholder="Product" />
                     <input type="text" th:field="*{price}" placeholder="Price" />
@@ -82,53 +82,4 @@
         </div>
         <script th:src="@{/js/home.js}"></script>
     </body>
-</html>
-
-
-
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Create a Comic Book</title>
-    <link rel="stylesheet" th:href="@{/css/home.css}" />
-</head>
-    <body>
-        <h3>Welcome, Enter Comic Book</h3>
-        <form action="#" th:action="@{/comicbook/createform}" method="post" th:object="${comicbook}">
-             <table> 
-                <tr>
-                    <td><label>Title</label></td>
-                    <td><input type="text" th:field="*{name}" /></td>
-                </tr>
-                <tr>
-                    <td><label>Price</label></td>
-                    <td><input type="text" th:field="*{price}" /></td>
-                </tr>
-                <tr>
-                    <td><label>Author</label></td>
-                    <td><input type="text" th:field="*{author}" /></td>
-                </tr>
-                <tr>
-                    <td><label>Cover</label></td>
-                    <td><input type="text" th:field="*{cover}" /></td>
-                </tr>
-                <tr>
-                    <td><label>Description</label></td>
-                    <td><input type="text" th:field="*{description}" /></td>
-                </tr>
-                <tr>
-                    <td><label>Artist</label></td>
-                    <td><input type="text" th:field="*{artist}" /></td>
-                </tr>
-                <tr>
-                    <td><label>Weight</label></td>
-                    <td><input type="text" th:field="*{weight}" /></td>
-                </tr>
-                <tr>
-                    <td><input type="submit" value="Submit"/></td>
-                </tr>
-            </table>
-        </form:form>
-    </body>
-</html> -->
+</html>         
