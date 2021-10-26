@@ -87,6 +87,42 @@
             </section>
         </footer>
         <script type="text/javascript">
+        var linksToItems = document.querySelectorAll(".stores li");
+
+linksToItems.forEach(linkToItem => {
+    linkToItem.addEventListener("click", getItemFromServer);
+});
+
+function getItemFromServer() { 
+    var itemId = this.querySelector("img").dataset.id;
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", afterGettingTshirtViaGetIsFinished);
+
+    xhr.open("GET", "/tshirt/readform/" + itemId + "/");
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    xhr.send();
+}
+
+function afterGettingTshirtViaGetIsFinished() {
+    if(this.readyState === 4) {
+        //console.log(this.responseText);
+        var htmlPlaceToPutLoadedItem = document.querySelector("main");
+        htmlPlaceToPutLoadedItem.innerHTML = this.responseText;
+        // htmlPlaceToPutTshirt.innerText = tshirtAsAnObject[0].region;
+    }
+}
+
+
+
+
+
+
+
+
+
         </script>
     </body>
 </html>
