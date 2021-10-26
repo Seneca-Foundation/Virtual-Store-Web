@@ -16,14 +16,16 @@
         </header>
         <main>
             <ul class="stores"> 
-                <li th:each="bracelet : ${bracelets}">
-                    <img th:data-id="${bracelet.ID}" src="https://loremflickr.com/150/200/bracelet" alt="bracelets"></img>
-                    <div th:text="${bracelet.name}"></div>
-                    <div class="storeItemPriceImg">
-                        <span th:text="'$' + ${bracelet.price}"></span>
-                        <span>&#9825;</span>
-                    </div>
-                </li>
+                    <li th:each="bracelet : ${bracelets}">
+                        <a th:href="'/bracelet/readform/' + ${bracelet.ID}">
+                            <img th:data-id="${bracelet.ID}" src="https://loremflickr.com/150/200/bracelet" alt="bracelet"></img>
+                            <div th:text="${bracelet.name}"></div>
+                            <div class="storeItemPriceImg">
+                                <span th:text="'$' + ${bracelet.price}"></span>
+                                <span>&#9825;</span>
+                            </div>
+                        </a>
+                    </li>
             </ul>
         </main>
         <hr class="rounded">
@@ -86,35 +88,5 @@
                 </nav>
             </section>
         </footer>
-        <script type="text/javascript">
-            
-            var linksToItems = document.querySelectorAll(".stores li");
-
-            linksToItems.forEach(linkToItem => {
-                linkToItem.addEventListener("click", getItemFromServer);
-            });
-
-            function getItemFromServer() { 
-                var itemId = this.querySelector("img").dataset.id;
-                var xhr = new XMLHttpRequest();
-                xhr.withCredentials = true;
-
-                xhr.addEventListener("readystatechange", afterGettingBraceletViaGetIsFinished);
-
-                xhr.open("GET", "/bracelet/readform/" + itemId + "/");
-                xhr.setRequestHeader("Content-Type", "application/json");
-
-                xhr.send();
-            }
-
-            function afterGettingBraceletViaGetIsFinished() {
-                if(this.readyState === 4) {
-                    //console.log(this.responseText);
-                    var htmlPlaceToPutLoadedItem = document.querySelector("main");
-                    htmlPlaceToPutLoadedItem.innerHTML = this.responseText;
-                    // htmlPlaceToPutBracelet.innerText = braceletAsAnObject[0].region;
-                }
-            }
-        </script>
     </body>
 </html>
