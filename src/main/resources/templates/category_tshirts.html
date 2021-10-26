@@ -16,14 +16,16 @@
         </header>
         <main>
             <ul class="stores"> 
-                <li th:each=" tshirt : ${tshirts}">
-                    <img src="https://loremflickr.com/150/200/tshirt" alt="tshirt"></img>
-                    <div th:text="${tshirt.name}"></div>
-                    <div class="storeItemPriceImg">
-                        <span th:text="'$' + ${tshirt.price}"></span>
-                        <span>&#9825;</span>
-                    </div>
-                </li>
+                    <li th:each="tshirt : ${tshirts}">
+                        <a th:href="'/tshirt/readform/' + ${tshirt.ID}">
+                            <img th:data-id="${tshirt.ID}" src="https://loremflickr.com/150/200/tshirt" alt="tshirt"></img>
+                            <div th:text="${tshirt.name}"></div>
+                            <div class="storeItemPriceImg">
+                                <span th:text="'$' + ${tshirt.price}"></span>
+                                <span>&#9825;</span>
+                            </div>
+                        </a>
+                    </li>
             </ul>
         </main>
         <hr class="rounded">
@@ -86,43 +88,5 @@
                 </nav>
             </section>
         </footer>
-        <script type="text/javascript">
-        var linksToItems = document.querySelectorAll(".stores li");
-
-linksToItems.forEach(linkToItem => {
-    linkToItem.addEventListener("click", getItemFromServer);
-});
-
-function getItemFromServer() { 
-    var itemId = this.querySelector("img").dataset.id;
-    var xhr = new XMLHttpRequest();
-    xhr.withCredentials = true;
-
-    xhr.addEventListener("readystatechange", afterGettingTshirtViaGetIsFinished);
-
-    xhr.open("GET", "/tshirt/readform/" + itemId + "/");
-    xhr.setRequestHeader("Content-Type", "application/json");
-
-    xhr.send();
-}
-
-function afterGettingTshirtViaGetIsFinished() {
-    if(this.readyState === 4) {
-        //console.log(this.responseText);
-        var htmlPlaceToPutLoadedItem = document.querySelector("main");
-        htmlPlaceToPutLoadedItem.innerHTML = this.responseText;
-        // htmlPlaceToPutTshirt.innerText = tshirtAsAnObject[0].region;
-    }
-}
-
-
-
-
-
-
-
-
-
-        </script>
     </body>
 </html>
