@@ -17,6 +17,7 @@
         <main>
             <ul class="stores"> 
                 <li th:each="sticker : ${stickers}">
+                    <a th:href="'/sticker/readform/' + ${sticker.ID}">   
                     <img th:data-id="${sticker.ID}" src="https://loremflickr.com/150/200/tshirt" alt="t-shirts"></img>
                     <div th:text="${sticker.name}"></div>
                     <div class="storeItemPriceImg">
@@ -86,34 +87,5 @@
                 </nav>
             </section>
         </footer>
-        <script type="text/javascript">
-           var linksToItems = document.querySelectorAll(".stores li");
-
-linksToItems.forEach(linkToItem => {
-    linkToItem.addEventListener("click", getItemFromServer);
-});
-
-function getItemFromServer() { 
-    var itemId = this.querySelector("img").dataset.id;
-    var xhr = new XMLHttpRequest();
-    xhr.withCredentials = true;
-
-    xhr.addEventListener("readystatechange", afterGettingStickerViaGetIsFinished);
-
-    xhr.open("GET", "/sticker/readform/" + itemId + "/");
-    xhr.setRequestHeader("Content-Type", "application/json");
-
-    xhr.send();
-}
-
-function afterGettingStickerViaGetIsFinished() {
-    if(this.readyState === 4) {
-        //console.log(this.responseText);
-        var htmlPlaceToPutLoadedItem = document.querySelector("main");
-        htmlPlaceToPutLoadedItem.innerHTML = this.responseText;
-        // htmlPlaceToPutBracelet.innerText = braceletAsAnObject[0].region;
-    }
-}
-        </script>
     </body>
 </html>
