@@ -1,14 +1,17 @@
-<html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Basket</title>
+  <title>Welcome to the Virtual Store Web</title>
+  <link rel="stylesheet" th:href="@{/css/front_page.css}" />
   <link rel="stylesheet" th:href="@{/css/item_view.css}" />
 </head>
-
 <body>
+  <header>
+      <div class="searchContainer">
+          <button class="searchButtons">Sign In</button>
+          <button class="searchButtons">Cart</button>
+          <input class="searchBar" type="text"></input><button class="search">Search</button>
+      </div>
+      <img class= "img-seneca-Logo" th:src="@{/img/SenecaLogo.jpg}" alt="Logo for the Seneca Foundation Store"></img>
+  </header>
   <main>
     <div class="basket">
       <div class="basket-labels">
@@ -43,8 +46,66 @@
           <button>Remove</button>
         </div>
       </div>
-    </div>   
-  </main>
+    </main>
+    <hr class="rounded">
+    <footer>
+        <section class="contact">
+            <nav class="contact-left">
+                <h5>Company</h5>
+                <ul>
+                    <li><a>About Us</a></li>
+                    <li><a>Product Delivery</a></li>
+                    <li><a>Delivery Policy</a></li>
+                </ul>
+            </nav>
+            <nav class="contact-middle">
+                <h5>Account</h5>
+                <ul>
+                    <li><a>Manage Account</a></li>
+                    <li><a>Order History</a></li>
+                    <li><a>Track Your Order</a></li>
+                </ul>
+            </nav>
+            <nav class="contact-right">
+                <h5>Help</h5>
+                <ul>
+                    <li><a>Fequenly Asked Questions</a></li>
+                    <li><a>Customer Service</a></li>
+                    <li><a>File A Complaint</a></li>
+                </ul>
+            </nav>
+        </section>
+        <section class="contact">
+            <nav class="contact-left">
+                <h6>Subscribe for email offers</h6>
+                <input type="email"></input>
+                <button></button>
+            </nav>
+            <nav class="contact-middle">
+                <h6>Contact Us</h6>
+                <ul>
+                    <li>jnava@senecafoundation.org</li>
+                    <li>(312)363-9496</li>
+                </ul>
+            </nav>
+            <nav class="contact-right">
+                <h6>Follow Us</h6>
+                <ul>
+                    <li>
+                        <img></img>
+                        webstoreofficial
+                    </li>
+                    <li>
+                        <img></img>
+                        webstoreofficial
+                    </li>
+                    <li>
+                        <img></img>
+                        webstoreofficial
+                    </li>
+                </ul>
+            </nav>
+        </section>
+    </footer>
 </body>
-
 </html>
