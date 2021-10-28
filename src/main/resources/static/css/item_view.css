@@ -186,14 +186,6 @@ aside {
   width: 45%;
 }
 
-.remove button {
-  background-color: transparent;
-  color: #777;
-  float: none;
-  text-decoration: underline;
-  text-transform: uppercase;
-}
-
 .item-heading {
   padding-left: 4.375rem;
   -webkit-box-sizing: border-box;
@@ -401,4 +393,8 @@ aside {
   .product-details {
     padding: 0 1rem;
   }
+}
+
+h4 {
+  text-align:center;
 }
