@@ -17,8 +17,8 @@
         <main>
             <ul class="stores"> 
                 <li th:each="sticker : ${stickers}">
-                    <a th:href="'/sticker/readform/' + ${sticker.ID}">   
-                    <img th:data-id="${sticker.ID}" src="https://loremflickr.com/150/200/tshirt" alt="t-shirts"></img>
+                    <a th:href="'/sticker/product/' + ${sticker.ID}">   
+                    <img th:data-id="${sticker.ID}" src="https://loremflickr.com/150/200/sticker" alt="sticker"></img>
                     <div th:text="${sticker.name}"></div>
                     <div class="storeItemPriceImg">
                         <span th:text="'$' + ${sticker.price}"></span>
