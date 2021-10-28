@@ -8,8 +8,6 @@ import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoDe
 import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoReadData;
 import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoUpdateData;
 import com.senecafoundation.virtualstoreweb.FundamentalObjects.StoreItem;
-import com.senecafoundation.virtualstoreweb.ProductObjects.Tshirt;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
