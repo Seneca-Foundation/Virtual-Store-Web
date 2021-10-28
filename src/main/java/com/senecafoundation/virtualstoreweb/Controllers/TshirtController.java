@@ -1,6 +1,9 @@
 package com.senecafoundation.virtualstoreweb.Controllers;
 
 import java.util.UUID;
+
+import javax.activation.DataHandler;
+
 import java.util.List;
 
 import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoCreateData;
@@ -8,8 +11,6 @@ import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoDe
 import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoReadData;
 import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoUpdateData;
 import com.senecafoundation.virtualstoreweb.FundamentalObjects.StoreItem;
-import com.senecafoundation.virtualstoreweb.ProductObjects.Tshirt;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -51,7 +52,7 @@ public class TshirtController {
 
     @GetMapping("/categoryview")
     public String showCategoryView(Model model) {
-        List<StoreItem> tshirts = dataHandlerRead.ReadAll();
+        List<StoreItem> tshirts = DataHandler.ReadAll();
         model.addAttribute("tshirts", tshirts);
         return "category_tshirts";
     }
