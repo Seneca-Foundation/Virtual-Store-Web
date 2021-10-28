@@ -67,6 +67,13 @@ public class BraceletController {
         return "bracelet";
     }
 
+    @RequestMapping(value = "/product/{id}", method = RequestMethod.GET)
+    public String product(@PathVariable("id") String id, ModelMap model) {
+        Bracelet bracelet = (Bracelet) dataHandlerRead.Read(UUID.fromString(id));
+        model.addAttribute("bracelet", bracelet);
+        return "bracelet_product";
+    }
+
     @RequestMapping(value = "/readform/{id}", method = RequestMethod.GET)
     public String read(@PathVariable("id") String Id, ModelMap model) {
         Bracelet bracelet = (Bracelet) dataHandlerRead.Read(UUID.fromString(Id));
