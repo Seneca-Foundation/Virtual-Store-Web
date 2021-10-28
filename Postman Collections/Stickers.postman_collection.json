@@ -18,15 +18,15 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\":\"flower sticker\",\n    \"price\":5.00,\n    \"color\":\"yellow\",\n    \"description\":\"sticker of flower\",\n    \"weight\":\"1.0\",\n    \"height\": \"1.0\",\n    \"paper\":\"white\"\n}"
+					"raw": "{\n    \"name\":\"flower sticker\",\n    \"price\":5.00,\n    \"color\":\"yellow\",\n    \"description\":\"sticker of flower\",\n    \"weight\":\"1\",\n    \"width\":\"1\",\n    \"height\": \"1\",\n    \"paper\":\"clear\"\n}"
 				},
 				"url": {
-					"raw": "localhost/sticker",
+					"raw": "localhost/stickers",
 					"host": [
 						"localhost"
 					],
 					"path": [
-						"sticker"
+						"stickers"
 					]
 				}
 			},
@@ -44,13 +44,13 @@
 					}
 				],
 				"url": {
-					"raw": "localhost/sticker/id",
+					"raw": "localhost/stickers/id\n",
 					"host": [
 						"localhost"
 					],
 					"path": [
-						"sticker",
-						"id"
+						"stickers",
+						"id\n"
 					]
 				}
 			},
@@ -69,16 +69,16 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\":\"Archie Comics #1\",\n    \"price\":11.50,\n    \"author\":\"Vic Bloom\",\n    \"cover\":\"paperback\",\n    \"description\":\"problems arise due to love triangles in a small town\",\n    \"artist\": \"Bob Montana\",\n    \"weight\":0.3\n}"
+					"raw": "{\n    \"name\":\"flower sticker\",\n    \"price\":5.00,\n    \"color\":\"yellow\",\n    \"description\":\"sticker of flower\",\n    \"weight\":\"1\",\n    \"width\":\"1\",\n    \"height\": \"1\",\n    \"paper\":\"clear\"\n}"
 				},
 				"url": {
-					"raw": "localhost/sticker/id",
+					"raw": "localhost/stickers/b84198b2-78f5-4656-8ba1-fc1d0ee62dbd",
 					"host": [
 						"localhost"
 					],
 					"path": [
-						"sticker",
-						"id"
+						"stickers",
+						"b84198b2-78f5-4656-8ba1-fc1d0ee62dbd"
 					]
 				}
 			},
@@ -96,12 +96,12 @@
 					}
 				],
 				"url": {
-					"raw": "localhost/sticker/id",
+					"raw": "localhost/stickers/id",
 					"host": [
 						"localhost"
 					],
 					"path": [
-						"sticker",
+						"stickers",
 						"id"
 					]
 				}
