@@ -17,7 +17,7 @@
         <main>
             <ul class="stores"> 
                     <li th:each="tshirt : ${tshirts}">
-                        <a th:href="'/tshirt/readform/' + ${tshirt.ID}">
+                        <a th:href="'/tshirt/product/' + ${tshirt.ID}">
                             <img th:data-id="${tshirt.ID}" src="https://loremflickr.com/150/200/tshirt" alt="tshirt"></img>
                             <div th:text="${tshirt.name}"></div>
                             <div class="storeItemPriceImg">
