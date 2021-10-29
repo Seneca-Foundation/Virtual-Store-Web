@@ -6,6 +6,8 @@ import java.text.DecimalFormat;
 import com.senecafoundation.virtualstoreweb.ITextFormatter;
 import com.senecafoundation.virtualstoreweb.FundamentalObjects.WeightItem;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -16,19 +18,28 @@ import javax.persistence.Table;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Bracelet extends WeightItem 
 {
-
     private String color;
     private String material;
     private double length;
+    private MultipartFile picture;
+
     public Bracelet(String name, double price, String color, String material, double length, String description, double weight) {
         super(name, price, description, weight);
         this.color = color;
         this.setMaterial(material);
         this.setLength(length);
     }
-
+    
     public Bracelet(){
         super();
+    }
+
+    public MultipartFile getPicture() {
+        return picture;
+    }
+
+    public void setPicture(MultipartFile picture) {
+        this.picture = picture;
     }
     
     public String getColor() {
