@@ -66,13 +66,20 @@ public class DrawingController {
         return "drawing";
     }
 
-     @RequestMapping(value = "/readform/{id}", method = RequestMethod.GET)
-     public String read(@PathVariable("id") String Id, ModelMap model) {
+     @RequestMapping(value = "/product/{id}", method = RequestMethod.GET)
+     public String product(@PathVariable("id") String Id, ModelMap model) {
          Drawing drawing = (Drawing) dataHandlerRead.Read(UUID.fromString(Id));
          model.addAttribute("drawing", drawing);
         return "drawing";
      }
     
+     @RequestMapping(value = "/readform/{id}", method = RequestMethod.GET)
+     public String read(@PathVariable("id") String Id, ModelMap model) {
+         Drawing drawing = (Drawing) dataHandlerRead.Read(UUID.fromString(Id));
+         model.addAttribute("drawing", drawing);
+         return "drawing";
+     }
+
     @RequestMapping(value = "/updateform/{id}", method = RequestMethod.GET)
      public String showUpdateForm(@PathVariable("id") String Id, Model model) {
         Drawing drawing = (Drawing) dataHandlerRead.Read(UUID.fromString(Id));

@@ -16,8 +16,9 @@
         </header>
         <main>
             <ul class="stores"> 
-                <a th:href="'/drawing/readform/' + ${drawing.ID}">
                 <li th:each="drawing : ${drawings}">
+                    <a th:href="'/drawing/product/' + ${drawing.ID}">
+                    <li th:each="drawing : ${drawings}">
                     <img th:data-id="${drawing.ID}" src="https://loremflickr.com/150/200/drawing" alt="drawing"></img>
                     <div th:text="${drawing.name}"></div>
                     <div class="storeItemPriceImg">

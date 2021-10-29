@@ -1,108 +1,37 @@
-<head>
-  <title>Welcome to the Virtual Store Web</title>
-  <link rel="stylesheet" th:href="@{/css/front_page.css}" />
-  <link rel="stylesheet" th:href="@{/css/item_view.css}" />
-</head>
-<body>
-  <header>
-      <div class="searchContainer">
-          <button class="searchButtons">Sign In</button>
-          <button class="searchButtons">Cart</button>
-          <input class="searchBar" type="text"></input><button class="search">Search</button>
-      </div>
-      <img class= "img-seneca-Logo" th:src="@{/img/SenecaLogo.jpg}" alt="Logo for the Seneca Foundation Store"></img>
-  </header>
-  <main>
-    <div class="basket">
-      <div class="basket-labels">
-        <ul>
-          <li class="item item-heading">Item</li>
-          <li class="price">Price</li>
-          <li class="quantity">Quantity</li>
-          <!-- <li class="subtotal">Subtotal</li> -->
-        </ul>
-      </div>
-      <div class="basket-product">
-        <div class="item">
-          <div class="product-image">
-            <img src="https://loremflickr.com/120/166/drawing" alt="Placholder Image 2" class="product-frame">
-          </div>
-          <div class="product-details">
-            <h1><strong th:text="${drawing.name}"><span class="item-quantity">4</span> x Eliza J</strong><span th:text="' By Phoenix'"></span> </h1>
-            <p><strong th:text="'Price: ' + ${drawing.price} + '.'"></strong></p>
-            <p><strong th:text="'Color: ' + ${drawing.color} + '.'"></strong></p>
-            <p th:text="'Description: ' + ${drawing.description} + '.'"></p>
-            <p th:text="'Weight in pounds: ' + ${drawing.weight} + '.'"></p>
-            <p th:text="'Width in inches: ' + ${drawing.width} + '.'"></p>
-            <p th:text="'Paper: ' + ${drawing.paper} + '.'"></p>
-
-          </div>
-        </div>
-        <div class="price"><span th:text="${drawing.price}"></span></div>
-        <div class="quantity">
-          <input type="number" value="1" min="1" class="quantity-field">
-        </div>
-      </div>
-    </main>
-    <hr class="rounded">
-    <footer>
-        <section class="contact">
-            <nav class="contact-left">
-                <h5>Company</h5>
-                <ul>
-                    <li><a>About Us</a></li>
-                    <li><a>Product Delivery</a></li>
-                    <li><a>Delivery Policy</a></li>
-                </ul>
-            </nav>
-            <nav class="contact-middle">
-                <h5>Account</h5>
-                <ul>
-                    <li><a>Manage Account</a></li>
-                    <li><a>Order History</a></li>
-                    <li><a>Track Your Order</a></li>
-                </ul>
-            </nav>
-            <nav class="contact-right">
-                <h5>Help</h5>
-                <ul>
-                    <li><a>Frequently Asked Questions</a></li>
-                    <li><a>Customer Service</a></li>
-                    <li><a>File A Complaint</a></li>
-                </ul>
-            </nav>
-        </section>
-        <section class="contact">
-            <nav class="contact-left">
-                <h6>Subscribe for email offers</h6>
-                <input type="email"></input>
-                <button></button>
-            </nav>
-            <nav class="contact-middle">
-                <h6>Contact Us</h6>
-                <ul>
-                    <li>jnava@senecafoundation.org</li>
-                    <li>(312)363-9496</li>
-                </ul>
-            </nav>
-            <nav class="contact-right">
-                <h6>Follow Us</h6>
-                <ul>
-                    <li>
-                        <img></img>
-                        webstoreofficial
-                    </li>
-                    <li>
-                        <img></img>
-                        webstoreofficial
-                    </li>
-                    <li>
-                        <img></img>
-                        webstoreofficial
-                    </li>
-                </ul>
-            </nav>
-        </section>
-    </footer>
-</body>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Welcome to the Virtual Store Web</title>
+        <link rel="stylesheet" th:href="@{/css/item_view.css}" />
+    </head>
+    <body style="background-color:rgb(238, 253, 218);">
+      <h4>Drawing Created!</h4>
+        <main>
+          <div class="basket">
+            <div class="basket-labels">
+              <ul>
+                <li class="item item-heading">Item</li>
+                <li class="price">Price</li>
+                <li class="quantity">Quantity</li>
+                <!-- <li class="subtotal">Subtotal</li> -->
+              </ul>
+            </div>
+            <div class="basket-product">
+              <div class="item">
+                <div class="product-image">
+                  <img src="https://loremflickr.com/120/166/drawing" alt="Placholder Image 2" class="product-frame">
+                </div>
+                <div class="product-details">
+                  <h1><strong th:text="${drawing.name}"><span class="item-quantity">4</span> x Eliza J</strong><span th:text="' By Phoenix'"></span> </h1>
+                  <p><strong th:text="'Price: ' + ${drawing.price} + '.'"></strong></p>
+                  <p><strong th:text="'Color: ' + ${drawing.color} + '.'"></strong></p>
+                  <p th:text="'Description: ' + ${drawing.description} + '.'"></p>
+                  <p th:text="'Weight in pounds: ' + ${drawing.weight} + '.'"></p>
+                  <p th:text="'Width in inches: ' + ${drawing.width} + '.'"></p>
+                  <p th:text="'Paper: ' + ${drawing.paper} + '.'"></p></div>
+              </div>
+              <div class="price"><span id="itemprice" th:text="${drawing.price}"></span></div>
+              <div class="quantity">
+                <input type="number" value="1" min="1" class="quantity-field">
+              </div>
 </html>
