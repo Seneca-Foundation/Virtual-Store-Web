@@ -1,13 +1,14 @@
 package com.senecafoundation.virtualstoreweb.Controllers;
 
-import java.util.UUID;
 import java.util.List;
-import com.senecafoundation.virtualstoreweb.ProductObjects.Tshirt;
+import java.util.UUID;
+
 import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoCreateData;
 import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoDeleteData;
 import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoReadData;
 import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoUpdateData;
 import com.senecafoundation.virtualstoreweb.FundamentalObjects.StoreItem;
+import com.senecafoundation.virtualstoreweb.ProductObjects.Tshirt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 //import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 @RequestMapping("tshirt")
@@ -33,7 +35,7 @@ public class TshirtController {
     RepoDeleteData<Tshirt> dataHandlerDelete;
     @Autowired
     RepoReadData<Tshirt> dataHandlerRead;
-    
+
     @RequestMapping(value = "/", method=RequestMethod.GET)
     public String index()
     {
@@ -60,47 +62,56 @@ public class TshirtController {
             return "error";
         }
         dataHandler.Create(tshirt);
+        //repo.save(shadowElf);
         model.addAttribute("tshirt", tshirt);
         return "tshirt";
     }
 
-     @RequestMapping(value = "/readform/{id}", method = RequestMethod.GET)
-     public String read(@PathVariable("id") String Id, ModelMap model) {
-         Tshirt tshirt = (Tshirt) dataHandlerRead.Read(UUID.fromString(Id));
-         model.addAttribute("tshirt", tshirt);
+    @RequestMapping(value = "/product/{id}", method = RequestMethod.GET)
+    public String product(@PathVariable("id") String id, ModelMap model) {
+        Tshirt tshirt = (Tshirt) dataHandlerRead.Read(UUID.fromString(id));
+        model.addAttribute("tshirt", tshirt);
+        return "tshirt_product";
+    }
+
+    @RequestMapping(value = "/readform/{id}", method = RequestMethod.GET)
+    public String read(@PathVariable("id") String Id, ModelMap model) {
+        Tshirt tshirt = (Tshirt) dataHandlerRead.Read(UUID.fromString(Id));
+        model.addAttribute("tshirt", tshirt);
         return "tshirt";
-     }
+    }
     
     @RequestMapping(value = "/updateform/{id}", method = RequestMethod.GET)
-     public String showUpdateForm(@PathVariable("id") String Id, Model model) {
+    public String showUpdateForm(@PathVariable("id") String Id, Model model) {
         Tshirt tshirt = (Tshirt) dataHandlerRead.Read(UUID.fromString(Id));
-         model.addAttribute("tshirt", tshirt);
-         return "create_tshirt"; }
+        model.addAttribute("tshirt", tshirt);
+        return "create_tshirt";
+    }
 
-     @RequestMapping(value="/updateform", method = RequestMethod.PUT)
-     public String change(@ModelAttribute("tshirt") Tshirt tshirt, BindingResult result, ModelMap model) {
-         if (result.hasErrors()) {
-             return "error";
-         }
-         dataHandlerUpdate.Update(tshirt);
-         return "tshirt";   
-     }
+    @RequestMapping(value="/updateform", method = RequestMethod.PUT)
+    public String change(Tshirt tshirt, BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            return "error";
+        }
+        dataHandlerUpdate.Update(tshirt);
+        return "tshirt";   
+    }
 
-     @GetMapping("/deleteform")
-     public String showDeleteForm(Model model) {
-         List<StoreItem> showItems = dataHandlerRead.ReadAll();
-         model.addAttribute("itemsToDelete", showItems);
-         return "delete_tshirt";
-     }
-    
-     @RequestMapping(value = "/deleteform/{id}", method = RequestMethod.DELETE)
-     public String delete(@PathVariable("id") String Id, ModelMap model) {
-         try {
-             dataHandlerDelete.Delete(UUID.fromString(Id));
-         } catch (Exception e) {
-             e.printStackTrace();
-         }
-         model.addAttribute("Id", Id);
-         return "itemdelete";
-     }
+    @GetMapping("/deleteform")
+    public String showDeleteForm(Model model) {
+        List<StoreItem> showItems = dataHandlerRead.ReadAll();
+        model.addAttribute("itemsToDelete", showItems);
+        return "delete_tshirt";
+    }
+
+    @RequestMapping(value = "/deleteform/{id}", method = RequestMethod.DELETE)
+    public String delete(@PathVariable("id") String Id, ModelMap model) {
+        try {
+            dataHandlerDelete.Delete(UUID.fromString(Id));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        model.addAttribute("Id", Id);
+        return "itemdelete";
+    }
 }
