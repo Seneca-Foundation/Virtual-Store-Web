@@ -1,7 +1,11 @@
 package com.senecafoundation.virtualstoreweb.Controllers;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
+
+import javax.servlet.ServletContext;
 
 import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoCreateData;
 import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoDeleteData;
@@ -20,6 +24,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 //import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 
 @Controller
@@ -35,6 +40,8 @@ public class BraceletController {
     RepoDeleteData<Bracelet> dataHandlerDelete;
     @Autowired
     RepoReadData<Bracelet> dataHandlerRead;
+    @Autowired
+    ServletContext servletContext;
 
     @RequestMapping(value = "/", method=RequestMethod.GET)
     public String index()
@@ -62,7 +69,19 @@ public class BraceletController {
             return "error";
         }
         dataHandler.Create(bracelet);
-        //repo.save(shadowElf);
+        
+        MultipartFile multipartFile = bracelet.getPicture();
+        if (multipartFile != null || !multipartFile.isEmpty())
+        {
+            //multipartFile.getOriginalFilename()
+            String fileName = servletContext.getRealPath("/") + "resources\\images\\" + bracelet.getID().toString()+".png";
+            try {
+                multipartFile.transferTo(new File(fileName));
+            } 
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         model.addAttribute("bracelet", bracelet);
         return "bracelet";
     }
