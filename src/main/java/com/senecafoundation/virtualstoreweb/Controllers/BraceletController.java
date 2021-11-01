@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 //import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -40,8 +41,6 @@ public class BraceletController {
     RepoDeleteData<Bracelet> dataHandlerDelete;
     @Autowired
     RepoReadData<Bracelet> dataHandlerRead;
-    @Autowired
-    ServletContext servletContext;
 
     @RequestMapping(value = "/", method=RequestMethod.GET)
     public String index()
@@ -64,17 +63,17 @@ public class BraceletController {
     }
 
     @RequestMapping(value = "/createform", method = RequestMethod.POST)
-    public String submit(@ModelAttribute("bracelet") Bracelet bracelet, BindingResult result, ModelMap model) {
+    public String submit(@ModelAttribute("bracelet") Bracelet bracelet, @RequestParam("file") MultipartFile file, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return "error";
         }
         dataHandler.Create(bracelet);
         
-        MultipartFile multipartFile = bracelet.getPicture();
+        MultipartFile multipartFile = file;
         if (multipartFile != null || !multipartFile.isEmpty())
         {
             //multipartFile.getOriginalFilename()
-            String fileName = servletContext.getRealPath("/") + "resources\\images\\" + bracelet.getID().toString()+".png";
+            String fileName = bracelet.getID().toString()+".png";
             try {
                 multipartFile.transferTo(new File(fileName));
             } 

@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "bracelet")
@@ -21,6 +22,7 @@ public class Bracelet extends WeightItem
     private String color;
     private String material;
     private double length;
+    @Transient
     private MultipartFile picture;
 
     public Bracelet(String name, double price, String color, String material, double length, String description, double weight) {

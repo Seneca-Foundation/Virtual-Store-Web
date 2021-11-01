@@ -48,7 +48,7 @@
             </div>
             <div class="sign-up" id="sign-up-info">
                 <h1>Create Bracelet</h1>
-                <form id="sign-up-form" action="#" th:action="@{/bracelet/createform}" method="post" th:object="${bracelet}">
+                <form id="sign-up-form" action="#" th:action="@{/bracelet/createform}" method="post" th:object="${bracelet}" enctype="multipart/form-data">
                     <input type="hidden" th:field="*{ID}" />
                     <input type="text" th:field="*{name}" placeholder="Product" />
                     <input type="text" th:field="*{price}" placeholder="Price" />
@@ -57,11 +57,9 @@
                     <input type="text" th:field="*{length}" placeholder="Length" />
                     <input type="text" th:field="*{description}" placeholder="Description" />
                     <input type="text" th:field="*{weight}" placeholder="Weight" />
-                    <form action="FileUpload.php" method="post" enctype="multipart/form-data">
                         <p>Select image to upload:</p>
-                        <input type="file" name="fileToUpload" id="fileToUpload">
+                        <input type="file" name="file" id="fileToUpload">
                     <button type = "submit" name = "submit" class="control-button up">Enter Information</button>
-                </form>
                 </form>
             </div>
             </div>
