@@ -13,6 +13,7 @@ public class FileUploadItem extends WeightItem
     public FileUploadItem(String name, double price, String description, double weight) {
         super(name, price, description,weight);
     }
+    
     public FileUploadItem(String name, double price, String description, double weight, MultipartFile picture) {
         super(name, price, description,weight);
         this.picture = picture;
