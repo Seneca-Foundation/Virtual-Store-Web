@@ -10,6 +10,8 @@ import com.senecafoundation.virtualstoreweb.FundamentalObjects.WeightItem;
 @Entity
 @Table(name = "tshirt")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public class Tshirt extends FileUploadItem
+{
 public class  Tshirt extends WeightItem{
     private Integer width;
     private Integer length;      
