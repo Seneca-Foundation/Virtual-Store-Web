@@ -71,7 +71,7 @@ public class BraceletController {
         {
             String fileName = bracelet.getID().toString()+".png";
             try {
-                final String imagePath = "src/main/resources/images/"; //path
+                final String imagePath = "src/main/resources/static/images/"; //path
                 FileOutputStream output = new FileOutputStream(imagePath+fileName);
                 output.write(multipartFile.getBytes());
 
