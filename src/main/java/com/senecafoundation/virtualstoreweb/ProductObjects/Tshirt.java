@@ -1,14 +1,10 @@
 package com.senecafoundation.virtualstoreweb.ProductObjects;
 
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
-
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
-import com.senecafoundation.virtualstoreweb.ITextFormatter;
 import com.senecafoundation.virtualstoreweb.FundamentalObjects.FileUploadItem;
 
 @Entity
