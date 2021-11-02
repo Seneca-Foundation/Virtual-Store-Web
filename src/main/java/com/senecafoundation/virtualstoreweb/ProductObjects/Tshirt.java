@@ -1,18 +1,20 @@
 package com.senecafoundation.virtualstoreweb.ProductObjects;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
-import com.senecafoundation.virtualstoreweb.FundamentalObjects.WeightItem;
+import com.senecafoundation.virtualstoreweb.ITextFormatter;
+import com.senecafoundation.virtualstoreweb.FundamentalObjects.FileUploadItem;
 
 @Entity
 @Table(name = "tshirt")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class Tshirt extends FileUploadItem
-{
-public class  Tshirt extends WeightItem{
+public class Tshirt extends FileUploadItem{
     private Integer width;
     private Integer length;      
     private String size;
