@@ -16,15 +16,16 @@
         </header>
         <main>
             <ul class="stores"> 
-                <li th:each="sticker : ${stickers}">
-                    <a th:href="'/sticker/product/' + ${sticker.ID}">   
-                    <img th:data-id="${sticker.ID}" src="https://loremflickr.com/150/200/sticker" alt="sticker"></img>
-                    <div th:text="${sticker.name}"></div>
-                    <div class="storeItemPriceImg">
-                        <span th:text="'$' + ${sticker.price}"></span>
-                        <span>&#9825;</span>
-                    </div>
-                </li>
+                    <li th:each="bracelet : ${bracelets}">
+                        <a th:href="'/bracelet/product/' + ${bracelet.ID}">
+                            <img th:data-id="${bracelet.ID}" src="https://loremflickr.com/150/200/bracelet" alt="bracelet"></img>
+                            <div th:text="${bracelet.name}"></div>
+                            <div class="storeItemPriceImg">
+                                <span th:text="'$' + ${bracelet.price}"></span>
+                                <span>&#9825;</span>
+                            </div>
+                        </a>
+                    </li>
             </ul>
         </main>
         <hr class="rounded">

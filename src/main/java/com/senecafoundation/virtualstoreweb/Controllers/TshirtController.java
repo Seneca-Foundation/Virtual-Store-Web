@@ -8,7 +8,7 @@ import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoDe
 import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoReadData;
 import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoUpdateData;
 import com.senecafoundation.virtualstoreweb.FundamentalObjects.StoreItem;
-import com.senecafoundation.virtualstoreweb.ProductObjects.Sticker;
+import com.senecafoundation.virtualstoreweb.ProductObjects.Tshirt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,85 +23,85 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @Controller
-@RequestMapping("sticker")
-public class StickerController {
+@RequestMapping("tshirt")
+public class TshirtController {
 
     UUID ID;
     @Autowired
-    RepoCreateData<Sticker> dataHandler;
+    RepoCreateData<Tshirt> dataHandler;
     @Autowired
-    RepoUpdateData<Sticker> dataHandlerUpdate;
+    RepoUpdateData<Tshirt> dataHandlerUpdate;
     @Autowired
-    RepoDeleteData<Sticker> dataHandlerDelete;
+    RepoDeleteData<Tshirt> dataHandlerDelete;
     @Autowired
-    RepoReadData<Sticker> dataHandlerRead;
+    RepoReadData<Tshirt> dataHandlerRead;
 
     @RequestMapping(value = "/", method=RequestMethod.GET)
     public String index()
     {
-      return "sticker_index";
+      return "tshirt_index";
     }
 
     @GetMapping("/createform")
     public String showForm(Model model) {
-        Sticker sticker = new Sticker();
-        model.addAttribute("sticker", sticker);
-        return "create_sticker";
+        Tshirt tshirt = new Tshirt();
+        model.addAttribute("tshirt", tshirt);
+        return "create_tshirt";
     }
 
     @GetMapping("/categoryview")
     public String showCategoryView(Model model) {
-        List<StoreItem> stickers = dataHandlerRead.ReadAll();
-        model.addAttribute("stickers", stickers);
-        return "category_stickers";
+        List<StoreItem> tshirts = dataHandlerRead.ReadAll();
+        model.addAttribute("tshirts", tshirts);
+        return "category_tshirts";
     }
 
     @RequestMapping(value = "/createform", method = RequestMethod.POST)
-    public String submit(@ModelAttribute("sticker") Sticker sticker, BindingResult result, ModelMap model) {
+    public String submit(@ModelAttribute("tshirt") Tshirt tshirt, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return "error";
         }
-        dataHandler.Create(sticker);
+        dataHandler.Create(tshirt);
         //repo.save(shadowElf);
-        model.addAttribute("sticker", sticker);
-        return "sticker";
+        model.addAttribute("tshirt", tshirt);
+        return "tshirt";
     }
 
     @RequestMapping(value = "/product/{id}", method = RequestMethod.GET)
     public String product(@PathVariable("id") String id, ModelMap model) {
-        Sticker sticker = (Sticker) dataHandlerRead.Read(UUID.fromString(id));
-        model.addAttribute("sticker", sticker);
-        return "sticker_product";
+        Tshirt tshirt = (Tshirt) dataHandlerRead.Read(UUID.fromString(id));
+        model.addAttribute("tshirt", tshirt);
+        return "tshirt_product";
     }
 
     @RequestMapping(value = "/readform/{id}", method = RequestMethod.GET)
     public String read(@PathVariable("id") String Id, ModelMap model) {
-        Sticker sticker = (Sticker) dataHandlerRead.Read(UUID.fromString(Id));
-        model.addAttribute("sticker", sticker);
-        return "sticker";
+        Tshirt tshirt = (Tshirt) dataHandlerRead.Read(UUID.fromString(Id));
+        model.addAttribute("tshirt", tshirt);
+        return "tshirt";
     }
     
     @RequestMapping(value = "/updateform/{id}", method = RequestMethod.GET)
     public String showUpdateForm(@PathVariable("id") String Id, Model model) {
-        Sticker sticker = (Sticker) dataHandlerRead.Read(UUID.fromString(Id));
-        model.addAttribute("sticker", sticker);
-        return "create_sticker";
+        Tshirt tshirt = (Tshirt) dataHandlerRead.Read(UUID.fromString(Id));
+        model.addAttribute("tshirt", tshirt);
+        return "create_tshirt";
     }
 
     @RequestMapping(value="/updateform", method = RequestMethod.PUT)
-    public String change(Sticker sticker, BindingResult result, ModelMap model) {
+    public String change(Tshirt tshirt, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return "error";
         }
-        dataHandlerUpdate.Update(sticker);
-        return "sticker";   
+        dataHandlerUpdate.Update(tshirt);
+        return "tshirt";   
     }
 
     @GetMapping("/deleteform")
     public String showDeleteForm(Model model) {
         List<StoreItem> showItems = dataHandlerRead.ReadAll();
         model.addAttribute("itemsToDelete", showItems);
-        return "delete_sticker";
+        return "delete_tshirt";
     }
 
     @RequestMapping(value = "/deleteform/{id}", method = RequestMethod.DELETE)

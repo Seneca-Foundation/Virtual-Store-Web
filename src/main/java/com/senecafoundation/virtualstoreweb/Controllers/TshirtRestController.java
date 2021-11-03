@@ -8,7 +8,7 @@ import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoDe
 import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoReadData;
 import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoUpdateData;
 import com.senecafoundation.virtualstoreweb.FundamentalObjects.StoreItem;
-import com.senecafoundation.virtualstoreweb.ProductObjects.Sticker;
+import com.senecafoundation.virtualstoreweb.ProductObjects.Tshirt;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,50 +20,49 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-class StickerRestController {
+class TshirtRestController {
     
     @Autowired
-    RepoCreateData<Sticker> dataHandler;
+    RepoCreateData<Tshirt> dataHandler;
     @Autowired
-    RepoUpdateData<Sticker> dataHandlerUpdate;
+    RepoUpdateData<Tshirt> dataHandlerUpdate;
     @Autowired
-    RepoDeleteData<Sticker> dataHandlerDelete;
+    RepoDeleteData<Tshirt> dataHandlerDelete;
     @Autowired
-    RepoReadData<Sticker> dataHandlerRead;
+    RepoReadData<Tshirt> dataHandlerRead;
 
-    @PostMapping("/stickers")
-    Sticker newSticker(@RequestBody Sticker newSticker) {
-        UUID newId = dataHandler.Create(newSticker);
-        return newSticker;
+   @PostMapping("/tshirt")
+    Tshirt newTshirt(@RequestBody Tshirt newTshirt) {
+        UUID newId = dataHandler.Create(newTshirt);
+        return newTshirt;
     }
     
-    @GetMapping("/stickers")
-    List<StoreItem> allStickers() {
+    @GetMapping("/tshirt")
+    List<StoreItem> allTshirt() {
         return dataHandlerRead.ReadAll();
     }
 
-    @GetMapping("/stickers/{id}")
-    Sticker getSticker(@PathVariable String id) {
-        Sticker sticker = (Sticker) dataHandlerRead.Read(UUID.fromString(id));
-        return sticker;
+    @GetMapping("/tshirt/{id}")
+    Tshirt getTshirt(@PathVariable String id) {
+        Tshirt tshirt = (Tshirt) dataHandlerRead.Read(UUID.fromString(id));
+        return tshirt;
     }
     
-    @PutMapping("/stickers/{id}")
-    Sticker replaceSticker(@RequestBody Sticker newSticker, @PathVariable String id) throws Exception {
-        Sticker sticker = (Sticker) dataHandlerRead.Read(UUID.fromString(id));
-        if (sticker != null) {
-            newSticker.setID(sticker.getID());
-            dataHandlerUpdate.Update(newSticker);
-            return newSticker;
+    @PutMapping("/tshirt/{id}")
+    Tshirt replaceTshirt(@RequestBody Tshirt newTshirt, @PathVariable String id) throws Exception {
+        Tshirt tshirt = (Tshirt) dataHandlerRead.Read(UUID.fromString(id));
+        if (tshirt != null) {
+            newTshirt.setID(tshirt.getID());
+            dataHandlerUpdate.Update(newTshirt);
+            return newTshirt;
         }
         else {
-            throw new Exception("No Sticker found with id: " + id);
+            throw new Exception("No tshirt found with id: " + id);
         }
     }
     
-    @DeleteMapping("/stickers/{id}")
-    void deleteSticker(@PathVariable String id) {
+    @DeleteMapping("/tshirt/{id}")
+    void deleteTshirt(@PathVariable String id) {
         dataHandlerDelete.Delete(UUID.fromString(id));
     }
-}  
-
+}
