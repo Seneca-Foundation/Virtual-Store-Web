@@ -3,7 +3,7 @@
     <head>
         <title>Welcome to the Virtual Store Web</title>
         <link rel="stylesheet" th:href="@{/css/front_page.css}" />
-        <link rel="stylesheet" th:href="@{/css/category_view.css}" />
+        <link rel="stylesheet" th:href="@{/css/category_view.scss}" />
     </head>
     <body>
         <header>
@@ -16,12 +16,13 @@
         </header>
         <main>
             <ul class="stores"> 
-                <li th:each="sticker : ${stickers}">
-                    <a th:href="'/sticker/product/' + ${sticker.ID}">   
-                    <img th:data-id="${sticker.ID}" src="https://loremflickr.com/150/200/sticker" alt="sticker"></img>
-                    <div th:text="${sticker.name}"></div>
+                <li th:each="drawing : ${drawings}">
+                    <a th:href="'/drawing/product/' + ${drawing.ID}">
+                    <li th:each="drawing : ${drawings}">
+                    <img th:data-id="${drawing.ID}" src="https://loremflickr.com/150/200/drawing" alt="drawing"></img>
+                    <div th:text="${drawing.name}"></div>
                     <div class="storeItemPriceImg">
-                        <span th:text="'$' + ${sticker.price}"></span>
+                        <span th:text="'$' + ${drawing.price}"></span>
                         <span>&#9825;</span>
                     </div>
                 </li>

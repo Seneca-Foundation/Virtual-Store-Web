@@ -1,50 +1,39 @@
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Basket</title>
-  <link rel="stylesheet" th:href="@{/css/item_view.css}" />
-</head>
-
-<body>
-  <main>
-    <div class="basket">
-      <div class="basket-labels">
-        <ul>
-          <li class="item item-heading">Item</li>
-          <li class="price">Price</li>
-          <li class="quantity">Quantity</li>
-          <!-- <li class="subtotal">Subtotal</li> -->
-        </ul>
-      </div>
-      <div class="basket-product">
-        <div class="item">
-          <div class="product-image">
-            <img src="https://loremflickr.com/120/166/sticker" alt="Placholder Image 2" class="product-frame">
-          </div>
-          <div class="product-details">
-            <h1><strong th:text="${sticker.name}"><span class="item-quantity">4</span> x Eliza J</strong><span th:text="' By Joshua Nava'"></span> </h1>
-            <p><strong th:text="'Price: ' + ${sticker.price} + '.'"></strong></p>
-            <p><strong th:text="'Color: ' + ${sticker.color} + '.'"></strong></p>
-            <p th:text="'Description: ' + ${sticker.description} + '.'"></p>
-            <p th:text="'Weight in pounds: ' + ${sticker.weight} + '.'"></p>
-            <p th:text="'Width in inches: ' + ${sticker.width} + '.'"></p>
-            <p th:text="'Height in inches: ' + ${sticker.height} + '.'"></p>
-            <p th:text="'Paper: ' + ${sticker.paper} + '.'"></p>
-          </div>
-        </div>
-        <div class="price"><span th:text="${sticker.price}"></span></div>
-        <div class="quantity">
-          <input type="number" value="1" min="1" class="quantity-field">
-        </div>
-        <div class="remove">
-          <button>Remove</button>
-        </div>
-      </div>
-    </div>   
-  </main>
-</body>
-
+    <head>
+        <title>Welcome to the Virtual Store Web</title>
+        <link rel="stylesheet" th:href="@{/css/item_view.css}" />
+    </head>
+    <body style="background-color:rgb(238, 253, 218);">
+      <h4>Sticker Created!</h4>
+        <main>
+          <div class="basket">
+            <div class="basket-labels">
+              <ul>
+                <li class="item item-heading">Item</li>
+                <li class="price">Price</li>
+                <li class="quantity">Quantity</li>
+                <!-- <li class="subtotal">Subtotal</li> -->
+              </ul>
+            </div>
+            <div class="basket-product">
+              <div class="item">
+                <div class="product-image">
+                  <img src="https://loremflickr.com/120/166/sticker" alt="Placholder Image 2" class="product-frame">
+                </div>
+                <div class="product-details">
+                  <h1><strong th:text="${sticker.name}"><span class="item-quantity">4</span> x Eliza J</strong><span th:text="' Stickers! By Joshua Nava'"></span> </h1>
+                  <p><strong th:text="'Price: ' + ${sticker.price} + '.'"></strong></p>
+                  <p><strong th:text="'Color: ' + ${sticker.color} + '.'"></strong></p>
+                  <p th:text="'Description: ' + ${sticker.description} + '.'"></p>
+                  <p th:text="'Weight in pounds: ' + ${sticker.weight} + '.'"></p>
+                  <p th:text="'Width in inches: ' + ${sticker.width} + '.'"></p>
+                  <p th:text="'Height in inches: ' + ${sticker.height} + '.'"></p>
+                  <p th:text="'Paper: ' + ${sticker.paper} + '.'"></p>
+                </div>      
+              </div>
+              <div class="price"><span id="itemprice" th:text="${sticker.price}"></span></div>
+              <div class="quantity">
+                <input type="number" value="1" min="1" class="quantity-field">
+              </div>
 </html>

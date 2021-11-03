@@ -61,6 +61,16 @@
                     "mainClass": "com.senecafoundation.virtualstoreweb.VirtualStoreWebApplication",
                     "projectName": "virtualstore",
                     "args": "--spring.profiles.active=YOURNAME"
+                },
+                {
+                        "type": "java",
+                        "name": "Launch with Cloud Database",
+                        "request": "launch",
+                        "cwd": "${workspaceFolder}",
+                        "console": "internalConsole",
+                        "mainClass": "com.senecafoundation.virtualstoreweb.VirtualStoreWebApplication",
+                        "projectName": "virtualstore",
+                        "args": "--spring.profiles.active=docker"
                 }
             ]
         }

@@ -1,12 +1,12 @@
 {
 	"info": {
-		"_postman_id": "b0abf8b9-0ca3-45f5-bc89-7f8694408e99",
-		"name": "Stickers",
+		"_postman_id": "4daa0a42-f543-4986-8142-4bd873b4d070",
+		"name": "Bracelet",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Create new sticker",
+			"name": "Create new bracelet",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -18,22 +18,22 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\":\"flower sticker\",\n    \"price\":5.00,\n    \"color\":\"yellow\",\n    \"description\":\"sticker of flower\",\n    \"weight\":\"1\",\n    \"width\":\"1\",\n    \"height\": \"1\",\n    \"paper\":\"clear\"\n}"
+					"raw": "{\n    \"name\":\"Beaded Cute Friendship Bracelet\",\n    \"price\":6,\n    \"color\": \"pink\",\n    \"material\": \"yarn\",\n    \"length\": 4,\n    \"description\":\"handmade with rounded beads\",\n    \"weight\":0.3\n}"
 				},
 				"url": {
-					"raw": "localhost/stickers",
+					"raw": "localhost/bracelets",
 					"host": [
 						"localhost"
 					],
 					"path": [
-						"stickers"
+						"bracelets"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Read sticker",
+			"name": "Read bracelet",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -44,20 +44,20 @@
 					}
 				],
 				"url": {
-					"raw": "localhost/stickers/id\n",
+					"raw": "localhost/bracelets/id",
 					"host": [
 						"localhost"
 					],
 					"path": [
-						"stickers",
-						"id\n"
+						"bracelets",
+						"id"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Update sticker",
+			"name": "Update bracelet",
 			"request": {
 				"method": "PUT",
 				"header": [
@@ -69,23 +69,23 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\":\"flower sticker\",\n    \"price\":5.00,\n    \"color\":\"yellow\",\n    \"description\":\"sticker of flower\",\n    \"weight\":\"1\",\n    \"width\":\"1\",\n    \"height\": \"1\",\n    \"paper\":\"clear\"\n}"
+					"raw": "{\n    \"name\":\"Beaded Cute Friendship Bracelet\",\n    \"price\":6,\n    \"color\": \"blue\",\n    \"material\": \"yarn\",\n    \"length\": 4,\n    \"description\":\"handmade with rounded beads\",\n    \"weight\":0.3\n}"
 				},
 				"url": {
-					"raw": "localhost/stickers/b84198b2-78f5-4656-8ba1-fc1d0ee62dbd",
+					"raw": "localhost/bracelets/id",
 					"host": [
 						"localhost"
 					],
 					"path": [
-						"stickers",
-						"b84198b2-78f5-4656-8ba1-fc1d0ee62dbd"
+						"bracelets",
+						"id"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Delete sticker",
+			"name": "Delete bracelet",
 			"request": {
 				"method": "DELETE",
 				"header": [
@@ -96,12 +96,12 @@
 					}
 				],
 				"url": {
-					"raw": "localhost/stickers/id",
+					"raw": "localhost/bracelets/id",
 					"host": [
 						"localhost"
 					],
 					"path": [
-						"stickers",
+						"bracelets",
 						"id"
 					]
 				}

@@ -1,12 +1,12 @@
 {
 	"info": {
-		"_postman_id": "b0abf8b9-0ca3-45f5-bc89-7f8694408e99",
-		"name": "Stickers",
+		"_postman_id": "c0408474-6998-4a9d-9223-5f81e0c93fd7",
+		"name": "Tshirt",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Create new sticker",
+			"name": "Create new Drawing",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -18,22 +18,22 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\":\"flower sticker\",\n    \"price\":5.00,\n    \"color\":\"yellow\",\n    \"description\":\"sticker of flower\",\n    \"weight\":\"1\",\n    \"width\":\"1\",\n    \"height\": \"1\",\n    \"paper\":\"clear\"\n}"
+					"raw": "{\n    \"name\":\"black T-SHIRT\",\n    \"price\": \"10\",\n    \"color\": \"black\",\n    \"description\":\"T-SHIRT\",\n    \"width\":\"12\",\n    \"length\":\"12\",\n    \"Size\":\"Small\",\n    \"weight\":\"1.0\"\n}"
 				},
 				"url": {
-					"raw": "localhost/stickers",
+					"raw": "localhost/tshirts",
 					"host": [
 						"localhost"
 					],
 					"path": [
-						"stickers"
+						"tshirts"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Read sticker",
+			"name": "Read Drawing",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -44,20 +44,20 @@
 					}
 				],
 				"url": {
-					"raw": "localhost/stickers/id\n",
+					"raw": "localhost/tshirts/id",
 					"host": [
 						"localhost"
 					],
 					"path": [
-						"stickers",
-						"id\n"
+						"tshirts",
+						"id"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Update sticker",
+			"name": "Update Drawing",
 			"request": {
 				"method": "PUT",
 				"header": [
@@ -69,23 +69,23 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\":\"flower sticker\",\n    \"price\":5.00,\n    \"color\":\"yellow\",\n    \"description\":\"sticker of flower\",\n    \"weight\":\"1\",\n    \"width\":\"1\",\n    \"height\": \"1\",\n    \"paper\":\"clear\"\n}"
+					"raw": "{\n    \"name\":\"MacBook Air\",\n    \"price\":1000,\n    \"color\": \"space grey\",\n    \"description\": \"drawing\",\n    \"width\": \"12\",\n    \"height\":\"12\",\n    \"paper\":\"clear\",\n    \"weight\":\"1\"   \n}"
 				},
 				"url": {
-					"raw": "localhost/stickers/b84198b2-78f5-4656-8ba1-fc1d0ee62dbd",
+					"raw": "localhost/tshirts/id",
 					"host": [
 						"localhost"
 					],
 					"path": [
-						"stickers",
-						"b84198b2-78f5-4656-8ba1-fc1d0ee62dbd"
+						"tshirts",
+						"id"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Delete sticker",
+			"name": "Delete Drawing",
 			"request": {
 				"method": "DELETE",
 				"header": [
@@ -96,12 +96,12 @@
 					}
 				],
 				"url": {
-					"raw": "localhost/stickers/id",
+					"raw": "localhost/tshirts/id",
 					"host": [
 						"localhost"
 					],
 					"path": [
-						"stickers",
+						"tshirts",
 						"id"
 					]
 				}
