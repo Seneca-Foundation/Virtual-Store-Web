@@ -69,7 +69,7 @@ public class DrawingController {
             MultipartFile multipartFile = file;
             if (multipartFile != null || !multipartFile.isEmpty())
             {   
-                String fileName = sticker.getID().toString()+".png";
+                String fileName = drawing.getID().toString()+".png";
                 try {
                     final String imagePath = "src/main/resources/static/images/"; //path
                     FileOutputStream output = new FileOutputStream(imagePath+fileName);
@@ -81,11 +81,10 @@ public class DrawingController {
                     e.printStackTrace();
                 }
             }
-            model.addAttribute("sticker", sticker);
-            return "sticker";
+            model.addAttribute("drawing", drawing);
+            return "drawing";
         }
 
-    }
 
      @RequestMapping(value = "/product/{id}", method = RequestMethod.GET)
      public String product(@PathVariable("id") String Id, ModelMap model) {
