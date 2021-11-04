@@ -18,19 +18,19 @@
                 <li>
                     <a href="/tshirt/categoryview">
                         <button class="searchButtons">T-Shirts by Kareona</button>
-                        <img src="https://loremflickr.com/150/200/tshirt" alt="t-shirts"></img>
+                        <img th:src="@{${'/images/' + tshirtId + '.png'}}" alt="t-shirts"></img>
                     </a>
                 </li>
                 <li>
                     <a href="/drawing/categoryview">
                         <button class="searchButtons">Drawings by Phoenix</button>
-                        <img src="https://loremflickr.com/150/200/drawings" alt="drawings"></img>
+                        <img th:src="@{${'/images/' + drawingId + '.png'}}" alt="drawings"></img>
                     </a>
                 </li>
                 <li>
                     <a href="/sticker/categoryview">
                         <button class="searchButtons">Stickers by Joshua</button>
-                        <img src="https://loremflickr.com/150/200/stickers" alt="stickers"></img>
+                        <img th:src="@{${'/images/' + stickerId + '.png'}}" alt="stickers"></img>
                     </a>
                 </li>
                 <li>
