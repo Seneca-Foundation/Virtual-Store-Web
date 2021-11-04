@@ -30,9 +30,9 @@ public class AppController
   public String index()
   {
     model.addAttribute("braceletId", dataHandlerReadBracelet.ReadAll().get(0).getID().toString());
-    model.addAttribute("stickerId", dataHandlerReadBracelet.ReadAll().get(0).getID().toString());
-    model.addAttribute("drawingId", dataHandlerReadBracelet.ReadAll().get(0).getID().toString());
-    model.addAttribute("tshirtId", dataHandlerReadBracelet.ReadAll().get(0).getID().toString());
+    model.addAttribute("stickerId", dataHandlerReadSticker.ReadAll().get(0).getID().toString());
+    model.addAttribute("drawingId", dataHandlerReadDrawing.ReadAll().get(0).getID().toString());
+    model.addAttribute("tshirtId", dataHandlerReadTshirt.ReadAll().get(0).getID().toString());
     return "index";
   }
 }
