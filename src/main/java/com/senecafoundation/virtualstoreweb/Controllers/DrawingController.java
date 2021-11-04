@@ -66,25 +66,24 @@ public class DrawingController {
         }
         dataHandler.Create(drawing);
 
-            MultipartFile multipartFile = file;
-            if (multipartFile != null || !multipartFile.isEmpty())
-            {   
-                String fileName = drawing.getID().toString()+".png";
-                try {
-                    final String imagePath = "src/main/resources/static/images/"; //path
-                    FileOutputStream output = new FileOutputStream(imagePath+fileName);
-                    output.write(multipartFile.getBytes());
+        MultipartFile multipartFile = file;
+        if (multipartFile != null || !multipartFile.isEmpty())
+        {   
+            String fileName = drawing.getID().toString()+".png";
+            try {
+                final String imagePath = "src/main/resources/static/images/"; //path
+                FileOutputStream output = new FileOutputStream(imagePath+fileName);
+                output.write(multipartFile.getBytes());
 
-                    //multipartFile.transferTo(new File(fileName));
-                } 
-                catch (IOException e) {
-                    e.printStackTrace();
-                }
+                //multipartFile.transferTo(new File(fileName));
+            } 
+            catch (IOException e) {
+                e.printStackTrace();
             }
-            model.addAttribute("drawing", drawing);
-            return "drawing";
         }
-
+        model.addAttribute("drawing", drawing);
+        return "drawing";
+    }
 
      @RequestMapping(value = "/product/{id}", method = RequestMethod.GET)
      public String product(@PathVariable("id") String Id, ModelMap model) {
