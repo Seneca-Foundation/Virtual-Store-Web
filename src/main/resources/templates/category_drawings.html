@@ -19,8 +19,8 @@
                 <li th:each="drawing : ${drawings}">
                     <a th:href="'/drawing/product/' + ${drawing.ID}">
                     <li th:each="drawing : ${drawings}">
-                    <img th:data-id="${drawing.ID}" src="https://loremflickr.com/150/200/drawing" alt="drawing"></img>
-                    <div th:text="${drawing.name}"></div>
+                        <img th:data-id="${drawing.ID}" th:src="@{${'/images/' + drawing.ID + '.png'}}" alt="bracelet"></img>
+                        <div th:text="${drawing.name}"></div>
                     <div class="storeItemPriceImg">
                         <span th:text="'$' + ${drawing.price}"></span>
                         <span>&#9825;</span>
