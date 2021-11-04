@@ -12,7 +12,7 @@ import com.senecafoundation.virtualstoreweb.ITextFormatter;
 import com.senecafoundation.virtualstoreweb.FundamentalObjects.FileUploadItem;
 
 @Entity
-@Table(name = "Drawing")
+@Table(name = "drawing")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Drawing extends FileUploadItem{
     private Integer width;
@@ -27,6 +27,9 @@ public class Drawing extends FileUploadItem{
         this.setHeight(height);
         this.setPaper(paper);
         this.setColor(color);
+    }
+    public Drawing(){
+        super();
     }
     public String getColor() {
         return color;
