@@ -26,8 +26,8 @@ public class AppController
   RepoReadData<Tshirt> dataHandlerReadTshirt;
   // wire up the other three
 
-  @RequestMapping(method=RequestMethod.GET, ModelMap model)
-  public String index()
+  @RequestMapping(method=RequestMethod.GET)
+  public String index(ModelMap model)
   {
     model.addAttribute("braceletId", dataHandlerReadBracelet.ReadAll().get(0).getID().toString());
     model.addAttribute("stickerId", dataHandlerReadSticker.ReadAll().get(0).getID().toString());
