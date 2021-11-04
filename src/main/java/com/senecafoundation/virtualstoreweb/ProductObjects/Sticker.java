@@ -28,6 +28,7 @@ public class Sticker extends FileUploadItem{
         this.setColor(color);
     }
     public Sticker() {
+        super();
     }
     public String getColor() {
         return color;

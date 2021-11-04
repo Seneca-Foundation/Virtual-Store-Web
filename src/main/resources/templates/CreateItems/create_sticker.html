@@ -48,7 +48,7 @@
             </div>
             <div class="sign-up" id="sign-up-info">
                 <h1>Create Sticker!</h1>
-                <form id="sign-up-form" action="#" th:action="@{/sticker/createform}" method="post" th:object="${sticker}">
+                <form id="sign-up-form" action="#" th:action="@{/sticker/createform}" method="post" th:object="${sticker}" enctype="multipart/form-data">
                     <input type="hidden" th:field="*{ID}" />
                     <input type="text" th:field="*{name}" placeholder="Name" />
                     <input type="text" th:field="*{price}" placeholder="Price" />
@@ -57,10 +57,9 @@
                     <input type="text" th:field="*{weight}" placeholder="Weight" />
                     <input type="text" th:field="*{width}" placeholder="Width" />
                     <input type="text" th:field="*{height}" placeholder="Height" />
-                    <input type="text" th:field="*{paper}" placeholder="Paper" />                    <button class="control-button up">Enter Information</button>
-                    <form action="FileUpload.php" method="post" enctype="multipart/form-data">
+                    <input type="text" th:field="*{paper}" placeholder="Paper" />                   
                         <p>Select image to upload:</p>
-                        <input type="file" name="fileToUpload" id="fileToUpload">
+                        <input type="file" name="file" id="fileToUpload">
                     <button type = "submit" name = "submit" class="control-button up">Enter Information</button>
                 </form>
                 </form>
