@@ -1,7 +1,9 @@
 package com.senecafoundation.virtualstoreweb.Controllers;
 
-import java.util.UUID;
 import java.util.List;
+import java.util.UUID;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoCreateData;
 import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoDeleteData;
@@ -20,7 +22,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-//import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("drawing")
@@ -57,11 +60,27 @@ public class DrawingController {
     }
 
     @RequestMapping(value = "/createform", method = RequestMethod.POST)
-    public String submit(@ModelAttribute("drawing") Drawing drawing, BindingResult result, ModelMap model) {
+    public String submit(@ModelAttribute("drawing") Drawing drawing,  @RequestParam("file") MultipartFile file, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return "error";
         }
         dataHandler.Create(drawing);
+
+        MultipartFile multipartFile = file;
+        if (multipartFile != null || !multipartFile.isEmpty())
+        {   
+            String fileName = drawing.getID().toString()+".png";
+            try {
+                final String imagePath = "src/main/resources/static/images/"; //path
+                FileOutputStream output = new FileOutputStream(imagePath+fileName);
+                output.write(multipartFile.getBytes());
+
+                //multipartFile.transferTo(new File(fileName));
+            } 
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         model.addAttribute("drawing", drawing);
         return "drawing";
     }
@@ -70,7 +89,7 @@ public class DrawingController {
      public String product(@PathVariable("id") String Id, ModelMap model) {
          Drawing drawing = (Drawing) dataHandlerRead.Read(UUID.fromString(Id));
          model.addAttribute("drawing", drawing);
-        return "drawing";
+        return "drawing_product";
      }
     
      @RequestMapping(value = "/readform/{id}", method = RequestMethod.GET)

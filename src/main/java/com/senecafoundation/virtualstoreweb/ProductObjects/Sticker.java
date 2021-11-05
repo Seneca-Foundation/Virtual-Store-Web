@@ -1,16 +1,19 @@
 package com.senecafoundation.virtualstoreweb.ProductObjects;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
-import com.senecafoundation.virtualstoreweb.FundamentalObjects.WeightItem;
-
+import com.senecafoundation.virtualstoreweb.ITextFormatter;
+import com.senecafoundation.virtualstoreweb.FundamentalObjects.FileUploadItem;
 @Entity
 @Table(name = "sticker")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class Sticker extends WeightItem{
+public class Sticker extends FileUploadItem{
     private Integer width;
     private Integer height;      
     private String paper;
@@ -23,6 +26,9 @@ public class Sticker extends WeightItem{
         this.setHeight(height);
         this.setPaper(paper);
         this.setColor(color);
+    }
+    public Sticker() {
+        super();
     }
     public String getColor() {
         return color;
@@ -48,14 +54,20 @@ public class Sticker extends WeightItem{
     public void setWidth(Integer width) {
         this.width = width;
     }
-    public Sticker(Integer width, Integer height, String paper, String color) {
-        this.setWidth(width);
-        this.setHeight(height);
-        this.setPaper(paper);
-        this.setColor(color);
+    public String GetData(ITextFormatter userTextFormatter)
+    {
+        this.textFormatter = userTextFormatter;
+        DecimalFormat df = new DecimalFormat("#.##");
+        df.setRoundingMode(RoundingMode.CEILING);
+        return "Sticker: " + this.getName()  +  ", Price: $" + df.format(this.textFormatter.getPrice()) + ", Color: " + color + ", Paper: "+ paper + ", Width: " + width + ",Height: " + height + ", Description: " + this.getDescription() +  ", Weight: "+ weight + " pounds, Item Number: " + getID();
     }
 
-    public Sticker() {};
+
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName() + "," + this.getID() + "," + this.getName() + "," + String.valueOf(this.getPrice()) + "," + this.getColor() + "," + this.getPaper() + "," + this.getWidth() + "," + this.getHeight() + "," + this.getDescription() + "," + this.getWeight();
+    }
+}
 
     
-}
+

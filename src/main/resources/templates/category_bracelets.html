@@ -18,7 +18,7 @@
             <ul class="stores"> 
                     <li th:each="bracelet : ${bracelets}">
                         <a th:href="'/bracelet/product/' + ${bracelet.ID}">
-                            <img th:data-id="${bracelet.ID}" src="https://loremflickr.com/150/200/bracelet" alt="bracelet"></img>
+                            <img th:data-id="${bracelet.ID}" th:src="@{${'/images/' + bracelet.ID + '.png'}}" alt="bracelet"></img>
                             <div th:text="${bracelet.name}"></div>
                             <div class="storeItemPriceImg">
                                 <span th:text="'$' + ${bracelet.price}"></span>

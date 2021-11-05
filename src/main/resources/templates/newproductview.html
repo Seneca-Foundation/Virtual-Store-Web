@@ -3,7 +3,7 @@
     <head>
         <title>Welcome to the Virtual Store Web</title>
         <link rel="stylesheet" th:href="@{/css/front_page.css}" />
-        <link rel="stylesheet" th:href="@{/css/item_view.css}" />
+        <link rel="stylesheet" th:href="@{/css/product_view.css}" />
     </head>
     <body>
         <script src="https://www.paypal.com/sdk/js?client-id=AQwaU7qzEPHHKAxrYXL8ZbLV1xEscLEE9BuyT9WOENwfLQZptjsGF7JdUYaVOGMzR4OZ01L5QkFwWXHp&currency=USD"></script>
@@ -15,40 +15,47 @@
             </div>
             <img class= "img-seneca-Logo" th:src="@{/img/SenecaLogo.jpg}" alt="Logo for the Seneca Foundation Store"></img>
         </header>
-        <main>
-          <div class="basket">
-            <div class="basket-labels">
-              <ul>
-                <li class="item item-heading">Item</li>
-                <li class="price">Price</li>
-                <li class="quantity">Quantity</li>
-                <!-- <li class="subtotal">Subtotal</li> -->
-              </ul>
-            </div>
-            <div class="basket-product">
-              <div class="item">
-                <div class="product-image">
-                  <img th:src="@{${'/images/' + sticker.ID + '.png'}}" alt="Placholder Image 2" class="product-frame">
-                </div>
-                <div class="product-details">
-                    <h1><strong th:text="${sticker.name}"><span class="item-quantity">4</span> x Eliza J</strong><span th:text="' By Joshua Nava'"></span> </h1>
-                    <p><strong th:text="'Price: ' + ${sticker.price} + '.'"></strong></p>
-                    <p><strong th:text="'Color: ' + ${sticker.color} + '.'"></strong></p>
-                    <p th:text="'Description: ' + ${sticker.description} + '.'"></p>
-                    <p th:text="'Weight in pounds: ' + ${sticker.weight} + '.'"></p>
-                    <p th:text="'Width in inches: ' + ${sticker.width} + '.'"></p>
-                    <p th:text="'Height in inches: ' + ${sticker.height} + '.'"></p>
-                    <p th:text="'Paper: ' + ${sticker.paper} + '.'"></p>
-                  </div>
-              </div>
-              <div class="price"><span id="itemprice" th:text="${sticker.price}"></span></div>
-              <div class="quantity">
-                <input type="number" value="1" min="1" class="quantity-field">
-              </div>
-              <div id="paypal-button-container"></div>
-            </div>
-          </div>
         </main>
+          <div class="container">
+              <div class="images">
+                <img th:src="@{${'/images/' + bracelet.ID + '.png'}}" alt="Placholder Image 2" class="product-frame">
+              </div>
+              <div class="slideshow-buttons">
+                <div class="one"></div>
+                <div class="two"></div>
+                <div class="three"></div>
+                <div class="four"></div>
+              </div>
+              <!-- <p class="pick">Choose length</p>
+              <div class="sizes">
+                <div class="size">5</div>
+                <div class="size">6</div>
+                <div class="size">7</div>
+                <div class="size">8</div>
+                <div class="size">9</div>
+                <div class="size">10</div>
+                <div class="size">11</div>
+                <div class="size">12</div>
+              </div> -->
+              <div class="product">
+                <p>Product Information</p>
+                <h1 th:text="${bracelet.name}"></h1>
+                <h2 th:text="${bracelet.price}"></h2>
+                <div class="desc"></div>
+                <p th:text="'Color: ' + ${bracelet.color} + '.'"></p>
+                  <p th:text="'Material: ' + ${bracelet.material} + '.'"></p>
+                  <p th:text="'Length in inches: ' + ${bracelet.length} + '.'"></p>
+                  <p th:text="'Description: ' + ${bracelet.description} + '.'"></p>
+                  <p th:text="'Weight in pounds: ' + ${bracelet.weight} + '.'"></p>
+                <div class="desc"></div>
+                <div class="buttons">
+                  <button class="add">Add to Cart</button>
+                  <button class="like"><span>♥</span></button>
+                </div>
+              </div>
+            </div>
+            <div id="paypal-button-container"></div>
+          </main>
         <hr class="rounded">
         <footer>
             <section class="contact">
@@ -142,3 +149,4 @@
         </script>
     </body>
 </html>
+  

@@ -2,6 +2,8 @@ package com.senecafoundation.virtualstoreweb.Controllers;
 
 import java.util.List;
 import java.util.UUID;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoCreateData;
 import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoDeleteData;
@@ -9,6 +11,7 @@ import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoRe
 import com.senecafoundation.virtualstoreweb.DataHandlers.RepoDataHandlers.RepoUpdateData;
 import com.senecafoundation.virtualstoreweb.FundamentalObjects.StoreItem;
 import com.senecafoundation.virtualstoreweb.ProductObjects.Sticker;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +22,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-//import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 
 @Controller
@@ -57,12 +61,27 @@ public class StickerController {
     }
 
     @RequestMapping(value = "/createform", method = RequestMethod.POST)
-    public String submit(@ModelAttribute("sticker") Sticker sticker, BindingResult result, ModelMap model) {
+    public String submit(@ModelAttribute("sticker") Sticker sticker, @RequestParam("file") MultipartFile file, BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return "error";
         }
         dataHandler.Create(sticker);
-        //repo.save(shadowElf);
+        
+        MultipartFile multipartFile = file;
+        if (multipartFile != null || !multipartFile.isEmpty())
+        {   
+            String fileName = sticker.getID().toString()+".png";
+            try {
+                final String imagePath = "src/main/resources/static/images/"; //path
+                FileOutputStream output = new FileOutputStream(imagePath+fileName);
+                output.write(multipartFile.getBytes());
+
+                //multipartFile.transferTo(new File(fileName));
+            } 
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         model.addAttribute("sticker", sticker);
         return "sticker";
     }

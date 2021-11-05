@@ -48,6 +48,9 @@ class TshirtRestController {
         return tshirt;
     }
     
+    public TshirtRestController() {
+    }
+
     @PutMapping("/tshirt/{id}")
     Tshirt replaceTshirt(@RequestBody Tshirt newTshirt, @PathVariable String id) throws Exception {
         Tshirt tshirt = (Tshirt) dataHandlerRead.Read(UUID.fromString(id));

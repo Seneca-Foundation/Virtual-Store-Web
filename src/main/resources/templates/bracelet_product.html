@@ -28,7 +28,7 @@
             <div class="basket-product">
               <div class="item">
                 <div class="product-image">
-                  <img src="https://loremflickr.com/120/166/bracelet" alt="Placholder Image 2" class="product-frame">
+                  <img th:src="@{${'/images/' + bracelet.ID + '.png'}}" alt="Placholder Image 2" class="product-frame">
                 </div>
                 <div class="product-details">
                   <h1><strong th:text="${bracelet.name}"><span class="item-quantity">4</span> x Eliza J</strong><span th:text="' By Sarai Sansone'"></span> </h1>
