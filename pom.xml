@@ -159,11 +159,5 @@
                 <active.profile>docker</active.profile>
             </properties>
         </profile>
-		<profile>
-            <id>docker</id>
-            <properties>
-                <active.profile>docker</active.profile>
-            </properties>
-        </profile>
 	</profiles>
 </project>
