@@ -5,7 +5,7 @@
         <link rel="stylesheet" th:href="@{/css/item_view.css}" />
     </head>
     <body style="background-color:rgb(238, 253, 218);">
-      <h4>T-shirt Created!</h4>
+      <h4>Tshirt Created!</h4>
         <main>
           <div class="basket">
             <div class="basket-labels">
@@ -19,12 +19,12 @@
             <div class="basket-product">
               <div class="item">
                 <div class="product-image">
-                  <img th:src="@{${'/images/' + tshirt.ID + '.png'}}" alt="Tshirt" class="product-frame"> 
+                  <img th:src="@{${'/images/' + tshirt.ID + '.png'}}" alt="Bracelet" class="product-frame"> 
                 </div>
                 <div class="product-details">
-                  <h1><strong th:text="${tshirt.name}"><span class="item-quantity">4</span> x Eliza J</strong><span th:text="' By Kareona'"></span> </h1>
-                  <p><strong th:text="'Price: ' + ${tshirt.price} + '.'"></strong></p>
-                  <p><strong th:text="'Color: ' + ${tshirt.color} + '.'"></strong></p>
+                  <h1><strong th:text="${tshirt.name}"><span class="item-quantity">4</span> x Eliza J</strong><span th:text="' By Kareona Davis'"></span> </h1>
+                  <p th:text="'Price: ' + ${tshirt.price} + '.'"></p>
+                  <p th:text="'Color: ' + ${tshirt.color} + '.'"></p>
                   <p th:text="'Description: ' + ${tshirt.description} + '.'"></p>
                   <p th:text="'Weight in pounds: ' + ${tshirt.weight} + '.'"></p>
                   <p th:text="'Width in inches: ' + ${tshirt.width} + '.'"></p>
@@ -32,26 +32,17 @@
                   <p th:text="'Size: ' + ${tshirt.size} + '.'"></p>
                 </div>
               </div>
-              <div class="price"><span id="itemprice" th:text="$tshirt.price}"></span></div>
+              <div class="price"><span id="itemprice" th:text="${tshirt.price}"></span></div>
               <div class="quantity">
                 <input type="number" value="1" min="1" class="quantity-field">
               </div>
+            </div>
+          </div>
+        </main>
+    </body>
 </html>
 
-<!-- <html lang="en"> -->
 
-<!-- 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Basket</title>
-</head> -->
-<!-- 
-<body>
-  <main>
-   
-  </main>
-</body>
 
-</html> -->
+
+
