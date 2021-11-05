@@ -16,8 +16,8 @@ public class Tshirt extends FileUploadItem{
     private String size;
     private String color;
 
-    public Tshirt(String name, double price, String description, double weight, Integer width, Integer length,
-    String size, String color) {
+    public Tshirt(String name, double price, String color, String description, double weight, Integer width, Integer length,
+    String size) {
         super(name, price, description, weight);
         this.setWidth(width);
         this.setLength(length);
@@ -55,7 +55,7 @@ public class Tshirt extends FileUploadItem{
         this.setColor(color);
     }
 
-    public Tshirt() {};
-
-    
+    public Tshirt() {
+        super();
+    }
 }
