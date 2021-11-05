@@ -1,22 +1,27 @@
 package com.senecafoundation.virtualstoreweb.ProductObjects;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+
+import com.senecafoundation.virtualstoreweb.ITextFormatter;
+import com.senecafoundation.virtualstoreweb.FundamentalObjects.FileUploadItem;
+
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
-import com.senecafoundation.virtualstoreweb.FundamentalObjects.FileUploadItem;
-
 @Entity
 @Table(name = "tshirt")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class Tshirt extends FileUploadItem{
-    private Integer width;
-    private Integer length;      
+public class Tshirt extends FileUploadItem
+{
+    private double width;
+    private double length;      
     private String size;
     private String color;
 
-    public Tshirt(String name, double price, String color, String description, double weight, Integer width, Integer length,
+    public Tshirt(String name, double price, String color, String description, double weight, double width, double length,
     String size) {
         super(name, price, description, weight);
         this.setWidth(width);
@@ -24,38 +29,53 @@ public class Tshirt extends FileUploadItem{
         this.setSize(size);
         this.setColor(color);
     }
+    
+    public Tshirt(){
+        super();
+    }
+    
+    public double getWidth() {
+        return width;
+    }
+
+    public void setWidth(double width) {
+        this.width = width;
+    }
     public String getColor() {
         return color;
     }
+
     public void setColor(String color) {
         this.color = color;
     }
+
     public String getSize() {
         return size;
     }
+
     public void setSize(String size) {
         this.size = size;
     }
-    public Integer getLength() {
+
+    public double getLength() {
         return length;
     }
-    public void setLength(Integer length) {
+
+    public void setLength(double length) {
         this.length = length;
     }
-    public Integer getWidth() {
-        return width;
-    }
-    public void setWidth(Integer width) {
-        this.width = width;
-    }
-    public Tshirt(Integer width, Integer height, String paper, String color) {
-        this.setWidth(width);
-        this.setLength(length);
-        this.setSize(size);
-        this.setColor(color);
+    
+    public String GetData(ITextFormatter userTextFormatter)
+    {
+        this.textFormatter = userTextFormatter;
+        DecimalFormat df = new DecimalFormat("#.##");
+        df.setRoundingMode(RoundingMode.CEILING);
+        return "Tshirt: " + this.getName()  +  ", Price: $" + df.format(this.textFormatter.getPrice()) + ", Color: " + color + ", Size: "+ size + ", Length: " + length + ", Width: " + width + ", Description: " + this.getDescription() +  ", Weight: "+ weight + " pounds, Item Number: " + getID();
     }
 
-    public Tshirt() {
-        super();
+
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName() + "," + this.getID() + "," + this.getName() + "," + String.valueOf(this.getPrice()) + "," + this.getColor() + "," + this.getWidth() + "," + this.getLength() + "," + this.getSize() + "," + this.getDescription() + "," + this.getWeight();
     }
 }

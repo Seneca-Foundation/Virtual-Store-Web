@@ -8,8 +8,8 @@
         <div class="container">
             <div class="overlay" id="overlay">
             <div class="sign-in" id="sign-in">
-                <h1>Welcome to Create a Bracelet!</h1>
-                <p>This is the administrative form for creating a Tshirt.</p>
+                <h1>Welcome to Create a Tshirt!</h1>
+                <p>This is the administrative form for creating a tshirt.</p>
                 <!-- <button class="switch-button" id="slide-right-button">Sign In</button> -->
             </div>
             <div class="sign-up" id="sign-up">
@@ -47,10 +47,10 @@
                 </form>
             </div>
             <div class="sign-up" id="sign-up-info">
-                <h1>Create Tshirt</h1>
+                <h1>Create Bracelet</h1>
                 <form id="sign-up-form" action="#" th:action="@{/tshirt/createform}" method="post" th:object="${tshirt}" enctype="multipart/form-data">
                     <input type="hidden" th:field="*{ID}" />
-                    <input type="text" th:field="*{name}" placeholder="Name" />
+                    <input type="text" th:field="*{name}" placeholder="Product" />
                     <input type="text" th:field="*{price}" placeholder="Price" />
                     <input type="text" th:field="*{color}" placeholder="Color" />
                     <input type="text" th:field="*{description}" placeholder="Description" />
@@ -67,4 +67,4 @@
         </div>
         <script th:src="@{/js/home.js}"></script>
     </body>
-</html>         
+</html> 
