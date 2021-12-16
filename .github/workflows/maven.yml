@@ -41,4 +41,4 @@ jobs:
       with:
         push: true
         tags: wtvamp/virtualstoreweb:latest
-        args: PROFILE=docker
+        build-args: "PROFILE=docker"
