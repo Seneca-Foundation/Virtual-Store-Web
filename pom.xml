@@ -70,6 +70,16 @@
 			<version>5.7.2</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.6</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -138,9 +148,15 @@
 	</pluginRepositories>
 	<profiles>
         <profile>
-            <id>warren</id>
+            <id>joshua</id>
             <properties>
-                <active.profile>warren</active.profile>
+                <active.profile>joshua</active.profile>
+            </properties>
+        </profile>
+		<profile>
+            <id>docker</id>
+            <properties>
+                <active.profile>docker</active.profile>
             </properties>
         </profile>
 	</profiles>

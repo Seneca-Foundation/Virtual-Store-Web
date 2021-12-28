@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Welcome to the Virtual Store Web</title>
+        <link rel="stylesheet" th:href="@{/css/front_page.css}" />
+        <link rel="stylesheet" th:href="@{/css/item_view.css}" />
+    </head>
+    <body>
+        <script src="https://www.paypal.com/sdk/js?client-id=AQwaU7qzEPHHKAxrYXL8ZbLV1xEscLEE9BuyT9WOENwfLQZptjsGF7JdUYaVOGMzR4OZ01L5QkFwWXHp&currency=USD"></script>
+        <header>
+            <div class="searchContainer">
+                <button class="searchButtons">Sign In</button>
+                <button class="searchButtons">Cart</button>
+                <input class="searchBar" type="text"></input><button class="search">Search</button>
+            </div>
+            <img class= "img-seneca-Logo" th:src="@{/img/SenecaLogo.jpg}" alt="Logo for the Seneca Foundation Store"></img>
+        </header>
+        <main>
+          <div class="basket">
+            <div class="basket-labels">
+              <ul>
+                <li class="item item-heading">Item</li>
+                <li class="price">Price</li>
+                <li class="quantity">Quantity</li>
+                <!-- <li class="subtotal">Subtotal</li> -->
+              </ul>
+            </div>
+            <div class="basket-product">
+              <div class="item">
+                <div class="product-image">
+                  <img th:src="@{${'/images/' + sticker.ID + '.png'}}" alt="Placholder Image 2" class="product-frame">
+                </div>
+                <div class="product-details">
+                    <h1><strong th:text="${sticker.name}"><span class="item-quantity">4</span> x Eliza J</strong><span th:text="' By Joshua Nava'"></span> </h1>
+                    <p><strong th:text="'Price: ' + ${sticker.price} + '.'"></strong></p>
+                    <p><strong th:text="'Color: ' + ${sticker.color} + '.'"></strong></p>
+                    <p th:text="'Description: ' + ${sticker.description} + '.'"></p>
+                    <p th:text="'Weight in pounds: ' + ${sticker.weight} + '.'"></p>
+                    <p th:text="'Width in inches: ' + ${sticker.width} + '.'"></p>
+                    <p th:text="'Height in inches: ' + ${sticker.height} + '.'"></p>
+                    <p th:text="'Paper: ' + ${sticker.paper} + '.'"></p>
+                  </div>
+              </div>
+              <div class="price"><span id="itemprice" th:text="${sticker.price}"></span></div>
+              <div class="quantity">
+                <input type="number" value="1" min="1" class="quantity-field">
+              </div>
+              <div id="paypal-button-container"></div>
+            </div>
+          </div>
+        </main>
+        <hr class="rounded">
+        <footer>
+            <section class="contact">
+                <nav class="contact-left">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a>About Us</a></li>
+                        <li><a>Product Delivery</a></li>
+                        <li><a>Delivery Policy</a></li>
+                    </ul>
+                </nav>
+                <nav class="contact-middle">
+                    <h5>Account</h5>
+                    <ul>
+                        <li><a>Manage Account</a></li>
+                        <li><a>Order History</a></li>
+                        <li><a>Track Your Order</a></li>
+                    </ul>
+                </nav>
+                <nav class="contact-right">
+                    <h5>Help</h5>
+                    <ul>
+                        <li><a>Frequently Asked Questions</a></li>
+                        <li><a>Customer Service</a></li>
+                        <li><a>File A Complaint</a></li>
+                    </ul>
+                </nav>
+            </section>
+            <section class="contact">
+                <nav class="contact-left">
+                    <h6>Subscribe for email offers</h6>
+                    <input type="email"></input>
+                    <button></button>
+                </nav>
+                <nav class="contact-middle">
+                    <h6>Contact Us</h6>
+                    <ul>
+                        <li>jnava@senecafoundation.org</li>
+                        <li>(312)363-9496</li>
+                    </ul>
+                </nav>
+                <nav class="contact-right">
+                    <h6>Follow Us</h6>
+                    <ul>
+                        <li>
+                            <img></img>
+                            webstoreofficial
+                        </li>
+                        <li>
+                            <img></img>
+                            webstoreofficial
+                        </li>
+                        <li>
+                            <img></img>
+                            webstoreofficial
+                        </li>
+                    </ul>
+                </nav>
+            </section>
+        </footer>
+        <script>
+            paypal.Buttons({
+      
+              // Sets up the transaction when a payment button is clicked
+              createOrder: function(data, actions) {
+                var itemprice = document.getElementById("itemprice").innerText
+                return actions.order.create({
+                  purchase_units: [{
+                    amount: {
+                      value: itemprice // Can reference variables or functions. Example: `value: document.getElementById('...').value`
+                    }
+                  }]
+                });
+              },
+      
+              // Finalize the transaction after payer approval
+              onApprove: function(data, actions) {
+                return actions.order.capture().then(function(orderData) {
+                  // Successful capture! For dev/demo purposes:
+                      console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                      var transaction = orderData.purchase_units[0].payments.captures[0];
+                      alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
+            // When ready to go live, remove the alert and show a success message within this page. For example:
+                    // var element = document.getElementById('paypal-button-container');
+                    // element.innerHTML = '';
+                    // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                    // Or go to another URL:  actions.redirect('thank_you.html');
+                });
+                }
+            }).render('#paypal-button-container');
+        </script>
+    </body>
+</html>

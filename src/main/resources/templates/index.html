@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Welcome to the Virtual Store Web</title>
+        <link rel="stylesheet" th:href="@{/css/front_page.css}" />
+    </head>
+    <body>
+        <header>
+            <div class="searchContainer">
+                <button class="searchButtons">Sign In</button>
+                <button class="searchButtons">Cart</button>
+                <input class="searchBar" type="text"></input><button class="search">Search</button>
+            </div>
+            <img class= "img-seneca-Logo" th:src="@{/img/SenecaLogo.jpg}" alt="Logo for the Seneca Foundation Store"></img>
+        </header>
+        <main>
+            <ul class="stores"> 
+                <li>
+                    <a href="/tshirt/categoryview">
+                        <button class="searchButtons">T-Shirts by Kareona</button>
+                        <img th:src="@{${'/images/' + tshirtId + '.png'}}" alt="t-shirts"></img>
+                    </a>
+                </li>
+                <li>
+                    <a href="/drawing/categoryview">
+                        <button class="searchButtons">Drawings by Phoenix</button>
+                        <img th:src="@{${'/images/' + drawingId + '.png'}}" alt="drawings"></img>
+                    </a>
+                </li>
+                <li>
+                    <a href="/sticker/categoryview">
+                        <button class="searchButtons">Stickers by Joshua</button>
+                        <img th:src="@{${'/images/' + stickerId + '.png'}}" alt="stickers"></img>
+                    </a>
+                </li>
+                <li>
+                    <a href="/bracelet/categoryview">
+                        <button class="searchButtons">Bracelets by Sarai</button>
+                        <img th:src="@{${'/images/' + braceletId + '.png'}}" alt="bracelets"></img>
+                    </a>
+                </li>
+            </ul>
+            </div><br>
+            <blockquote class="arrow-pointer">
+                <p class="customer">
+                    Customer Reviews
+                </p>
+            </blockquote> 
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+            <div class="row">
+                <section class="component">  
+                    <div class="column">     
+                        <blockquote class="callout quote EN">
+                        I absolutely love the item I received! Service was great, quality is great, and prices are better than Etsy.
+                        <cite> - Warren Thompson</cite>
+                        </blockquote>
+                    </div> 
+                    <div class="column">
+                        <blockquote class="callout quote EN">
+                            I was pleasantly surprised at the quick delivery and packaging from this store. I will definitely be shopping here again.
+                        <cite> - Thompson Warren</cite>
+                        </blockquote>
+                    </div>
+                </section>
+            </div>
+        </main>
+        <hr class="rounded">
+        <footer>
+            <section class="contact">
+                <nav class="contact-left">
+                    <h5>Company</h5>
+                    <ul>
+                        <li><a>About Us</a></li>
+                        <li><a>Product Delivery</a></li>
+                        <li><a>Delivery Policy</a></li>
+                    </ul>
+                </nav>
+                <nav class="contact-middle">
+                    <h5>Account</h5>
+                    <ul>
+                        <li><a>Manage Account</a></li>
+                        <li><a>Order History</a></li>
+                        <li><a>Track Your Order</a></li>
+                    </ul>
+                </nav>
+                <nav class="contact-right">
+                    <h5>Help</h5>
+                    <ul>
+                        <li><a>Frequently Asked Questions</a></li>
+                        <li><a>Customer Service</a></li>
+                        <li><a>File A Complaint</a></li>
+                    </ul>
+                </nav>
+            </section>
+            <section class="contact">
+                <nav class="contact-left">
+                    <h6>Subscribe for email offers</h6>
+                    <input type="email"></input>
+                    <button></button>
+                </nav>
+                <nav class="contact-middle">
+                    <h6>Contact Us</h6>
+                    <ul>
+                        <li>jnava@senecafoundation.org</li>
+                        <li>(312)363-9496</li>
+                    </ul>
+                </nav>
+                <nav class="contact-right">
+                    <h6>Follow Us</h6>
+                    <ul>
+                        <li>
+                            <img></img>
+                            webstoreofficial
+                        </li>
+                        <li>
+                            <img></img>
+                            webstoreofficial
+                        </li>
+                        <li>
+                            <img></img>
+                            webstoreofficial
+                        </li>
+                    </ul>
+                </nav>
+            </section>
+        </footer>
+        <script type="text/javascript">
+            // var data = "";
+
+            // var xhr = new XMLHttpRequest();
+            // xhr.withCredentials = true;
+
+            // xhr.addEventListener("readystatechange", afterGettingPokemonViaGetIsFinished);
+
+            // xhr.open("GET", "/pokemonSeconds/");
+            // xhr.setRequestHeader("Content-Type", "application/json");
+
+            // xhr.send(data);
+
+            // function afterGettingPokemonViaGetIsFinished() {
+            //     if(this.readyState === 4) {
+            //         console.log(this.responseText);
+            //         var pokemonsAsAnObject = JSON.parse(this.responseText);
+            //         var htmlPlaceToPutPokemon = document.getElementById("pokemon");
+            //         htmlPlaceToPutPokemon.innerText = pokemonsAsAnObject[0].region;
+            //     }
+            // }
+        </script>
+    </body>
+</html>

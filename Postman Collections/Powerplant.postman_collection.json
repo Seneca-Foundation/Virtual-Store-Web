@@ -1,0 +1,112 @@
+{
+	"info": {
+		"_postman_id": "d2c3744d-72a8-402f-b853-b72aec92d413",
+		"name": "Powerplant",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create new powerplant",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n{\n    \"name\":\"100 kWh of energy\",\n    \"price\":200,\n    \"description\":\"powers microwave\",\n    \"weight\":1.0\n}"
+				},
+				"url": {
+					"raw": "localhost/powerplants",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"powerplants"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Read powerplant",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost/powerplants/id",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"powerplants",
+						"id"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update powerplant",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\n{\n    \"name\":\"100 kWh of energy\",\n    \"price\":300,\n    \"description\":\"powers microwave\",\n    \"weight\":1.0\n}"
+				},
+				"url": {
+					"raw": "localhost/powerplants/id",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"powerplants",
+						"id"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete powerplant",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost/powerplants/id",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"powerplants",
+						"id"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

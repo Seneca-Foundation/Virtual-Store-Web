@@ -3,7 +3,8 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-
+bin/
+.history/
 ### STS ###
 .apt_generated
 .classpath
@@ -34,3 +35,5 @@ build/
 .DS_Store
 ###
 application-joshua.properties
+application-warren.properties
+application-phoenix.properties

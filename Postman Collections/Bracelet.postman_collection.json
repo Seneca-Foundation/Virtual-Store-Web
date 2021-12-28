@@ -1,0 +1,112 @@
+{
+	"info": {
+		"_postman_id": "4daa0a42-f543-4986-8142-4bd873b4d070",
+		"name": "Bracelet",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create new bracelet",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"Beaded Cute Friendship Bracelet\",\n    \"price\":6,\n    \"color\": \"pink\",\n    \"material\": \"yarn\",\n    \"length\": 4,\n    \"description\":\"handmade with rounded beads\",\n    \"weight\":0.3\n}"
+				},
+				"url": {
+					"raw": "localhost/bracelets",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"bracelets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Read bracelet",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost/bracelets/id",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"bracelets",
+						"id"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update bracelet",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"Beaded Cute Friendship Bracelet\",\n    \"price\":6,\n    \"color\": \"blue\",\n    \"material\": \"yarn\",\n    \"length\": 4,\n    \"description\":\"handmade with rounded beads\",\n    \"weight\":0.3\n}"
+				},
+				"url": {
+					"raw": "localhost/bracelets/id",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"bracelets",
+						"id"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete bracelet",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost/bracelets/id",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"bracelets",
+						"id"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

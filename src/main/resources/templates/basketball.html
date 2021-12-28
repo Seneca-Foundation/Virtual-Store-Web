@@ -30,7 +30,7 @@
             <img src="https://loremflickr.com/120/166/basketball" alt="Placholder Image 2" class="product-frame">
           </div>
           <div class="product-details">
-            <h1><strong th:text="${basketball.name}"><span class="item-quantity">4</span> x Eliza J</strong><span th:text="' ' + ${basketball.date}"></span> </h1>
+            <h1><strong th:text="${basketball.name} + ' Game'"><span class="item-quantity">4</span> x Eliza J</strong><span th:text="'Date: ' + ${basketball.date}"></span> </h1>
             <p><strong th:text="'Section: ' + ${basketball.section}"></strong></p>
             <p><strong th:text="'Seat: ' + ${basketball.seat}"></strong></p>
             <p th:text="'Description: ' + ${basketball.description}"></p>

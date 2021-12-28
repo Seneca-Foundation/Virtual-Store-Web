@@ -1,0 +1,112 @@
+{
+	"info": {
+		"_postman_id": "c0408474-6998-4a9d-9223-5f81e0c93fd7",
+		"name": "Tshirt",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create new Drawing",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"black T-SHIRT\",\n    \"price\": \"10\",\n    \"color\": \"black\",\n    \"description\":\"T-SHIRT\",\n    \"width\":\"12\",\n    \"length\":\"12\",\n    \"Size\":\"Small\",\n    \"weight\":\"1.0\"\n}"
+				},
+				"url": {
+					"raw": "localhost/tshirts",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"tshirts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Read Drawing",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost/tshirts/id",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"tshirts",
+						"id"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Drawing",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"MacBook Air\",\n    \"price\":1000,\n    \"color\": \"space grey\",\n    \"description\": \"drawing\",\n    \"width\": \"12\",\n    \"height\":\"12\",\n    \"paper\":\"clear\",\n    \"weight\":\"1\"   \n}"
+				},
+				"url": {
+					"raw": "localhost/tshirts/id",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"tshirts",
+						"id"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Drawing",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost/tshirts/id",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"tshirts",
+						"id"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
