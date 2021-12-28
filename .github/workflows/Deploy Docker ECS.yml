@@ -1,0 +1,77 @@
+# This workflow will build a Java project with Maven
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
+
+name: Java CI with Maven, Docker, and ECS
+
+on:
+  push:
+    branches: [ develop ]
+
+jobs:
+  build:
+    name: Build jar with Maven using Docker profile
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    # - uses: actions/setup-java@v1
+    #   with:
+    #     java-version: 11
+    # - run: mvn -B package --file pom.xml -Pdocker
+    # - run: mkdir staging && cp target/*.jar staging
+    # - uses: actions/upload-artifact@v2
+    #   with:
+    #     name: Package
+    #     path: staging
+    -
+      name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v1
+    -
+      name: Login to DockerHub
+      uses: docker/login-action@v1
+      with:
+        username: wtvamp
+        password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+    -
+      name: Build and push
+      id: docker_build
+      uses: docker/build-push-action@v2
+      with:
+        push: true
+        tags: wtvamp/virtualstoreweb:latest
+        build-args: "PROFILE=docker"
+    - 
+      name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-2
+
+    - 
+      name: Login to Amazon ECS
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1
+
+    - 
+      name: Download task definition
+      run: |
+        aws ecs describe-task-definition --task-definition virtualstoreweb --query taskDefinition > task-definition.json
+    
+    -
+      name: Fill in the new image ID in the Amazon ECS task definition
+      id: virtualstoreweb-svc
+      uses: aws-actions/amazon-ecs-render-task-definition@v1
+      with:
+        task-definition: task-definition.json
+        container-name: virtualstoreweb
+        image: wtvamp/virtualstoreweb:latest
+
+    - 
+      name: Deploy Amazon ECS task definition
+      uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+      with:
+        task-definition: task-definition.json
+        service: virtualstoreweb-svc
+        cluster: seneca
+        wait-for-service-stability: true
