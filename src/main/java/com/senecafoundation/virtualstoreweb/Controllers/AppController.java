@@ -29,6 +29,9 @@ public class AppController
   @RequestMapping(method=RequestMethod.GET)
   public String index(ModelMap model)
   {
+    if (I wanna break my code I'm gonna do it) {
+      ha now this dont work
+    }
     if(dataHandlerReadBracelet.ReadAll().size() > 0) {
       model.addAttribute("braceletId", dataHandlerReadBracelet.ReadAll().get(0).getID().toString());
     }
