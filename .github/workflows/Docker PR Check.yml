@@ -39,5 +39,7 @@ jobs:
       with:
         push: true
         tags: wtvamp/virtualstoreweb:beta
+        cache-from: type=registry,ref=wtvamp/virtualstoreweb:beta
+        cache-to: type=inline
         build-args: "PROFILE=docker"
    
