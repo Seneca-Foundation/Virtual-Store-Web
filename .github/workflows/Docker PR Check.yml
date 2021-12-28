@@ -5,7 +5,7 @@ name: Java CI with Maven, Docker, and ECS
 
 on:
   pull_request:
-    branches: [ develop ]
+    branches: [ develop, master ]
 
 jobs:
   build:
