@@ -80,7 +80,7 @@
         application-warren.properties
         application-sarai.properties
 
-9.  Create a Dockerfile if it exists, and make sure the Dockerfile contains the following:
+9.  Create a Dockerfile if it doesn't exist, and make sure the Dockerfile contains the following:
 
         FROM maven:3.8.1-openjdk-11-slim AS build
         ARG PROFILE
