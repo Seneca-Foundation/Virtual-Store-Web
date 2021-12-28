@@ -23,6 +23,11 @@ jobs:
     #   with:
     #     name: Package
     #     path: staging
+    - uses: actions/setup-java@v2
+      with:
+        distribution: 'temurin'
+        java-version: '11'
+        cache: 'maven'
     -
       name: Setup Docker Buildx
       uses: docker/setup-buildx-action@v1
