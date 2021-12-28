@@ -24,8 +24,7 @@ public class AppController
   RepoReadData<Drawing> dataHandlerReadDrawing;
   @Autowired
   RepoReadData<Tshirt> dataHandlerReadTshirt;
-  // wire up the other three
-
+  // test comment
   @RequestMapping(method=RequestMethod.GET)
   public String index(ModelMap model)
   {
