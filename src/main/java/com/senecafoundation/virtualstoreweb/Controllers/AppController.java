@@ -29,10 +29,18 @@ public class AppController
   @RequestMapping(method=RequestMethod.GET)
   public String index(ModelMap model)
   {
-    model.addAttribute("braceletId", dataHandlerReadBracelet.ReadAll().get(0).getID().toString());
-    model.addAttribute("stickerId", dataHandlerReadSticker.ReadAll().get(0).getID().toString());
-    model.addAttribute("drawingId", dataHandlerReadDrawing.ReadAll().get(0).getID().toString());
-    model.addAttribute("tshirtId", dataHandlerReadTshirt.ReadAll().get(0).getID().toString());
+    if(dataHandlerReadBracelet.ReadAll().size() > 0) {
+      model.addAttribute("braceletId", dataHandlerReadBracelet.ReadAll().get(0).getID().toString());
+    }
+    if(dataHandlerReadSticker.ReadAll().size() > 0) {
+      model.addAttribute("stickerId", dataHandlerReadSticker.ReadAll().get(0).getID().toString());
+    }
+    if(dataHandlerReadDrawing.ReadAll().size() > 0) {
+      model.addAttribute("drawingId", dataHandlerReadDrawing.ReadAll().get(0).getID().toString());
+    }    
+    if(dataHandlerReadTshirt.ReadAll().size() > 0) {
+      model.addAttribute("tshirtId", dataHandlerReadTshirt.ReadAll().get(0).getID().toString());
+    }
     return "index";
   }
 }
